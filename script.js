@@ -1,59 +1,34 @@
 /* =============================================
    PH DİZAYN — SCRIPT.JS
-   İçerik:
-     1. Splash Screen
-     2. Navbar Scroll Durumu
-     3. Burger Menü (Mobil)
-     4. Hero Slider (Otomatik + Manuel)
-     5. Scroll Reveal Animasyonu
-     6. Smooth Scroll (#products geçişi)
-     7. Ürün Kartı Görsel Placeholder Yönetimi
 ============================================= */
 
 (function () {
   'use strict';
 
-  /* ─────────────────────────────────────────
-     1. SPLASH SCREEN
-     Sayfa yüklendikten 2 saniye sonra kapanır,
-     sonra body scroll açılır.
-  ───────────────────────────────────────── */
   const splash = document.getElementById('splash');
+  const navbar = document.getElementById('navbar');
+  const burger = document.getElementById('navBurger');
+  const navLinks = document.querySelector('.nav-links');
 
-  // Body scroll kilitli başlasın
   document.body.style.overflow = 'hidden';
 
   window.addEventListener('load', function () {
-    const minSplashTime = 2200; // ms — splash en az bu kadar açık kalır
-    const start = Date.now();
-
-    function hideSplash() {
-      const elapsed = Date.now() - start;
-      const remaining = Math.max(0, minSplashTime - elapsed);
-
-      setTimeout(function () {
+    setTimeout(function () {
+      if (splash) {
         splash.classList.add('hidden');
-        document.body.style.overflow = '';
 
-        // Splash tamamen kapandıktan sonra DOM'dan kaldır
         splash.addEventListener('transitionend', function () {
           splash.remove();
         }, { once: true });
-      }, remaining);
-    }
+      }
 
-    hideSplash();
+      document.body.style.overflow = '';
+    }, 2200);
   });
 
-
-  /* ─────────────────────────────────────────
-     2. NAVBAR SCROLL DURUMU
-     Sayfa 60px aşağı scroll edilince navbar
-     arka planı belirir.
-  ───────────────────────────────────────── */
-  const navbar = document.getElementById('navbar');
-
   function updateNavbar() {
+    if (!navbar) return;
+
     if (window.scrollY > 60) {
       navbar.classList.add('scrolled');
     } else {
@@ -64,23 +39,14 @@
   window.addEventListener('scroll', updateNavbar, { passive: true });
   updateNavbar();
 
-
-  /* ─────────────────────────────────────────
-     3. BURGER MENÜ (MOBİL)
-  ───────────────────────────────────────── */
-  const burger = document.getElementById('navBurger');
-  const navLinks = document.querySelector('.nav-links');
-
   if (burger && navLinks) {
     burger.addEventListener('click', function () {
       burger.classList.toggle('active');
       navLinks.classList.toggle('open');
-      // Menü açıkken body scroll kilitle
-      document.body.style.overflow =
-        navLinks.classList.contains('open') ? 'hidden' : '';
+
+      document.body.style.overflow = navLinks.classList.contains('open') ? 'hidden' : '';
     });
 
-    // Menü linkine tıklayınca kapat
     navLinks.querySelectorAll('a').forEach(function (link) {
       link.addEventListener('click', function () {
         burger.classList.remove('active');
@@ -90,39 +56,44 @@
     });
   }
 
-
-  /* ─────────────────────────────────────────
-     4. HERO SLIDER
-     - Otomatik: 5 saniyede bir ilerler
-     - Manuel: ok butonları ve dot'larla
-     - Her slide geçişinde animasyon sıfırlanır
-  ───────────────────────────────────────── */
   const slides = document.querySelectorAll('.slide');
-  const dots   = document.querySelectorAll('.dot');
+  const dots = document.querySelectorAll('.dot');
+  const btnNext = document.getElementById('slideNext');
+  const btnPrev = document.getElementById('slidePrev');
+  const sliderEl = document.getElementById('slider');
+
   let currentSlide = 0;
-  let sliderTimer  = null;
-  const SLIDE_INTERVAL = 5000; // ms
+  let sliderTimer = null;
+  const SLIDE_INTERVAL = 5000;
 
   function goToSlide(index) {
-    // Sınır kontrolü
+    if (!slides.length || !dots.length) return;
+
     index = ((index % slides.length) + slides.length) % slides.length;
 
-    // Mevcut slide'ı devre dışı bırak
     slides[currentSlide].classList.remove('active');
     dots[currentSlide].classList.remove('active');
 
-    // Yeni slide'ı etkinleştir
     currentSlide = index;
+
     slides[currentSlide].classList.add('active');
     dots[currentSlide].classList.add('active');
   }
 
-  function nextSlide() { goToSlide(currentSlide + 1); }
-  function prevSlide() { goToSlide(currentSlide - 1); }
+  function nextSlide() {
+    goToSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    goToSlide(currentSlide - 1);
+  }
 
   function startAutoSlide() {
     stopAutoSlide();
-    sliderTimer = setInterval(nextSlide, SLIDE_INTERVAL);
+
+    if (slides.length > 1) {
+      sliderTimer = setInterval(nextSlide, SLIDE_INTERVAL);
+    }
   }
 
   function stopAutoSlide() {
@@ -132,14 +103,10 @@
     }
   }
 
-  // Ok butonları
-  const btnNext = document.getElementById('slideNext');
-  const btnPrev = document.getElementById('slidePrev');
-
   if (btnNext) {
     btnNext.addEventListener('click', function () {
       nextSlide();
-      startAutoSlide(); // Tıklamadan sonra sayacı sıfırla
+      startAutoSlide();
     });
   }
 
@@ -150,23 +117,26 @@
     });
   }
 
-  // Dot butonları
-  dots.forEach(function (dot, i) {
+  dots.forEach(function (dot, index) {
     dot.addEventListener('click', function () {
-      goToSlide(i);
+      goToSlide(index);
       startAutoSlide();
     });
   });
 
-  // Klavye navigasyonu (erişilebilirlik)
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') { nextSlide(); startAutoSlide(); }
-    if (e.key === 'ArrowLeft')  { prevSlide(); startAutoSlide(); }
+    if (e.key === 'ArrowRight') {
+      nextSlide();
+      startAutoSlide();
+    }
+
+    if (e.key === 'ArrowLeft') {
+      prevSlide();
+      startAutoSlide();
+    }
   });
 
-  // Touch/swipe desteği
   let touchStartX = 0;
-  const sliderEl = document.getElementById('slider');
 
   if (sliderEl) {
     sliderEl.addEventListener('touchstart', function (e) {
@@ -175,58 +145,54 @@
 
     sliderEl.addEventListener('touchend', function (e) {
       const diff = touchStartX - e.changedTouches[0].screenX;
+
       if (Math.abs(diff) > 50) {
-        if (diff > 0) nextSlide();
-        else prevSlide();
+        if (diff > 0) {
+          nextSlide();
+        } else {
+          prevSlide();
+        }
+
         startAutoSlide();
       }
     }, { passive: true });
 
-    // Slider üzerine gelince otomatik durdur
     sliderEl.addEventListener('mouseenter', stopAutoSlide);
     sliderEl.addEventListener('mouseleave', startAutoSlide);
   }
 
-  // Otoplay başlat (splash bittikten sonra)
   setTimeout(startAutoSlide, 2500);
 
-
-  /* ─────────────────────────────────────────
-     5. SCROLL REVEAL ANİMASYONU
-     .reveal class'ına sahip elementler
-     viewport'a girince .visible class alır.
-  ───────────────────────────────────────── */
   const revealElements = document.querySelectorAll('.reveal');
 
-  const revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        const el    = entry.target;
-        const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
+  if ('IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          const el = entry.target;
+          const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
 
-        setTimeout(function () {
-          el.classList.add('visible');
-        }, delay);
+          setTimeout(function () {
+            el.classList.add('visible');
+          }, delay);
 
-        // Bir kez göster, tekrar izleme
-        revealObserver.unobserve(el);
-      }
+          revealObserver.unobserve(el);
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -60px 0px'
     });
-  }, {
-    threshold:  0.12,
-    rootMargin: '0px 0px -60px 0px'
-  });
 
-  revealElements.forEach(function (el) {
-    revealObserver.observe(el);
-  });
+    revealElements.forEach(function (el) {
+      revealObserver.observe(el);
+    });
+  } else {
+    revealElements.forEach(function (el) {
+      el.classList.add('visible');
+    });
+  }
 
-
-  /* ─────────────────────────────────────────
-     6. SMOOTH SCROLL — #products GEÇİŞİ
-     Slider'daki scroll-hint tıklanınca
-     products bölümüne scroll edilir.
-  ───────────────────────────────────────── */
   const scrollHint = document.getElementById('scrollHint');
   const productsSection = document.getElementById('products');
 
@@ -234,56 +200,50 @@
     scrollHint.addEventListener('click', function () {
       productsSection.scrollIntoView({ behavior: 'smooth' });
     });
+
     scrollHint.style.cursor = 'pointer';
   }
 
-  // Navbar linkleri için smooth scroll
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
+
       if (targetId === '#') return;
 
       const target = document.querySelector(targetId);
+
       if (target) {
         e.preventDefault();
-        const offset = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '72'
+
+        const navHeight = parseInt(
+          getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '72',
+          10
         );
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
+
+        const top = target.getBoundingClientRect().top + window.scrollY - navHeight;
+
+        window.scrollTo({
+          top: top,
+          behavior: 'smooth'
+        });
       }
     });
   });
 
-
-  /* ─────────────────────────────────────────
-     7. ÜRÜN KARTI GÖRSEL PLACEHOLDER YÖNETİMİ
-     Görsel yüklenemezse placeholder görünür.
-     Görsel yüklenince placeholder gizlenir.
-  ───────────────────────────────────────── */
   document.querySelectorAll('.card-image img').forEach(function (img) {
-    // Görsel yüklenince placeholder'ı gizle
     img.addEventListener('load', function () {
       this.parentElement.classList.remove('img-placeholder');
     });
 
-    // Görsel yüklenemezse placeholder'ı göster
     img.addEventListener('error', function () {
       this.parentElement.classList.add('img-placeholder');
     });
 
-    // Sayfa yüklendiğinde zaten hata durumunda olanları yakala
     if (img.complete && img.naturalWidth === 0) {
       img.parentElement.classList.add('img-placeholder');
     }
   });
 
-
-  /* ─────────────────────────────────────────
-     YARDIMCI: Parallax hissi (isteğe bağlı)
-     Slider arka planlarına hafif parallax.
-     Performans için requestAnimationFrame kullanır.
-  ───────────────────────────────────────── */
   let ticking = false;
 
   window.addEventListener('scroll', function () {
@@ -291,14 +251,13 @@
       requestAnimationFrame(function () {
         const scrollY = window.scrollY;
 
-        // Slider bölümü görünürse parallax uygula
-        document.querySelectorAll('.slide-bg').forEach(function (bg) {
-          // Çok hızlı kayma için düşük katsayı (0.15)
-          bg.style.transform = 'scale(1.05) translateY(' + (scrollY * 0.08) + 'px)';
+        document.querySelectorAll('.slide.active .slide-bg').forEach(function (bg) {
+          bg.style.transform = 'scale(1.05) translateY(' + scrollY * 0.06 + 'px)';
         });
 
         ticking = false;
       });
+
       ticking = true;
     }
   }, { passive: true });
