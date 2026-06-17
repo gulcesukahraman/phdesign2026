@@ -1,15 +1,13 @@
 /* =============================================
    PH DİZAYN — STYLE.CSS
    Renk Paleti:
-     --stone-light:  #efede8
-     --stone-mid:    #cfc9be
-     --stone-warm:   #bdb7ad
-     --dark:         #2f3338
-   Font:
-     Montserrat
+     --stone-light:  #F3F4F4
+     --stone-mid:    #D5D9DA
+     --stone-warm:   #9FA6AA
+     --dark:         #23282C
    ============================================= */
 
-/* RESET & ROOT */
+/* ─── RESET & ROOT ─────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -17,18 +15,18 @@
 }
 
 :root {
-  --stone-light: #efede8;
-  --stone-mid: #cfc9be;
-  --stone-warm: #bdb7ad;
-  --dark: #2f3338;
-  --dark-80: rgba(47, 51, 56, 0.80);
-  --dark-40: rgba(47, 51, 56, 0.40);
+  --stone-light: #F3F4F4;
+  --stone-mid:   #D5D9DA;
+  --stone-warm:  #9FA6AA;
+  --dark:        #23282C;
+  --dark-80:     rgba(35, 40, 44, 0.80);
+  --dark-40:     rgba(35, 40, 44, 0.40);
 
-  --font-display: 'Montserrat', system-ui, sans-serif;
-  --font-body: 'Montserrat', system-ui, sans-serif;
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body:    'Inter', system-ui, sans-serif;
 
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
 
   --nav-h: 72px;
 }
@@ -56,6 +54,7 @@ a {
   color: inherit;
 }
 
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
@@ -63,7 +62,7 @@ a {
   }
 }
 
-/* SPLASH SCREEN */
+/* ─── SPLASH SCREEN ─────────────────────────── */
 #splash {
   position: fixed;
   inset: 0;
@@ -100,6 +99,7 @@ a {
   height: auto;
 }
 
+/* Fallback metin logosu (SVG yokken) */
 .splash-logo-fallback {
   display: none;
   flex-direction: column;
@@ -110,8 +110,8 @@ a {
 .splash-ph {
   font-family: var(--font-display);
   font-size: 64px;
-  font-weight: 700;
-  letter-spacing: 0.14em;
+  font-weight: 300;
+  letter-spacing: 0.15em;
   color: var(--dark);
   line-height: 1;
 }
@@ -119,7 +119,7 @@ a {
 .splash-dizayn {
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.5em;
   color: var(--stone-warm);
   text-transform: uppercase;
@@ -135,7 +135,7 @@ a {
 .splash-tagline {
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 500;
+  font-weight: 400;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--stone-warm);
@@ -144,28 +144,16 @@ a {
 }
 
 @keyframes splashFadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes splashLineGrow {
-  from {
-    width: 0;
-  }
-
-  to {
-    width: 80px;
-  }
+  from { width: 0; }
+  to   { width: 80px; }
 }
 
-/* NAVIGATION */
+/* ─── NAVIGATION ─────────────────────────────── */
 #navbar {
   position: fixed;
   top: 0;
@@ -181,7 +169,7 @@ a {
 }
 
 #navbar.scrolled {
-  background: rgba(239, 237, 232, 0.95);
+  background: rgba(243, 244, 244, 0.95);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   box-shadow: 0 1px 0 var(--stone-mid);
@@ -202,7 +190,7 @@ a {
   display: none;
   font-family: var(--font-display);
   font-size: 22px;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.15em;
   color: var(--stone-light);
 }
@@ -214,24 +202,31 @@ a {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 40px;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links > li {
+  position: relative;
 }
 
 .nav-links a {
   font-family: var(--font-body);
   font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.22em;
+  font-weight: 400;
+  letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(239, 237, 232, 0.85);
+  color: rgba(243, 244, 244, 0.85);
   transition: color 0.3s;
   position: relative;
+  display: inline-block;
+  padding: 8px 0;
 }
 
-.nav-links a::after {
+.nav-links > li > a::after {
   content: '';
   position: absolute;
-  bottom: -3px;
+  bottom: 3px;
   left: 0;
   width: 0;
   height: 1px;
@@ -239,12 +234,65 @@ a {
   transition: width 0.3s var(--ease-smooth);
 }
 
-.nav-links a:hover::after {
-  width: 100%;
-}
+.nav-links > li > a:hover::after { width: 100%; }
 
 #navbar.scrolled .nav-links a {
   color: var(--dark-80);
+}
+
+/* ─── DROPDOWN (ÜRÜNLER / KURUMSAL / TEKNOLOJİ / DESTEK) ─────────────────────────────────── */
+.has-dropdown {
+  padding-bottom: 4px; /* hover boşluğunu köprüler, dropdown kaybolmasın */
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) translateY(8px);
+  min-width: 260px;
+  background: var(--stone-light);
+  border: 1px solid var(--stone-mid);
+  box-shadow: 0 18px 40px rgba(35, 40, 44, 0.14);
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s var(--ease-smooth), transform 0.25s var(--ease-smooth), visibility 0.25s;
+  z-index: 50;
+}
+
+/* Mouse yaklaşınca alt alta başlıklar halinde açılır */
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+
+.dropdown a {
+  display: block;
+  width: 100%;
+  padding: 11px 24px;
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: none;
+  color: var(--dark-80) !important;
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s, padding-left 0.2s;
+}
+
+.dropdown a::after { display: none; content: none; }
+
+.dropdown a:hover {
+  background: var(--stone-mid);
+  color: var(--dark) !important;
+  padding-left: 30px;
 }
 
 .nav-burger {
@@ -269,7 +317,17 @@ a {
   background: var(--dark);
 }
 
-/* SLIDER */
+/* Anasayfa anchor offset (sabit navbar yüksekliğini telafi eder) */
+.anchor-offset {
+  position: absolute;
+  top: calc(-1 * var(--nav-h));
+  left: 0;
+  display: block;
+  height: 1px;
+  width: 1px;
+}
+
+/* ─── SLIDER ─────────────────────────────────── */
 #slider {
   position: relative;
   width: 100%;
@@ -311,20 +369,23 @@ a {
   transform: scale(1);
 }
 
+/* Görsel placeholder (görsel yokken) */
 .slide-placeholder {
   position: absolute;
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #3a4048 0%, #2f3338 60%, #252a2e 100%);
+  background: linear-gradient(135deg, #3a4146 0%, #23282c 60%, #1a1e21 100%);
 }
 
+/* Görseller eklenince .slide-placeholder display:none yapılabilir veya
+   parent element background-image ile kaplandığında otomatik kaybolur */
 .slide-placeholder span {
   font-family: var(--font-body);
   font-size: 11px;
   letter-spacing: 0.2em;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255,255,255,0.2);
   text-align: center;
   line-height: 1.8;
 }
@@ -334,9 +395,9 @@ a {
   inset: 0;
   background: linear-gradient(
     135deg,
-    rgba(47, 51, 56, 0.68) 0%,
-    rgba(47, 51, 56, 0.38) 50%,
-    rgba(47, 51, 56, 0.20) 100%
+    rgba(35, 40, 44, 0.65) 0%,
+    rgba(35, 40, 44, 0.35) 50%,
+    rgba(35, 40, 44, 0.20) 100%
   );
 }
 
@@ -344,7 +405,7 @@ a {
   position: absolute;
   left: 8vw;
   bottom: 18vh;
-  max-width: 620px;
+  max-width: 560px;
   color: var(--stone-light);
 }
 
@@ -352,7 +413,7 @@ a {
   display: block;
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--stone-warm);
@@ -369,10 +430,10 @@ a {
 
 .slide-title {
   font-family: var(--font-display);
-  font-size: clamp(48px, 7vw, 92px);
-  font-weight: 700;
-  line-height: 0.98;
-  letter-spacing: -0.045em;
+  font-size: clamp(52px, 8vw, 96px);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
   color: var(--stone-light);
   margin-bottom: 28px;
 }
@@ -386,11 +447,9 @@ a {
   font-style: normal;
 }
 
-.slide-title span {
-  transition-delay: 0.45s;
-}
-
+.slide-title span { transition-delay: 0.45s; }
 .slide-title em {
+  font-style: italic;
   color: var(--stone-warm);
   transition-delay: 0.6s;
 }
@@ -404,10 +463,10 @@ a {
 .slide-desc {
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.8;
-  color: rgba(239, 237, 232, 0.76);
-  max-width: 430px;
+  color: rgba(243, 244, 244, 0.72);
+  max-width: 380px;
   margin-bottom: 36px;
   opacity: 0;
   transform: translateY(20px);
@@ -425,20 +484,20 @@ a {
   gap: 12px;
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--stone-light);
-  border: 1px solid rgba(239, 237, 232, 0.35);
+  border: 1px solid rgba(243, 244, 244, 0.35);
   padding: 14px 28px;
+  transition: background 0.3s, border-color 0.3s, color 0.3s;
   opacity: 0;
   transform: translateY(20px);
-  transition:
-    opacity 0.6s var(--ease-out) 0.9s,
-    transform 0.6s var(--ease-out) 0.9s,
-    background 0.25s,
-    border-color 0.25s,
-    color 0.25s;
+  animation: none;
+  transition: opacity 0.6s var(--ease-out) 0.9s,
+              transform 0.6s var(--ease-out) 0.9s,
+              background 0.25s,
+              border-color 0.25s;
 }
 
 .slide.active .slide-cta {
@@ -452,7 +511,7 @@ a {
   border-color: var(--stone-light);
 }
 
-/* Slider Controls */
+/* Slider kontroller */
 .slider-controls {
   position: absolute;
   bottom: 40px;
@@ -466,7 +525,7 @@ a {
 .slider-arrow {
   width: 44px;
   height: 44px;
-  border: 1px solid rgba(239, 237, 232, 0.3);
+  border: 1px solid rgba(243, 244, 244, 0.3);
   background: transparent;
   cursor: pointer;
   display: flex;
@@ -476,8 +535,8 @@ a {
 }
 
 .slider-arrow:hover {
-  background: rgba(239, 237, 232, 0.15);
-  border-color: rgba(239, 237, 232, 0.6);
+  background: rgba(243, 244, 244, 0.15);
+  border-color: rgba(243, 244, 244, 0.6);
 }
 
 .slider-arrow svg {
@@ -495,7 +554,7 @@ a {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: rgba(239, 237, 232, 0.3);
+  background: rgba(243, 244, 244, 0.3);
   border: none;
   cursor: pointer;
   transition: background 0.3s, transform 0.3s;
@@ -506,7 +565,7 @@ a {
   transform: scale(1.3);
 }
 
-/* Scroll Hint */
+/* Scroll hint */
 .scroll-hint {
   position: absolute;
   left: 8vw;
@@ -520,30 +579,23 @@ a {
 }
 
 @keyframes fadeInScroll {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 .scroll-hint span {
   font-family: var(--font-body);
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.35em;
   text-transform: uppercase;
-  color: rgba(239, 237, 232, 0.55);
+  color: rgba(243, 244, 244, 0.5);
 }
 
 .scroll-hint-line {
   width: 48px;
   height: 1px;
-  background: rgba(239, 237, 232, 0.3);
+  background: rgba(243, 244, 244, 0.3);
   position: relative;
   overflow: hidden;
 }
@@ -555,32 +607,24 @@ a {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: rgba(239, 237, 232, 0.8);
+  background: rgba(243, 244, 244, 0.8);
   animation: lineScroll 2s ease-in-out 2.5s infinite;
 }
 
 @keyframes lineScroll {
-  0% {
-    left: -100%;
-  }
-
-  50% {
-    left: 0;
-  }
-
-  100% {
-    left: 100%;
-  }
+  0%   { left: -100%; }
+  50%  { left: 0; }
+  100% { left: 100%; }
 }
 
-/* PRODUCTS SECTION */
+/* ─── PRODUCTS SECTION ───────────────────────── */
 #products {
   padding: 120px 8vw 100px;
   background: var(--stone-light);
 }
 
 .products-header {
-  max-width: 620px;
+  max-width: 580px;
   margin-bottom: 72px;
 }
 
@@ -588,7 +632,7 @@ a {
   display: block;
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.4em;
   text-transform: uppercase;
   color: var(--stone-warm);
@@ -598,25 +642,24 @@ a {
 .section-title {
   font-family: var(--font-display);
   font-size: clamp(36px, 5vw, 60px);
-  font-weight: 700;
-  line-height: 1.08;
-  letter-spacing: -0.04em;
+  font-weight: 300;
+  line-height: 1.1;
   color: var(--dark);
   margin-bottom: 20px;
 }
 
 .section-title em {
-  font-style: normal;
+  font-style: italic;
   color: var(--stone-warm);
 }
 
 .section-desc {
   font-family: var(--font-body);
   font-size: 14px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.9;
   color: var(--dark-40);
-  max-width: 440px;
+  max-width: 420px;
 }
 
 /* Products Grid */
@@ -637,7 +680,7 @@ a {
 
 .card-image {
   position: relative;
-  aspect-ratio: 4 / 3;
+  aspect-ratio: 4/3;
   overflow: hidden;
   background: var(--stone-mid);
 }
@@ -653,6 +696,7 @@ a {
   transform: scale(1.04);
 }
 
+/* Görsel placeholder stili */
 .card-image-placeholder {
   position: absolute;
   inset: 0;
@@ -665,6 +709,7 @@ a {
   transition: opacity 0.3s;
 }
 
+/* Görsel yüklenemeyince placeholder göster */
 .card-image.img-placeholder .card-image-placeholder,
 .card-image img[src=""] ~ .card-image-placeholder,
 .card-image img:not([src]) ~ .card-image-placeholder {
@@ -675,11 +720,12 @@ a {
   font-family: var(--font-body);
   font-size: 10px;
   letter-spacing: 0.15em;
-  color: rgba(47, 51, 56, 0.4);
+  color: rgba(35, 40, 44, 0.4);
   text-align: center;
   line-height: 1.8;
 }
 
+/* Hover aksen çizgi */
 .card-hover-line {
   position: absolute;
   bottom: 0;
@@ -701,9 +747,9 @@ a {
 
 .card-number {
   display: block;
-  font-family: var(--font-body);
+  font-family: var(--font-display);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.3em;
   color: var(--stone-warm);
   margin-bottom: 10px;
@@ -711,10 +757,9 @@ a {
 
 .card-title {
   font-family: var(--font-display);
-  font-size: 23px;
-  font-weight: 700;
+  font-size: 24px;
+  font-weight: 400;
   line-height: 1.2;
-  letter-spacing: -0.025em;
   color: var(--dark);
   margin-bottom: 10px;
 }
@@ -722,7 +767,7 @@ a {
 .card-desc {
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 400;
+  font-weight: 300;
   line-height: 1.8;
   color: var(--dark-40);
   margin-bottom: 20px;
@@ -731,7 +776,7 @@ a {
 .card-link {
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--dark);
@@ -753,7 +798,145 @@ a {
   gap: 12px;
 }
 
-/* STATS BAND */
+/* ─── INFO SECTIONS (KURUMSAL / TEKNOLOJİ / DESTEK) ─────────────────────────────────── */
+#corporate,
+#technology,
+#support {
+  padding: 110px 8vw 100px;
+  background: var(--stone-light);
+  border-top: 1px solid var(--stone-mid);
+}
+
+#technology {
+  background: var(--stone-mid);
+}
+
+.info-header {
+  max-width: 580px;
+  margin-bottom: 64px;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+.info-grid .info-item {
+  grid-column: span 2;
+  border-right: 1px solid var(--stone-mid);
+  border-bottom: 1px solid var(--stone-mid);
+}
+
+.info-grid .info-item:nth-child(3n) {
+  border-right: none;
+}
+
+/* 5 öğe: 3+2 düzeni — son satırdaki 2 öğe ortalanır */
+.info-grid .info-item:nth-child(4) {
+  grid-column: 2 / span 2;
+  border-left: 1px solid var(--stone-mid);
+  border-bottom: none;
+}
+
+.info-grid .info-item:nth-child(5) {
+  grid-column: 4 / span 2;
+  border-right: none;
+  border-bottom: none;
+}
+
+/* 4 öğeli destek bölümü: tek satırda 4 sütun */
+#support .info-grid {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+#support .info-grid .info-item {
+  grid-column: span 1;
+  border-bottom: none;
+}
+
+#support .info-grid .info-item:nth-child(3n) {
+  border-right: 1px solid var(--stone-mid);
+}
+
+#support .info-grid .info-item:last-child {
+  border-right: none;
+}
+
+#technology .info-grid .info-item {
+  border-color: var(--stone-warm);
+}
+
+.info-item {
+  background: var(--stone-light);
+  padding: 36px 32px 40px;
+  transition: background 0.3s;
+}
+
+#technology .info-item {
+  background: var(--stone-mid);
+}
+
+.info-item:hover {
+  background: var(--stone-warm);
+}
+
+.info-number {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 400;
+  letter-spacing: 0.3em;
+  color: var(--stone-warm);
+  margin-bottom: 16px;
+}
+
+.info-title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--dark);
+  margin-bottom: 12px;
+}
+
+.info-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--dark-40);
+}
+
+/* ─── REFERANSLAR ─────────────────────────────── */
+#references {
+  padding: 110px 8vw 100px;
+  background: var(--stone-light);
+  border-top: 1px solid var(--stone-mid);
+}
+
+.references-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.reference-item .card-image {
+  aspect-ratio: 16/11;
+  background: var(--stone-mid);
+}
+
+.reference-item .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-smooth);
+}
+
+.reference-item:hover .card-image img {
+  transform: scale(1.04);
+}
+
+
 #stats {
   padding: 80px 8vw;
   background: var(--dark);
@@ -777,16 +960,16 @@ a {
 .stat-number {
   font-family: var(--font-display);
   font-size: clamp(40px, 5vw, 64px);
-  font-weight: 700;
+  font-weight: 300;
   color: var(--stone-light);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.02em;
   line-height: 1;
 }
 
 .stat-label {
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.25em;
   text-transform: uppercase;
   color: var(--stone-warm);
@@ -795,14 +978,14 @@ a {
 .stat-divider {
   width: 1px;
   height: 60px;
-  background: rgba(189, 183, 173, 0.2);
+  background: rgba(159, 166, 170, 0.2);
   flex-shrink: 0;
 }
 
-/* FOOTER */
+/* ─── FOOTER ─────────────────────────────────── */
 #contact {
   background: var(--dark);
-  border-top: 1px solid rgba(189, 183, 173, 0.12);
+  border-top: 1px solid rgba(159, 166, 170, 0.12);
 }
 
 .footer-inner {
@@ -823,7 +1006,7 @@ a {
   display: none;
   font-family: var(--font-display);
   font-size: 28px;
-  font-weight: 700;
+  font-weight: 300;
   letter-spacing: 0.12em;
   color: var(--stone-light);
   margin-bottom: 12px;
@@ -832,7 +1015,7 @@ a {
 .footer-tagline {
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 600;
+  font-weight: 400;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: var(--stone-warm);
@@ -842,7 +1025,7 @@ a {
 .footer-contact h4 {
   font-family: var(--font-body);
   font-size: 10px;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: var(--stone-warm);
@@ -859,8 +1042,8 @@ a {
 .footer-links a {
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 400;
-  color: rgba(239, 237, 232, 0.55);
+  font-weight: 300;
+  color: rgba(243, 244, 244, 0.55);
   transition: color 0.25s;
 }
 
@@ -871,8 +1054,8 @@ a {
 .footer-contact p {
   font-family: var(--font-body);
   font-size: 13px;
-  font-weight: 400;
-  color: rgba(239, 237, 232, 0.55);
+  font-weight: 300;
+  color: rgba(243, 244, 244, 0.55);
   line-height: 2;
 }
 
@@ -886,18 +1069,18 @@ a {
 
 .footer-bottom {
   padding: 20px 8vw;
-  border-top: 1px solid rgba(189, 183, 173, 0.12);
+  border-top: 1px solid rgba(159, 166, 170, 0.12);
 }
 
 .footer-bottom span {
   font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 400;
-  color: rgba(189, 183, 173, 0.35);
+  font-weight: 300;
+  color: rgba(159, 166, 170, 0.35);
   letter-spacing: 0.1em;
 }
 
-/* SCROLL REVEAL */
+/* ─── SCROLL REVEAL ─────────────────────────── */
 .reveal {
   opacity: 0;
   transform: translateY(40px);
@@ -910,15 +1093,29 @@ a {
 }
 
 .product-card.reveal {
-  transition:
-    opacity 0.7s var(--ease-out),
-    transform 0.7s var(--ease-out),
-    box-shadow 0.3s;
+  transition: opacity 0.7s var(--ease-out), transform 0.7s var(--ease-out),
+              box-shadow 0.3s;
 }
 
-/* RESPONSIVE */
+/* ─── RESPONSIVE ─────────────────────────────── */
 @media (max-width: 1024px) {
   .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-grid,
+  #support .info-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .info-grid .info-item,
+  .info-grid .info-item:nth-child(4),
+  .info-grid .info-item:nth-child(5),
+  #support .info-grid .info-item {
+    grid-column: span 1;
+  }
+
+  .references-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
@@ -932,31 +1129,74 @@ a {
   }
 }
 
-@media (max-width: 768px) {
-  :root {
-    --nav-h: 60px;
-  }
+@media (max-width: 960px) {
+  :root { --nav-h: 60px; }
 
   .nav-links {
     display: none;
     position: fixed;
     inset: var(--nav-h) 0 0 0;
-    background: rgba(239, 237, 232, 0.97);
+    background: rgba(243, 244, 244, 0.98);
     backdrop-filter: blur(16px);
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 36px;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 0;
+    overflow-y: auto;
+    padding: 24px 0 60px;
   }
 
   .nav-links.open {
     display: flex;
   }
 
+  .nav-links > li {
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid var(--stone-mid);
+  }
+
+  .nav-links > li:last-child {
+    border-bottom: none;
+  }
+
   .nav-links a {
     color: var(--dark) !important;
     font-size: 14px;
-    letter-spacing: 0.3em;
+    letter-spacing: 0.25em;
+    padding: 16px 0;
+  }
+
+  .nav-links > li > a::after {
+    display: none;
+  }
+
+  /* Mobilde dropdown hover yerine her zaman görünür akordeon */
+  .dropdown {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    min-width: 0;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background: var(--stone-mid);
+    padding: 4px 0 10px;
+  }
+
+  .dropdown a {
+    text-align: center;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    padding: 10px 0;
+    color: var(--dark-80) !important;
+  }
+
+  .dropdown a:hover {
+    background: var(--stone-warm);
+    padding-left: 0;
   }
 
   .nav-burger {
@@ -966,11 +1206,9 @@ a {
   .nav-burger.active span:nth-child(1) {
     transform: translateY(6px) rotate(45deg);
   }
-
   .nav-burger.active span:nth-child(2) {
     opacity: 0;
   }
-
   .nav-burger.active span:nth-child(3) {
     transform: translateY(-6px) rotate(-45deg);
   }
@@ -983,10 +1221,6 @@ a {
     left: 6vw;
     right: 6vw;
     bottom: 16vh;
-  }
-
-  .slide-title {
-    font-size: clamp(44px, 12vw, 68px);
   }
 
   .slider-controls {
@@ -1004,6 +1238,31 @@ a {
   }
 
   .products-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  #corporate,
+  #technology,
+  #support,
+  #references {
+    padding: 70px 6vw 60px;
+  }
+
+  .info-grid,
+  #support .info-grid {
+    grid-template-columns: 1fr;
+    gap: 1px;
+  }
+
+  .info-grid .info-item,
+  .info-grid .info-item:nth-child(4),
+  .info-grid .info-item:nth-child(5),
+  #support .info-grid .info-item {
+    grid-column: span 1;
+  }
+
+  .references-grid {
     grid-template-columns: 1fr;
     gap: 2px;
   }
@@ -1027,21 +1286,7 @@ a {
 }
 
 @media (max-width: 480px) {
-  .splash-ph {
-    font-size: 48px;
-  }
-
-  .splash-logo {
-    width: 150px;
-  }
-
-  .slide-title {
-    font-size: 42px;
-  }
-
-  .slide-desc {
-    font-size: 13px;
-  }
+  .splash-ph { font-size: 48px; }
 
   .card-body {
     padding: 20px 20px 24px;
