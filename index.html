@@ -7,18 +7,21 @@
   <link rel="stylesheet" href="style.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 </head>
 <body>
 
   <!-- =============================================
        SPLASH / LOADING EKRANI
-       Logo: /assets/logo/ph-logo.svg
+       Logo dosyası: assets/logo/ph-logo.png
+       (Logo bulunamazsa "PH DİZAYN" yazısı otomatik olarak gösterilir)
   ============================================= -->
   <div id="splash">
     <div class="splash-inner">
       <div class="splash-logo">
-        <img src="assets/logo/ph-logo.svg" alt="PH Dizayn Logo" onerror="this.style.display='none'; document.querySelector('.splash-logo-fallback').style.display='flex';" />
+        <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn Logo" class="splash-logo-img"
+             onerror="this.style.display='none'; document.querySelector('.splash-logo-fallback').style.display='flex';" />
         <!-- Logo yüklenemezse fallback metin gösterilir -->
         <div class="splash-logo-fallback">
           <span class="splash-ph">PH</span>
@@ -34,67 +37,71 @@
        NAVIGATION
        Sıralama: Anasayfa - Ürünler - Kurumsal - Teknoloji - Destek - Referanslar - İletişim
        Ürünler / Kurumsal / Teknoloji / Destek mouse ile açılan alt menülere sahiptir.
+       Her sayfa kendi içeriğine sahiptir (anasayfaya yığılmamıştır).
   ============================================= -->
   <nav id="navbar">
-    <div class="nav-logo">
-      <img src="assets/logo/ph-logo.svg" alt="PH Dizayn" onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='block';" />
+    <a href="index.html" class="nav-logo">
+      <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+      <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+           onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='block';" />
       <span class="nav-logo-fallback">PH DİZAYN</span>
-    </div>
+    </a>
 
     <ul class="nav-links">
 
-      <li><a href="#home">Anasayfa</a></li>
+      <li><a href="index.html" class="active">Anasayfa</a></li>
 
       <!-- ÜRÜNLER — dropdown -->
       <li class="has-dropdown">
-        <a href="#products">Ürünler</a>
+        <a href="urunler.html">Ürünler</a>
         <div class="dropdown">
-          <a href="#products" data-target="duskanallari">Duş Kanalları</a>
-          <a href="#products" data-target="yersuzgecleri">Yer Süzgeçleri</a>
-          <a href="#products" data-target="balkonteras">Balkon &amp; Teras Drenajı</a>
-          <a href="#products" data-target="teknikprofiller">Teknik Profiller</a>
-          <a href="#products" data-target="dekoratifprofiller">Dekoratif Profiller</a>
-          <a href="#products" data-target="mozaikler">Mozaikler</a>
+          <a href="urunler.html#duskanallari">Duş Kanalları</a>
+          <a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a>
+          <a href="urunler.html#sifonlar">Sifonlar</a>
+          <a href="urunler.html#balkonteras">Balkon &amp; Teras Drenajı</a>
+          <a href="urunler.html#teknikprofiller">Teknik Profiller</a>
+          <a href="urunler.html#dekoratifprofiller">Dekoratif Profiller</a>
+          <a href="urunler.html#mozaikler">Mozaikler</a>
         </div>
       </li>
 
       <!-- KURUMSAL — dropdown -->
       <li class="has-dropdown">
-        <a href="#corporate">Kurumsal</a>
+        <a href="kurumsal.html">Kurumsal</a>
         <div class="dropdown">
-          <a href="#corporate">Hakkımızda</a>
-          <a href="#corporate">Şirket Politikaları</a>
-          <a href="#corporate">Basın Odası</a>
-          <a href="#corporate">Fuarlar</a>
-          <a href="#corporate">Belge ve Sertifikalar</a>
+          <a href="kurumsal.html#hakkimizda">Hakkımızda</a>
+          <a href="kurumsal.html#politikalar">Şirket Politikaları</a>
+          <a href="kurumsal.html#basin">Basın Odası</a>
+          <a href="kurumsal.html#fuarlar">Fuarlar</a>
+          <a href="kurumsal.html#sertifikalar">Belge ve Sertifikalar</a>
         </div>
       </li>
 
       <!-- TEKNOLOJİ — dropdown -->
       <li class="has-dropdown">
-        <a href="#technology">Teknoloji</a>
+        <a href="teknoloji.html">Teknoloji</a>
         <div class="dropdown">
-          <a href="#technology">Contasız Sistem ile Sızdırmazlık Garantisi</a>
-          <a href="#technology">İkincil Su Drenajı</a>
-          <a href="#technology">Invisible Sistem</a>
-          <a href="#technology">Kesilebilir Çerçeve</a>
-          <a href="#technology">Diğer Teknolojiler</a>
+          <a href="teknoloji.html#contasiz">Contasız Sistem ile Sızdırmazlık Garantisi</a>
+          <a href="teknoloji.html#ikincil">İkincil Su Drenajı</a>
+          <a href="teknoloji.html#invisible">Invisible Sistem</a>
+          <a href="teknoloji.html#cerceve">Kesilebilir Çerçeve</a>
+          <a href="teknoloji.html#diger">Diğer Teknolojiler</a>
         </div>
       </li>
 
       <!-- DESTEK — dropdown -->
       <li class="has-dropdown">
-        <a href="#support">Destek</a>
+        <a href="destek.html">Destek</a>
         <div class="dropdown">
-          <a href="#support">Online Katalog</a>
-          <a href="#support">Montaj Videoları</a>
-          <a href="#support">Teknik Çizimler</a>
-          <a href="#support">Montaj &amp; Kullanım Kılavuzu</a>
+          <a href="destek.html#katalog">Online Katalog</a>
+          <a href="destek.html#videolar">Montaj Videoları</a>
+          <a href="destek.html#cizimler">Teknik Çizimler</a>
+          <a href="destek.html#kilavuz">Montaj &amp; Kullanım Kılavuzu</a>
         </div>
       </li>
 
-      <li><a href="#references">Referanslar</a></li>
-      <li><a href="#contact">İletişim</a></li>
+      <li><a href="referanslar.html">Referanslar</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
 
     </ul>
 
@@ -111,15 +118,14 @@
          - assets/images/slider-invisible.jpg
        Görseller tam ekran kaplayan, koyu overlay'li fotoğraflar olmalı.
   ============================================= -->
-  <section id="slider" data-home="true">
-    <span id="home" class="anchor-offset"></span>    <div class="slider-track">
+  <section id="slider">
+    <div class="slider-track">
 
       <!-- SLIDE 1: Contasız Sistem -->
       <div class="slide active" data-index="0">
         <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/slider-contasiz.jpg" -->
         <div class="slide-bg" style="background-image: url('assets/images/slider-contasiz.jpg');">
           <div class="slide-placeholder">
-            <!-- Görsel eklenince bu div kaldırılabilir -->
             <span>assets/images/slider-contasiz.jpg</span>
           </div>
         </div>
@@ -131,7 +137,7 @@
             <em>Sistem</em>
           </h1>
           <p class="slide-desc">Kesintisiz yüzey bütünlüğü. Sızıntı riskini sıfıra indiren mühendislik çözümü.</p>
-          <a href="#products" class="slide-cta">Keşfet</a>
+          <a href="teknoloji.html#contasiz" class="slide-cta">Keşfet</a>
         </div>
       </div>
 
@@ -151,7 +157,7 @@
             <em>Drenajı</em>
           </h1>
           <p class="slide-desc">Güvenlik katmanı. İkincil su birikimini yapıdan uzaklaştıran çift koruma sistemi.</p>
-          <a href="#products" class="slide-cta">Keşfet</a>
+          <a href="teknoloji.html#ikincil" class="slide-cta">Keşfet</a>
         </div>
       </div>
 
@@ -171,7 +177,7 @@
             <em>Sistem</em>
           </h1>
           <p class="slide-desc">Görünmez altyapı. Estetik bütünlüğü bozmadan kusursuz drenaj performansı.</p>
-          <a href="#products" class="slide-cta">Keşfet</a>
+          <a href="teknoloji.html#invisible" class="slide-cta">Keşfet</a>
         </div>
       </div>
 
@@ -194,284 +200,128 @@
 
     <!-- Aşağı scroll yönlendirici -->
     <div class="scroll-hint" id="scrollHint">
-      <span>Ürün Gamı</span>
+      <span>Öne Çıkanlar</span>
       <div class="scroll-hint-line"></div>
     </div>
 
   </section>
 
   <!-- =============================================
-       ÜRÜN GAMI BÖLÜMÜ
+       BLOG TARZI ÖNE ÇIKANLAR
+       Anasayfa artık tüm içeriği barındırmaz; her kart
+       kendi sayfasına yönlendiren bir özet (blog akışı) görevi görür.
   ============================================= -->
-  <section id="products">
-    <div class="products-header reveal">
-      <span class="section-eyebrow">Ürün Gamı</span>
-      <h2 class="section-title">Tüm Sistemler,<br /><em>Tek Çatı Altında</em></h2>
-      <p class="section-desc">Yapının her noktası için tasarlanmış mimari drenaj ve profil çözümleri.</p>
+  <section id="feed">
+    <div class="feed-header reveal">
+      <span class="section-eyebrow">Öne Çıkanlar</span>
+      <h2 class="section-title">PH Dizayn<br /><em>Dünyasından</em></h2>
+      <p class="section-desc">Ürünlerimiz, teknolojimiz ve kurumsal gelişmelerimizden son başlıklar.</p>
     </div>
 
-    <div class="products-grid">
+    <div class="feed-grid">
 
-      <!-- KART 1: Duş Kanalları -->
-      <div class="product-card reveal" data-delay="0" id="duskanallari">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/product-dus-kanallari.jpg" -->
+      <!-- FEED 1: Ürünler -->
+      <a href="urunler.html" class="feed-card reveal" data-delay="0">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-urunler.jpg" -->
         <div class="card-image">
-          <img src="assets/images/product-dus-kanallari.jpg" alt="Duş Kanalları"
+          <img src="assets/images/feed-urunler.jpg" alt="Ürün Gamı"
                onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder">
-            <span>assets/images/<br/>product-dus-kanallari.jpg</span>
-          </div>
+          <div class="card-image-placeholder"><span>assets/images/<br/>feed-urunler.jpg</span></div>
           <div class="card-hover-line"></div>
         </div>
         <div class="card-body">
-          <span class="card-number">01</span>
-          <h3 class="card-title">Duş Kanalları</h3>
-          <p class="card-desc">Lineer drenaj sistemleri ile duş alanlarında sınırsız estetik özgürlük.</p>
-          <a href="#" class="card-link">İncele <span>→</span></a>
+          <span class="card-tag">Ürün Gamı</span>
+          <h3 class="card-title">Tüm Sistemler, Tek Çatı Altında</h3>
+          <p class="card-desc">Duş kanallarından sifonlara, yapının her noktası için mimari drenaj çözümleri.</p>
+          <span class="card-link">İncele <span>→</span></span>
         </div>
-      </div>
+      </a>
 
-      <!-- KART 2: Yer Süzgeçleri -->
-      <div class="product-card reveal" data-delay="100" id="yersuzgecleri">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/product-yer-suzgecleri.jpg" -->
+      <!-- FEED 2: Teknoloji -->
+      <a href="teknoloji.html" class="feed-card reveal" data-delay="100">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-teknoloji.jpg" -->
         <div class="card-image">
-          <img src="assets/images/product-yer-suzgecleri.jpg" alt="Yer Süzgeçleri"
+          <img src="assets/images/feed-teknoloji.jpg" alt="Teknoloji"
                onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder">
-            <span>assets/images/<br/>product-yer-suzgecleri.jpg</span>
-          </div>
+          <div class="card-image-placeholder"><span>assets/images/<br/>feed-teknoloji.jpg</span></div>
           <div class="card-hover-line"></div>
         </div>
         <div class="card-body">
-          <span class="card-number">02</span>
-          <h3 class="card-title">Yer Süzgeçleri</h3>
-          <p class="card-desc">Kare, yuvarlak ve özel formatlarda yüksek kapasiteli zemin drenaj noktaları.</p>
-          <a href="#" class="card-link">İncele <span>→</span></a>
+          <span class="card-tag">Teknoloji</span>
+          <h3 class="card-title">Mühendislik Çözümleri</h3>
+          <p class="card-desc">Contasız sistem, ikincil su drenajı ve Invisible teknolojisiyle güvenli yapılar.</p>
+          <span class="card-link">İncele <span>→</span></span>
         </div>
-      </div>
+      </a>
 
-      <!-- KART 3: Balkon & Teras Drenajı -->
-      <div class="product-card reveal" data-delay="200" id="balkonteras">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/product-balkon-teras.jpg" -->
+      <!-- FEED 3: Kurumsal -->
+      <a href="kurumsal.html" class="feed-card reveal" data-delay="200">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-kurumsal.jpg" -->
         <div class="card-image">
-          <img src="assets/images/product-balkon-teras.jpg" alt="Balkon & Teras Drenajı"
+          <img src="assets/images/feed-kurumsal.jpg" alt="Kurumsal"
                onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder">
-            <span>assets/images/<br/>product-balkon-teras.jpg</span>
-          </div>
+          <div class="card-image-placeholder"><span>assets/images/<br/>feed-kurumsal.jpg</span></div>
           <div class="card-hover-line"></div>
         </div>
         <div class="card-body">
-          <span class="card-number">03</span>
-          <h3 class="card-title">Balkon & Teras Drenajı</h3>
-          <p class="card-desc">Dış mekan yüzeylerinde su yönetimi için tasarlanmış dayanıklı drenaj çözümleri.</p>
-          <a href="#" class="card-link">İncele <span>→</span></a>
+          <span class="card-tag">Kurumsal</span>
+          <h3 class="card-title">PH Dizayn Hikayesi</h3>
+          <p class="card-desc">Kalite ve güveni esas alan üretim anlayışımız, sertifikalarımız ve daha fazlası.</p>
+          <span class="card-link">İncele <span>→</span></span>
         </div>
-      </div>
+      </a>
 
-      <!-- KART 4: Teknik Profiller -->
-      <div class="product-card reveal" data-delay="0" id="teknikprofiller">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/product-teknik-profiller.jpg" -->
+      <!-- FEED 4: Destek -->
+      <a href="destek.html" class="feed-card reveal" data-delay="0">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-destek.jpg" -->
         <div class="card-image">
-          <img src="assets/images/product-teknik-profiller.jpg" alt="Teknik Profiller"
+          <img src="assets/images/feed-destek.jpg" alt="Destek"
                onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder">
-            <span>assets/images/<br/>product-teknik-profiller.jpg</span>
-          </div>
+          <div class="card-image-placeholder"><span>assets/images/<br/>feed-destek.jpg</span></div>
           <div class="card-hover-line"></div>
         </div>
         <div class="card-body">
-          <span class="card-number">04</span>
-          <h3 class="card-title">Teknik Profiller</h3>
-          <p class="card-desc">Hareket derzleri, köşe profilleri ve yapısal geçiş elemanları.</p>
-          <a href="#" class="card-link">İncele <span>→</span></a>
+          <span class="card-tag">Destek</span>
+          <h3 class="card-title">Kurulum ve Kullanım Desteği</h3>
+          <p class="card-desc">Online katalog, montaj videoları ve teknik çizimlerle doğru uygulama.</p>
+          <span class="card-link">İncele <span>→</span></span>
         </div>
-      </div>
+      </a>
 
-      <!-- KART 5: Dekoratif Profiller -->
-      <div class="product-card reveal" data-delay="100" id="dekoratifprofiller">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/product-dekoratif-profiller.jpg" -->
+      <!-- FEED 5: Referanslar -->
+      <a href="referanslar.html" class="feed-card reveal" data-delay="100">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-referanslar.jpg" -->
         <div class="card-image">
-          <img src="assets/images/product-dekoratif-profiller.jpg" alt="Dekoratif Profiller"
+          <img src="assets/images/feed-referanslar.jpg" alt="Referanslar"
                onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder">
-            <span>assets/images/<br/>product-dekoratif-profiller.jpg</span>
-          </div>
+          <div class="card-image-placeholder"><span>assets/images/<br/>feed-referanslar.jpg</span></div>
           <div class="card-hover-line"></div>
         </div>
         <div class="card-body">
-          <span class="card-number">05</span>
-          <h3 class="card-title">Dekoratif Profiller</h3>
-          <p class="card-desc">Kaplama geçişlerinde mükemmel finish. Estetik ve fonksiyonun buluşma noktası.</p>
-          <a href="#" class="card-link">İncele <span>→</span></a>
+          <span class="card-tag">Referanslar</span>
+          <h3 class="card-title">Tamamlanan Projeler</h3>
+          <p class="card-desc">Türkiye'nin dört bir yanında uygulanan PH Dizayn sistemlerinden örnekler.</p>
+          <span class="card-link">İncele <span>→</span></span>
         </div>
-      </div>
+      </a>
 
-      <!-- KART 6: Mozaikler -->
-      <div class="product-card reveal" data-delay="200" id="mozaikler">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/product-mozaikler.jpg" -->
+      <!-- FEED 6: İletişim -->
+      <a href="iletisim.html" class="feed-card reveal" data-delay="200">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-iletisim.jpg" -->
         <div class="card-image">
-          <img src="assets/images/product-mozaikler.jpg" alt="Mozaikler"
+          <img src="assets/images/feed-iletisim.jpg" alt="İletişim"
                onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder">
-            <span>assets/images/<br/>product-mozaikler.jpg</span>
-          </div>
+          <div class="card-image-placeholder"><span>assets/images/<br/>feed-iletisim.jpg</span></div>
           <div class="card-hover-line"></div>
         </div>
         <div class="card-body">
-          <span class="card-number">06</span>
-          <h3 class="card-title">Mozaikler</h3>
-          <p class="card-desc">Mimari projelere özel doku ve yüzey kaplama koleksiyonları.</p>
-          <a href="#" class="card-link">İncele <span>→</span></a>
+          <span class="card-tag">İletişim</span>
+          <h3 class="card-title">Bize Ulaşın</h3>
+          <p class="card-desc">Projeniz için doğru drenaj çözümünü birlikte belirleyelim.</p>
+          <span class="card-link">İncele <span>→</span></span>
         </div>
-      </div>
+      </a>
 
-    </div>
-  </section>
-
-  <!-- =============================================
-       KURUMSAL BÖLÜMÜ
-  ============================================= -->
-  <section id="corporate">
-    <div class="info-header reveal">
-      <span class="section-eyebrow">Kurumsal</span>
-      <h2 class="section-title">PH Dizayn<br /><em>Hikayesi</em></h2>
-      <p class="section-desc">Mimari drenaj alanında uzmanlaşmış, kalite ve güveni esas alan bir üretim anlayışı.</p>
-    </div>
-    <div class="info-grid">
-      <div class="info-item reveal" data-delay="0">
-        <span class="info-number">01</span>
-        <h3 class="info-title">Hakkımızda</h3>
-        <p class="info-desc">PH Dizayn'ın kuruluş hikayesi, vizyonu ve sektördeki konumu.</p>
-      </div>
-      <div class="info-item reveal" data-delay="80">
-        <span class="info-number">02</span>
-        <h3 class="info-title">Şirket Politikaları</h3>
-        <p class="info-desc">Kalite, çevre ve iş güvenliği konusundaki taahhütlerimiz.</p>
-      </div>
-      <div class="info-item reveal" data-delay="160">
-        <span class="info-number">03</span>
-        <h3 class="info-title">Basın Odası</h3>
-        <p class="info-desc">Güncel haberler, duyurular ve medya kaynakları.</p>
-      </div>
-      <div class="info-item reveal" data-delay="240">
-        <span class="info-number">04</span>
-        <h3 class="info-title">Fuarlar</h3>
-        <p class="info-desc">Katıldığımız ulusal ve uluslararası sektör fuarları.</p>
-      </div>
-      <div class="info-item reveal" data-delay="320">
-        <span class="info-number">05</span>
-        <h3 class="info-title">Belge ve Sertifikalar</h3>
-        <p class="info-desc">Kalite standartlarımızı belgeleyen sertifikalar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       TEKNOLOJİ BÖLÜMÜ
-  ============================================= -->
-  <section id="technology">
-    <div class="info-header reveal">
-      <span class="section-eyebrow">Teknoloji</span>
-      <h2 class="section-title">Mühendislik<br /><em>Çözümleri</em></h2>
-      <p class="section-desc">Her sistem, yapının uzun ömürlü kalması için özel olarak geliştirilmiştir.</p>
-    </div>
-    <div class="info-grid">
-      <div class="info-item reveal" data-delay="0">
-        <span class="info-number">01</span>
-        <h3 class="info-title">Contasız Sistem ile Sızdırmazlık Garantisi</h3>
-        <p class="info-desc">Kesintisiz yüzey bütünlüğü ile sızıntı riskini ortadan kaldırır.</p>
-      </div>
-      <div class="info-item reveal" data-delay="80">
-        <span class="info-number">02</span>
-        <h3 class="info-title">İkincil Su Drenajı</h3>
-        <p class="info-desc">Olası su birikimlerine karşı ikinci bir koruma katmanı sağlar.</p>
-      </div>
-      <div class="info-item reveal" data-delay="160">
-        <span class="info-number">03</span>
-        <h3 class="info-title">Invisible Sistem</h3>
-        <p class="info-desc">Estetik bütünlüğü bozmadan görünmez drenaj performansı sunar.</p>
-      </div>
-      <div class="info-item reveal" data-delay="240">
-        <span class="info-number">04</span>
-        <h3 class="info-title">Kesilebilir Çerçeve</h3>
-        <p class="info-desc">Uygulama alanına göre kolayca ölçülendirilebilen esnek çerçeve yapısı.</p>
-      </div>
-      <div class="info-item reveal" data-delay="320">
-        <span class="info-number">05</span>
-        <h3 class="info-title">Diğer Teknolojiler</h3>
-        <p class="info-desc">Ar-Ge çalışmalarımızla geliştirdiğimiz tamamlayıcı sistemler.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       DESTEK BÖLÜMÜ
-  ============================================= -->
-  <section id="support">
-    <div class="info-header reveal">
-      <span class="section-eyebrow">Destek</span>
-      <h2 class="section-title">Kurulum ve<br /><em>Kullanım Desteği</em></h2>
-      <p class="section-desc">Doğru uygulama için ihtiyacınız olan tüm teknik kaynaklar bir arada.</p>
-    </div>
-    <div class="info-grid">
-      <div class="info-item reveal" data-delay="0">
-        <span class="info-number">01</span>
-        <h3 class="info-title">Online Katalog</h3>
-        <p class="info-desc">Tüm ürün gamımızı dijital katalog üzerinden inceleyin.</p>
-      </div>
-      <div class="info-item reveal" data-delay="80">
-        <span class="info-number">02</span>
-        <h3 class="info-title">Montaj Videoları</h3>
-        <p class="info-desc">Adım adım uygulama anlatımları ile doğru montaj.</p>
-      </div>
-      <div class="info-item reveal" data-delay="160">
-        <span class="info-number">03</span>
-        <h3 class="info-title">Teknik Çizimler</h3>
-        <p class="info-desc">Projelendirme için detaylı ölçü ve kesit çizimleri.</p>
-      </div>
-      <div class="info-item reveal" data-delay="240">
-        <span class="info-number">04</span>
-        <h3 class="info-title">Montaj &amp; Kullanım Kılavuzu</h3>
-        <p class="info-desc">Ürünlerin doğru ve güvenli kullanımı için kapsamlı kılavuzlar.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- =============================================
-       REFERANSLAR BÖLÜMÜ
-  ============================================= -->
-  <section id="references">
-    <div class="info-header reveal">
-      <span class="section-eyebrow">Referanslar</span>
-      <h2 class="section-title">Tamamlanan<br /><em>Projeler</em></h2>
-      <p class="section-desc">Türkiye'nin dört bir yanında uygulanan PH Dizayn sistemleri.</p>
-    </div>
-    <div class="references-grid">
-      <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/referans-1.jpg" -->
-      <div class="reference-item reveal" data-delay="0">
-        <div class="card-image">
-          <img src="assets/images/referans-1.jpg" alt="Referans Proje 1"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>referans-1.jpg</span></div>
-        </div>
-      </div>
-      <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/referans-2.jpg" -->
-      <div class="reference-item reveal" data-delay="80">
-        <div class="card-image">
-          <img src="assets/images/referans-2.jpg" alt="Referans Proje 2"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>referans-2.jpg</span></div>
-        </div>
-      </div>
-      <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/referans-3.jpg" -->
-      <div class="reference-item reveal" data-delay="160">
-        <div class="card-image">
-          <img src="assets/images/referans-3.jpg" alt="Referans Proje 3"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>referans-3.jpg</span></div>
-        </div>
-      </div>
     </div>
   </section>
 
@@ -491,7 +341,7 @@
       </div>
       <div class="stat-divider"></div>
       <div class="stat-item">
-        <span class="stat-number">6</span>
+        <span class="stat-number">7</span>
         <span class="stat-label">Ürün Kategorisi</span>
       </div>
       <div class="stat-divider"></div>
@@ -503,12 +353,14 @@
   </section>
 
   <!-- =============================================
-       FOOTER / İLETİŞİM
+       FOOTER
+       Logo dosyası: assets/logo/ph-logo.png
   ============================================= -->
-  <footer id="contact">
+  <footer id="site-footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img src="assets/logo/ph-logo.svg" alt="PH Dizayn"
+        <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
              onerror="this.style.display='none'; document.querySelector('.footer-logo-fallback').style.display='block';" />
         <span class="footer-logo-fallback">PH DİZAYN</span>
         <p class="footer-tagline">Mimari Drenaj Sistemleri</p>
@@ -516,11 +368,20 @@
       <div class="footer-links">
         <h4>Ürünler</h4>
         <ul>
-          <li><a href="#">Duş Kanalları</a></li>
-          <li><a href="#">Yer Süzgeçleri</a></li>
-          <li><a href="#">Balkon & Teras</a></li>
-          <li><a href="#">Profiller</a></li>
-          <li><a href="#">Mozaikler</a></li>
+          <li><a href="urunler.html#duskanallari">Duş Kanalları</a></li>
+          <li><a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a></li>
+          <li><a href="urunler.html#sifonlar">Sifonlar</a></li>
+          <li><a href="urunler.html#balkonteras">Balkon &amp; Teras</a></li>
+          <li><a href="urunler.html#mozaikler">Mozaikler</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="kurumsal.html#hakkimizda">Hakkımızda</a></li>
+          <li><a href="teknoloji.html">Teknoloji</a></li>
+          <li><a href="destek.html">Destek</a></li>
+          <li><a href="referanslar.html">Referanslar</a></li>
         </ul>
       </div>
       <div class="footer-contact">
