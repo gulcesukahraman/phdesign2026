@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kurumsal — PH Dizayn</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- =============================================
+       SPLASH / LOADING EKRANI
+       Logo dosyası: assets/logo/ph-logo.png
+       (Logo bulunamazsa "PH DİZAYN" yazısı otomatik olarak gösterilir)
+  ============================================= -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn Logo" class="splash-logo-img"
+             onerror="this.style.display='none'; document.querySelector('.splash-logo-fallback').style.display='flex';" />
+        <!-- Logo yüklenemezse fallback metin gösterilir -->
+        <div class="splash-logo-fallback">
+          <span class="splash-ph">PH</span>
+          <span class="splash-dizayn">DİZAYN</span>
+        </div>
+      </div>
+      <div class="splash-line"></div>
+      <p class="splash-tagline">Mimari Drenaj Sistemleri</p>
+    </div>
+  </div>
+
+  <!-- =============================================
+       NAVIGATION
+       Sıralama: Anasayfa - Ürünler - Kurumsal - Teknoloji - Destek - Referanslar - İletişim
+       Ürünler / Kurumsal / Teknoloji / Destek mouse ile açılan alt menülere sahiptir.
+       Her sayfa kendi içeriğine sahiptir (anasayfaya yığılmamıştır).
+  ============================================= -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+      <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+           onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='block';" />
+      <span class="nav-logo-fallback">PH DİZAYN</span>
+    </a>
+
+    <ul class="nav-links">
+
+      <li><a href="index.html">Anasayfa</a></li>
+
+      <!-- ÜRÜNLER — dropdown -->
+      <li class="has-dropdown">
+        <a href="urunler.html">Ürünler</a>
+        <div class="dropdown">
+          <a href="urunler.html#duskanallari">Duş Kanalları</a>
+          <a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a>
+          <a href="urunler.html#sifonlar">Sifonlar</a>
+          <a href="urunler.html#balkonteras">Balkon &amp; Teras Drenajı</a>
+          <a href="urunler.html#teknikprofiller">Teknik Profiller</a>
+          <a href="urunler.html#dekoratifprofiller">Dekoratif Profiller</a>
+          <a href="urunler.html#mozaikler">Mozaikler</a>
+        </div>
+      </li>
+
+      <!-- KURUMSAL — dropdown -->
+      <li class="has-dropdown">
+        <a href="kurumsal.html" class="active">Kurumsal</a>
+        <div class="dropdown">
+          <a href="kurumsal.html#hakkimizda">Hakkımızda</a>
+          <a href="kurumsal.html#politikalar">Şirket Politikaları</a>
+          <a href="kurumsal.html#basin">Basın Odası</a>
+          <a href="kurumsal.html#fuarlar">Fuarlar</a>
+          <a href="kurumsal.html#sertifikalar">Belge ve Sertifikalar</a>
+        </div>
+      </li>
+
+      <!-- TEKNOLOJİ — dropdown -->
+      <li class="has-dropdown">
+        <a href="teknoloji.html">Teknoloji</a>
+        <div class="dropdown">
+          <a href="teknoloji.html#contasiz">Contasız Sistem ile Sızdırmazlık Garantisi</a>
+          <a href="teknoloji.html#ikincil">İkincil Su Drenajı</a>
+          <a href="teknoloji.html#invisible">Invisible Sistem</a>
+          <a href="teknoloji.html#cerceve">Kesilebilir Çerçeve</a>
+          <a href="teknoloji.html#diger">Diğer Teknolojiler</a>
+        </div>
+      </li>
+
+      <!-- DESTEK — dropdown -->
+      <li class="has-dropdown">
+        <a href="destek.html">Destek</a>
+        <div class="dropdown">
+          <a href="destek.html#katalog">Online Katalog</a>
+          <a href="destek.html#videolar">Montaj Videoları</a>
+          <a href="destek.html#cizimler">Teknik Çizimler</a>
+          <a href="destek.html#kilavuz">Montaj &amp; Kullanım Kılavuzu</a>
+        </div>
+      </li>
+
+      <li><a href="referanslar.html">Referanslar</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+
+    </ul>
+
+    <button class="nav-burger" id="navBurger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <section class="page-hero">
+    <div class="page-hero-inner reveal">
+      <span class="section-eyebrow">Kurumsal</span>
+      <h1 class="page-title">PH Dizayn<br /><em>Hikayesi</em></h1>
+      <p class="section-desc">Mimari drenaj alanında uzmanlaşmış, kalite ve güveni esas alan bir üretim anlayışı.</p>
+    </div>
+  </section>
+
+  <section id="corporate">
+    <div class="info-grid">
+      <div class="info-item reveal" data-delay="0" id="hakkimizda">
+        <span class="info-number">01</span>
+        <h3 class="info-title">Hakkımızda</h3>
+        <p class="info-desc">PH Dizayn'ın kuruluş hikayesi, vizyonu ve sektördeki konumu.</p>
+      </div>
+      <div class="info-item reveal" data-delay="80" id="politikalar">
+        <span class="info-number">02</span>
+        <h3 class="info-title">Şirket Politikaları</h3>
+        <p class="info-desc">Kalite, çevre ve iş güvenliği konusundaki taahhütlerimiz.</p>
+      </div>
+      <div class="info-item reveal" data-delay="160" id="basin">
+        <span class="info-number">03</span>
+        <h3 class="info-title">Basın Odası</h3>
+        <p class="info-desc">Güncel haberler, duyurular ve medya kaynakları.</p>
+      </div>
+      <div class="info-item reveal" data-delay="240" id="fuarlar">
+        <span class="info-number">04</span>
+        <h3 class="info-title">Fuarlar</h3>
+        <p class="info-desc">Katıldığımız ulusal ve uluslararası sektör fuarları.</p>
+      </div>
+      <div class="info-item reveal" data-delay="320" id="sertifikalar">
+        <span class="info-number">05</span>
+        <h3 class="info-title">Belge ve Sertifikalar</h3>
+        <p class="info-desc">Kalite standartlarımızı belgeleyen sertifikalar.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============================================
+       FOOTER
+       Logo dosyası: assets/logo/ph-logo.png
+  ============================================= -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+             onerror="this.style.display='none'; document.querySelector('.footer-logo-fallback').style.display='block';" />
+        <span class="footer-logo-fallback">PH DİZAYN</span>
+        <p class="footer-tagline">Mimari Drenaj Sistemleri</p>
+      </div>
+      <div class="footer-links">
+        <h4>Ürünler</h4>
+        <ul>
+          <li><a href="urunler.html#duskanallari">Duş Kanalları</a></li>
+          <li><a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a></li>
+          <li><a href="urunler.html#sifonlar">Sifonlar</a></li>
+          <li><a href="urunler.html#balkonteras">Balkon &amp; Teras</a></li>
+          <li><a href="urunler.html#mozaikler">Mozaikler</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="kurumsal.html#hakkimizda">Hakkımızda</a></li>
+          <li><a href="teknoloji.html">Teknoloji</a></li>
+          <li><a href="destek.html">Destek</a></li>
+          <li><a href="referanslar.html">Referanslar</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>İletişim</h4>
+        <p><a href="https://phdizayn.com" target="_blank" rel="noopener">phdizayn.com</a></p>
+        <p>Türkiye</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 PH Dizayn. Tüm hakları saklıdır.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
