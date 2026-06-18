@@ -1,13 +1,17 @@
 /* =============================================
    PH DİZAYN — SCRIPT.JS
+   Not: Bu dosya tüm sayfalarda (index.html, urunler.html,
+   kurumsal.html, teknoloji.html, destek.html, referanslar.html,
+   iletisim.html) ortak olarak kullanılır.
+
    İçerik:
      1. Splash Screen
      2. Navbar Scroll Durumu
      3. Burger Menü (Mobil)
-     4. Hero Slider (Otomatik + Manuel)
+     4. Hero Slider (Otomatik + Manuel) — sadece index.html'de çalışır
      5. Scroll Reveal Animasyonu
-     6. Smooth Scroll (#products geçişi)
-     7. Ürün Kartı Görsel Placeholder Yönetimi
+     6. Smooth Scroll (sayfa içi #hash geçişleri + navbar offset düzeltmesi)
+     7. Ürün/Görsel Kartı Placeholder Yönetimi
 ============================================= */
 
 (function () {
@@ -35,10 +39,17 @@
         splash.classList.add('hidden');
         document.body.style.overflow = '';
 
-        // Splash tamamen kapandıktan sonra DOM'dan kaldır
-        splash.addEventListener('transitionend', function () {
-          splash.remove();
-        }, { once: true });
+        // Splash tamamen kapandıktan sonra DOM'dan kaldır.
+        // Güvence: transitionend tetiklenmezse (örn. tarayıcı quirk'i),
+        // 900ms sonra yine de kaldırılır.
+        let removed = false;
+        function removeSplash() {
+          if (removed) return;
+          removed = true;
+          if (splash && splash.parentNode) splash.remove();
+        }
+        splash.addEventListener('transitionend', removeSplash, { once: true });
+        setTimeout(removeSplash, 900);
       }, remaining);
     }
 
@@ -104,6 +115,8 @@
   const SLIDE_INTERVAL = 5000; // ms
 
   function goToSlide(index) {
+    if (slides.length === 0) return;
+
     // Sınır kontrolü
     index = ((index % slides.length) + slides.length) % slides.length;
 
@@ -187,8 +200,10 @@
     sliderEl.addEventListener('mouseleave', startAutoSlide);
   }
 
-  // Otoplay başlat (splash bittikten sonra)
-  setTimeout(startAutoSlide, 2500);
+  // Otoplay başlat (splash bittikten sonra) — sadece slider varsa
+  if (slides.length > 0) {
+    setTimeout(startAutoSlide, 2500);
+  }
 
 
   /* ─────────────────────────────────────────
@@ -223,27 +238,32 @@
 
 
   /* ─────────────────────────────────────────
-     6. SMOOTH SCROLL — #products GEÇİŞİ
+     6. SMOOTH SCROLL — ANASAYFA #feed GEÇİŞİ
      Slider'daki scroll-hint tıklanınca
-     products bölümüne scroll edilir.
+     "Öne Çıkanlar" (feed) bölümüne scroll edilir.
+     Not: Bu öğe sadece index.html'de bulunur, diğer
+     sayfalarda otomatik olarak hiçbir şey yapmaz.
   ───────────────────────────────────────── */
   const scrollHint = document.getElementById('scrollHint');
-  const productsSection = document.getElementById('products');
+  const feedSection = document.getElementById('feed');
 
-  if (scrollHint && productsSection) {
+  if (scrollHint && feedSection) {
     scrollHint.addEventListener('click', function () {
-      productsSection.scrollIntoView({ behavior: 'smooth' });
+      feedSection.scrollIntoView({ behavior: 'smooth' });
     });
     scrollHint.style.cursor = 'pointer';
   }
 
-  // Navbar linkleri için smooth scroll
-  // Not: dropdown içindeki ürün linkleri data-target="kart-id" taşır;
-  // bu durumda asıl scroll hedefi href değil data-target'taki karttır.
+  // ─────────────────────────────────────────
+  // Sayfa İÇİ hash linkleri için smooth scroll + navbar offset düzeltmesi
+  // (Örn: urunler.html sayfasındayken "#sifonlar" linkine tıklamak)
+  // Sayfalar ARASI linkler (örn. "urunler.html#sifonlar") tarayıcının
+  // doğal navigasyonuna bırakılır; sayfa yüklendikten sonra aşağıdaki
+  // "hash offset düzeltmesi" bloğu navbar'ın altına doğru konumlandırır.
+  // ─────────────────────────────────────────
   document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     anchor.addEventListener('click', function (e) {
-      const dataTarget = this.getAttribute('data-target');
-      const targetId = dataTarget ? ('#' + dataTarget) : this.getAttribute('href');
+      const targetId = this.getAttribute('href');
       if (targetId === '#') return;
 
       const target = document.querySelector(targetId);
@@ -254,9 +274,28 @@
         );
         const top = target.getBoundingClientRect().top + window.scrollY - offset;
         window.scrollTo({ top, behavior: 'smooth' });
+        history.replaceState(null, '', targetId);
       }
     });
   });
+
+  // Sayfa başka bir sayfadan #hash ile açıldıysa (örn. dropdown'dan
+  // "kurumsal.html#fuarlar" tıklanmışsa), tarayıcının ilk scroll'unu
+  // navbar yüksekliğine göre düzeltiyoruz.
+  if (window.location.hash) {
+    window.addEventListener('load', function () {
+      setTimeout(function () {
+        const target = document.querySelector(window.location.hash);
+        if (target) {
+          const offset = parseInt(
+            getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '72'
+          );
+          const top = target.getBoundingClientRect().top + window.scrollY - offset;
+          window.scrollTo({ top, behavior: 'auto' });
+        }
+      }, 50);
+    });
+  }
 
 
   /* ─────────────────────────────────────────
