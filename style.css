@@ -22,8 +22,8 @@
   --dark-80:     rgba(35, 40, 44, 0.80);
   --dark-40:     rgba(35, 40, 44, 0.40);
 
-  --font-display: 'Cormorant Garamond', Georgia, serif;
-  --font-body:    'Inter', system-ui, sans-serif;
+  --font-display: 'Montserrat', system-ui, sans-serif;
+  --font-body:    'Montserrat', system-ui, sans-serif;
 
   --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
   --ease-out:    cubic-bezier(0.16, 1, 0.3, 1);
@@ -109,17 +109,17 @@ a {
 
 .splash-ph {
   font-family: var(--font-display);
-  font-size: 64px;
-  font-weight: 300;
-  letter-spacing: 0.15em;
+  font-size: 56px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
   color: var(--dark);
   line-height: 1;
 }
 
 .splash-dizayn {
   font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 400;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.5em;
   color: var(--stone-warm);
   text-transform: uppercase;
@@ -189,9 +189,9 @@ a {
 .nav-logo-fallback {
   display: none;
   font-family: var(--font-display);
-  font-size: 22px;
-  font-weight: 300;
-  letter-spacing: 0.15em;
+  font-size: 19px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   color: var(--stone-light);
 }
 
@@ -236,13 +236,40 @@ a {
 
 .nav-links > li > a:hover::after { width: 100%; }
 
+/* Aktif sayfa göstergesi (örn. urunler.html'deyken "Ürünler" linki) */
+.nav-links > li > a.active {
+  color: var(--stone-light);
+}
+
+.nav-links > li > a.active::after {
+  width: 100%;
+  background: var(--stone-warm);
+}
+
+#navbar.scrolled .nav-links > li > a.active {
+  color: var(--dark);
+}
+
 #navbar.scrolled .nav-links a {
   color: var(--dark-80);
 }
 
 /* ─── DROPDOWN (ÜRÜNLER / KURUMSAL / TEKNOLOJİ / DESTEK) ─────────────────────────────────── */
 .has-dropdown {
-  padding-bottom: 4px; /* hover boşluğunu köprüler, dropdown kaybolmasın */
+  /* Not: padding burada KULLANILMAZ — tüm nav-links öğelerinin
+     aynı baseline'da hizalı kalması için .nav-links > li'ye hiçbir
+     dikey padding eklenmez. Hover boşluğu ::after köprü ile sağlanır. */
+}
+
+.has-dropdown::after {
+  /* Link ile dropdown arasındaki boşluğu hover için köprüler,
+     görünmez ve layout'u etkilemez */
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 100%;
+  height: 14px;
 }
 
 .dropdown {
@@ -449,7 +476,8 @@ a {
 
 .slide-title span { transition-delay: 0.45s; }
 .slide-title em {
-  font-style: italic;
+  font-style: normal;
+  font-weight: 600;
   color: var(--stone-warm);
   transition-delay: 0.6s;
 }
@@ -617,9 +645,42 @@ a {
   100% { left: 100%; }
 }
 
+/* ─── PAGE HERO (İç sayfa başlık bandı — ürünler, kurumsal, teknoloji, destek, referanslar, iletişim) ─── */
+.page-hero {
+  padding: calc(var(--nav-h) + 90px) 8vw 70px;
+  background: var(--dark);
+}
+
+.page-hero-inner {
+  max-width: 640px;
+}
+
+.page-hero .section-eyebrow {
+  color: var(--stone-warm);
+}
+
+.page-title {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 6vw, 72px);
+  font-weight: 300;
+  line-height: 1.05;
+  color: var(--stone-light);
+  margin-bottom: 20px;
+}
+
+.page-title em {
+  font-style: normal;
+  font-weight: 700;
+  color: var(--stone-warm);
+}
+
+.page-hero .section-desc {
+  color: rgba(243, 244, 244, 0.62);
+}
+
 /* ─── PRODUCTS SECTION ───────────────────────── */
 #products {
-  padding: 120px 8vw 100px;
+  padding: 80px 8vw 100px;
   background: var(--stone-light);
 }
 
@@ -649,7 +710,8 @@ a {
 }
 
 .section-title em {
-  font-style: italic;
+  font-style: normal;
+  font-weight: 700;
   color: var(--stone-warm);
 }
 
@@ -667,6 +729,11 @@ a {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2px;
+}
+
+/* 7 ürün: 3+3+1 düzeni — son satırdaki tek kart ortalanır */
+.products-grid .product-card:nth-child(7):last-child {
+  grid-column: 2 / 3;
 }
 
 /* Product Card */
@@ -798,13 +865,89 @@ a {
   gap: 12px;
 }
 
+/* ─── ANASAYFA BLOG AKIŞI (FEED) ─────────────────────────────────── */
+#feed {
+  padding: 100px 8vw 90px;
+  background: var(--stone-light);
+}
+
+.feed-header {
+  max-width: 580px;
+  margin-bottom: 64px;
+}
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2px;
+}
+
+.feed-card {
+  background: var(--stone-light);
+  border: 1px solid var(--stone-mid);
+  overflow: hidden;
+  position: relative;
+  display: block;
+  cursor: pointer;
+}
+
+.feed-card .card-image {
+  position: relative;
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  background: var(--stone-mid);
+}
+
+.feed-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.7s var(--ease-smooth);
+}
+
+.feed-card:hover .card-image img {
+  transform: scale(1.04);
+}
+
+.card-tag {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--stone-warm);
+  margin-bottom: 12px;
+}
+
+.feed-card .card-body {
+  padding: 28px 28px 32px;
+}
+
+.feed-card .card-title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.feed-card .card-desc {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.8;
+  color: var(--dark-40);
+  margin-bottom: 20px;
+}
+
 /* ─── INFO SECTIONS (KURUMSAL / TEKNOLOJİ / DESTEK) ─────────────────────────────────── */
 #corporate,
 #technology,
 #support {
-  padding: 110px 8vw 100px;
+  padding: 80px 8vw 100px;
   background: var(--stone-light);
-  border-top: 1px solid var(--stone-mid);
 }
 
 #technology {
@@ -909,9 +1052,8 @@ a {
 
 /* ─── REFERANSLAR ─────────────────────────────── */
 #references {
-  padding: 110px 8vw 100px;
+  padding: 80px 8vw 100px;
   background: var(--stone-light);
-  border-top: 1px solid var(--stone-mid);
 }
 
 .references-grid {
@@ -934,6 +1076,148 @@ a {
 
 .reference-item:hover .card-image img {
   transform: scale(1.04);
+}
+
+/* ─── İLETİŞİM SAYFASI ─────────────────────────────────── */
+#contact-page {
+  padding: 80px 8vw 110px;
+  background: var(--stone-light);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 80px;
+}
+
+.contact-block-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--dark);
+  margin-bottom: 32px;
+}
+
+.contact-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.contact-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--stone-mid);
+}
+
+.contact-list li:last-child {
+  border-bottom: none;
+}
+
+.contact-label {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--stone-warm);
+}
+
+.contact-list a,
+.contact-list span:not(.contact-label) {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  color: var(--dark);
+  transition: color 0.25s;
+}
+
+.contact-list a:hover {
+  color: var(--stone-warm);
+}
+
+.contact-form {
+  background: var(--stone-light);
+  border: 1px solid var(--stone-mid);
+  padding: 44px;
+}
+
+.contact-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 20px;
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--dark-80);
+}
+
+.contact-form .form-row label {
+  margin-bottom: 0;
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: normal;
+  text-transform: none;
+  color: var(--dark);
+  background: var(--stone-light);
+  border: 1px solid var(--stone-mid);
+  padding: 12px 14px;
+  outline: none;
+  transition: border-color 0.25s;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--stone-warm);
+}
+
+.form-submit {
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--stone-light);
+  background: var(--dark);
+  border: none;
+  padding: 15px 36px;
+  cursor: pointer;
+  transition: background 0.25s;
+  margin-top: 4px;
+}
+
+.form-submit:hover {
+  background: var(--stone-warm);
+  color: var(--dark);
+}
+
+.form-note {
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 300;
+  text-transform: none;
+  letter-spacing: normal;
+  color: var(--dark-40);
+  margin-top: 16px;
+  line-height: 1.6;
 }
 
 
@@ -983,7 +1267,7 @@ a {
 }
 
 /* ─── FOOTER ─────────────────────────────────── */
-#contact {
+#site-footer {
   background: var(--dark);
   border-top: 1px solid rgba(159, 166, 170, 0.12);
 }
@@ -991,13 +1275,15 @@ a {
 .footer-inner {
   padding: 80px 8vw 60px;
   display: grid;
-  grid-template-columns: 1.5fr 1fr 1fr;
-  gap: 60px;
+  grid-template-columns: 1.3fr 1fr 1fr 1fr;
+  gap: 40px;
 }
 
 .footer-brand img {
   height: 40px;
   width: auto;
+  /* NOT: Bu filtre logoyu footer'ın koyu zemininde görünür kılmak için
+     beyaza çevirir. Logonuz zaten açık renkli/beyaz ise bu satırı silin. */
   filter: brightness(0) invert(1) opacity(0.85);
   margin-bottom: 16px;
 }
@@ -1005,9 +1291,9 @@ a {
 .footer-logo-fallback {
   display: none;
   font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 300;
-  letter-spacing: 0.12em;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
   color: var(--stone-light);
   margin-bottom: 12px;
 }
@@ -1103,6 +1389,14 @@ a {
     grid-template-columns: repeat(2, 1fr);
   }
 
+  .products-grid .product-card:nth-child(7):last-child {
+    grid-column: auto;
+  }
+
+  .feed-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .info-grid,
   #support .info-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1171,6 +1465,12 @@ a {
     display: none;
   }
 
+  /* Mobilde aktif sayfa: arka plan ile vurgulanır (renk zaten dark sabit) */
+  .nav-links > li > a.active {
+    background: var(--stone-mid);
+    font-weight: 600;
+  }
+
   /* Mobilde dropdown hover yerine her zaman görünür akordeon */
   .dropdown {
     position: static;
@@ -1233,8 +1533,9 @@ a {
     bottom: 28px;
   }
 
-  #products {
-    padding: 80px 6vw 60px;
+  #products,
+  #feed {
+    padding: 70px 6vw 60px;
   }
 
   .products-grid {
@@ -1242,10 +1543,30 @@ a {
     gap: 2px;
   }
 
+  .feed-grid {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
+
+  .contact-grid {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .contact-form {
+    padding: 28px;
+  }
+
+  .contact-form .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
   #corporate,
   #technology,
   #support,
-  #references {
+  #references,
+  #contact-page {
     padding: 70px 6vw 60px;
   }
 
