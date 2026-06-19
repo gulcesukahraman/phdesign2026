@@ -238,18 +238,18 @@
 
 
   /* ─────────────────────────────────────────
-     6. SMOOTH SCROLL — ANASAYFA #feed GEÇİŞİ
+     6. SMOOTH SCROLL — ANASAYFA #editorial GEÇİŞİ
      Slider'daki scroll-hint tıklanınca
-     "Öne Çıkanlar" (feed) bölümüne scroll edilir.
+     "Öne Çıkanlar" (editorial akış) bölümüne scroll edilir.
      Not: Bu öğe sadece index.html'de bulunur, diğer
      sayfalarda otomatik olarak hiçbir şey yapmaz.
   ───────────────────────────────────────── */
   const scrollHint = document.getElementById('scrollHint');
-  const feedSection = document.getElementById('feed');
+  const editorialSection = document.getElementById('editorial');
 
-  if (scrollHint && feedSection) {
+  if (scrollHint && editorialSection) {
     scrollHint.addEventListener('click', function () {
-      feedSection.scrollIntoView({ behavior: 'smooth' });
+      editorialSection.scrollIntoView({ behavior: 'smooth' });
     });
     scrollHint.style.cursor = 'pointer';
   }
@@ -299,11 +299,12 @@
 
 
   /* ─────────────────────────────────────────
-     7. ÜRÜN KARTI GÖRSEL PLACEHOLDER YÖNETİMİ
+     7. GÖRSEL PLACEHOLDER YÖNETİMİ
+     (ürün kartları + editoryal öne çıkan görsel)
      Görsel yüklenemezse placeholder görünür.
      Görsel yüklenince placeholder gizlenir.
   ───────────────────────────────────────── */
-  document.querySelectorAll('.card-image img').forEach(function (img) {
+  document.querySelectorAll('.card-image img, .editorial-feature-media img').forEach(function (img) {
     // Görsel yüklenince placeholder'ı gizle
     img.addEventListener('load', function () {
       this.parentElement.classList.remove('img-placeholder');
