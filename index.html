@@ -207,119 +207,70 @@
   </section>
 
   <!-- =============================================
-       BLOG TARZI ÖNE ÇIKANLAR
-       Anasayfa artık tüm içeriği barındırmaz; her kart
-       kendi sayfasına yönlendiren bir özet (blog akışı) görevi görür.
+       EDİTORYAL AKIŞ — "PH DİZAYN DÜNYASINDAN"
+       Kart/ürün mantığından kaçınan, mimari dergi diline
+       yakın sade bir liste. Her satır: index no. + başlık +
+       kısa açıklama + ince ayraç çizgisi. Tek bir "öne çıkan"
+       satır (Ürünler) geniş görsel ile vurgulanır.
   ============================================= -->
-  <section id="feed">
-    <div class="feed-header reveal">
+  <section id="editorial">
+    <div class="editorial-header reveal">
       <span class="section-eyebrow">Öne Çıkanlar</span>
       <h2 class="section-title">PH Dizayn<br /><em>Dünyasından</em></h2>
-      <p class="section-desc">Ürünlerimiz, teknolojimiz ve kurumsal gelişmelerimizden son başlıklar.</p>
     </div>
 
-    <div class="feed-grid">
-
-      <!-- FEED 1: Ürünler -->
-      <a href="urunler.html" class="feed-card reveal" data-delay="0">
+    <!-- ÖNE ÇIKAN SATIR — geniş görsel + büyük başlık -->
+    <a href="urunler.html" class="editorial-feature reveal">
+      <div class="editorial-feature-media">
         <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-urunler.jpg" -->
-        <div class="card-image">
-          <img src="assets/images/feed-urunler.jpg" alt="Ürün Gamı"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>feed-urunler.jpg</span></div>
-          <div class="card-hover-line"></div>
-        </div>
-        <div class="card-body">
-          <span class="card-tag">Ürün Gamı</span>
-          <h3 class="card-title">Tüm Sistemler, Tek Çatı Altında</h3>
-          <p class="card-desc">Duş kanallarından sifonlara, yapının her noktası için mimari drenaj çözümleri.</p>
-          <span class="card-link">İncele <span>→</span></span>
-        </div>
+        <img src="assets/images/feed-urunler.jpg" alt="Ürün Gamı"
+             onerror="this.parentElement.classList.add('img-placeholder')" />
+        <div class="editorial-media-placeholder"><span>assets/images/<br/>feed-urunler.jpg</span></div>
+      </div>
+      <div class="editorial-feature-text">
+        <span class="editorial-index">01 — Ürün Gamı</span>
+        <h3 class="editorial-feature-title">Tüm Sistemler,<br />Tek Çatı Altında</h3>
+        <p class="editorial-desc">Duş kanallarından sifonlara, yapının her noktası için tasarlanmış mimari drenaj çözümleri.</p>
+        <span class="editorial-link">İncele</span>
+      </div>
+    </a>
+
+    <!-- EDİTORYAL LİSTE — sade satırlar, görselsiz -->
+    <div class="editorial-list">
+
+      <a href="teknoloji.html" class="editorial-row reveal" data-delay="0">
+        <span class="editorial-index">02 — Teknoloji</span>
+        <h3 class="editorial-row-title">Mühendislik Çözümleri</h3>
+        <p class="editorial-desc">Contasız sistem, ikincil su drenajı ve Invisible teknolojisiyle güvenli yapılar.</p>
+        <span class="editorial-arrow">→</span>
       </a>
 
-      <!-- FEED 2: Teknoloji -->
-      <a href="teknoloji.html" class="feed-card reveal" data-delay="100">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-teknoloji.jpg" -->
-        <div class="card-image">
-          <img src="assets/images/feed-teknoloji.jpg" alt="Teknoloji"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>feed-teknoloji.jpg</span></div>
-          <div class="card-hover-line"></div>
-        </div>
-        <div class="card-body">
-          <span class="card-tag">Teknoloji</span>
-          <h3 class="card-title">Mühendislik Çözümleri</h3>
-          <p class="card-desc">Contasız sistem, ikincil su drenajı ve Invisible teknolojisiyle güvenli yapılar.</p>
-          <span class="card-link">İncele <span>→</span></span>
-        </div>
+      <a href="kurumsal.html" class="editorial-row reveal" data-delay="60">
+        <span class="editorial-index">03 — Kurumsal</span>
+        <h3 class="editorial-row-title">PH Dizayn Hikayesi</h3>
+        <p class="editorial-desc">Kalite ve güveni esas alan üretim anlayışımız, sertifikalarımız ve daha fazlası.</p>
+        <span class="editorial-arrow">→</span>
       </a>
 
-      <!-- FEED 3: Kurumsal -->
-      <a href="kurumsal.html" class="feed-card reveal" data-delay="200">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-kurumsal.jpg" -->
-        <div class="card-image">
-          <img src="assets/images/feed-kurumsal.jpg" alt="Kurumsal"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>feed-kurumsal.jpg</span></div>
-          <div class="card-hover-line"></div>
-        </div>
-        <div class="card-body">
-          <span class="card-tag">Kurumsal</span>
-          <h3 class="card-title">PH Dizayn Hikayesi</h3>
-          <p class="card-desc">Kalite ve güveni esas alan üretim anlayışımız, sertifikalarımız ve daha fazlası.</p>
-          <span class="card-link">İncele <span>→</span></span>
-        </div>
+      <a href="destek.html" class="editorial-row reveal" data-delay="0">
+        <span class="editorial-index">04 — Destek</span>
+        <h3 class="editorial-row-title">Kurulum ve Kullanım Desteği</h3>
+        <p class="editorial-desc">Online katalog, montaj videoları ve teknik çizimlerle doğru uygulama.</p>
+        <span class="editorial-arrow">→</span>
       </a>
 
-      <!-- FEED 4: Destek -->
-      <a href="destek.html" class="feed-card reveal" data-delay="0">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-destek.jpg" -->
-        <div class="card-image">
-          <img src="assets/images/feed-destek.jpg" alt="Destek"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>feed-destek.jpg</span></div>
-          <div class="card-hover-line"></div>
-        </div>
-        <div class="card-body">
-          <span class="card-tag">Destek</span>
-          <h3 class="card-title">Kurulum ve Kullanım Desteği</h3>
-          <p class="card-desc">Online katalog, montaj videoları ve teknik çizimlerle doğru uygulama.</p>
-          <span class="card-link">İncele <span>→</span></span>
-        </div>
+      <a href="referanslar.html" class="editorial-row reveal" data-delay="60">
+        <span class="editorial-index">05 — Referanslar</span>
+        <h3 class="editorial-row-title">Tamamlanan Projeler</h3>
+        <p class="editorial-desc">Türkiye'nin dört bir yanında uygulanan PH Dizayn sistemlerinden örnekler.</p>
+        <span class="editorial-arrow">→</span>
       </a>
 
-      <!-- FEED 5: Referanslar -->
-      <a href="referanslar.html" class="feed-card reveal" data-delay="100">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-referanslar.jpg" -->
-        <div class="card-image">
-          <img src="assets/images/feed-referanslar.jpg" alt="Referanslar"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>feed-referanslar.jpg</span></div>
-          <div class="card-hover-line"></div>
-        </div>
-        <div class="card-body">
-          <span class="card-tag">Referanslar</span>
-          <h3 class="card-title">Tamamlanan Projeler</h3>
-          <p class="card-desc">Türkiye'nin dört bir yanında uygulanan PH Dizayn sistemlerinden örnekler.</p>
-          <span class="card-link">İncele <span>→</span></span>
-        </div>
-      </a>
-
-      <!-- FEED 6: İletişim -->
-      <a href="iletisim.html" class="feed-card reveal" data-delay="200">
-        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-iletisim.jpg" -->
-        <div class="card-image">
-          <img src="assets/images/feed-iletisim.jpg" alt="İletişim"
-               onerror="this.parentElement.classList.add('img-placeholder')" />
-          <div class="card-image-placeholder"><span>assets/images/<br/>feed-iletisim.jpg</span></div>
-          <div class="card-hover-line"></div>
-        </div>
-        <div class="card-body">
-          <span class="card-tag">İletişim</span>
-          <h3 class="card-title">Bize Ulaşın</h3>
-          <p class="card-desc">Projeniz için doğru drenaj çözümünü birlikte belirleyelim.</p>
-          <span class="card-link">İncele <span>→</span></span>
-        </div>
+      <a href="iletisim.html" class="editorial-row reveal" data-delay="0">
+        <span class="editorial-index">06 — İletişim</span>
+        <h3 class="editorial-row-title">Bize Ulaşın</h3>
+        <p class="editorial-desc">Projeniz için doğru drenaj çözümünü birlikte belirleyelim.</p>
+        <span class="editorial-arrow">→</span>
       </a>
 
     </div>
