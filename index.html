@@ -1,1200 +1,351 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PH Dizayn — Duş Kanalları, Yer Süzgeçleri & Sifonlar</title>
-  <meta name="description" content="Premium paslanmaz çelik duş kanalları, yer süzgeçleri ve sifonlar. PH Dizayn mimari drenaj çözümleri.">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PH Dizayn — Mimari Drenaj Sistemleri</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 </head>
 <body>
 
-<!-- ── Cursor ── -->
-<div class="cursor"      id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
-<!-- ── Progress Bar ── -->
-<div class="progress-bar" id="progressBar"></div>
-
-<!-- ── Scene Nav Dots ── -->
-<div class="scene-nav">
-  <div class="snav-dot active" data-target="hero"></div>
-  <div class="snav-dot"        data-target="channels"></div>
-  <div class="snav-dot"        data-target="floor-drains"></div>
-  <div class="snav-dot"        data-target="siphons"></div>
-  <div class="snav-dot"        data-target="technology"></div>
-  <div class="snav-dot"        data-target="contact"></div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════
-     NAVIGATION
-══════════════════════════════════════════════════════ -->
-<nav id="mainNav">
-  <div class="logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
-    PH <span>Dizayn</span>
-  </div>
-
-  <ul class="nav-links">
-    <!-- Duş Kanalları dropdown -->
-    <li>
-      <button class="nav-btn">Duş Kanalları <span class="nav-chevron">▾</span></button>
-      <div class="nav-dropdown">
-        <a href="#premium">Premium</a>
-        <a href="#smartline">Smartline</a>
-        <a href="#acroline">Acroline</a>
-        <a href="#naturaline">Naturaline</a>
-        <a href="#compactline">Compactline</a>
-        <a href="#slim">Slim</a>
-        <a href="#infinity">Infinity</a>
-        <a href="#basic">Basic</a>
+  <!-- =============================================
+       SPLASH / LOADING EKRANI
+       Logo dosyası: assets/logo/ph-logo.png
+       (Logo bulunamazsa "PH DİZAYN" yazısı otomatik olarak gösterilir)
+  ============================================= -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn Logo" class="splash-logo-img"
+             onerror="this.style.display='none'; document.querySelector('.splash-logo-fallback').style.display='flex';" />
+        <!-- Logo yüklenemezse fallback metin gösterilir -->
+        <div class="splash-logo-fallback">
+          <span class="splash-ph">PH</span>
+          <span class="splash-dizayn">DİZAYN</span>
+        </div>
       </div>
-    </li>
-    <!-- Yer Süzgeçleri dropdown -->
-    <li>
-      <button class="nav-btn">Yer Süzgeçleri <span class="nav-chevron">▾</span></button>
-      <div class="nav-dropdown">
-        <a href="#smart">Smart</a>
-        <a href="#modula">Modula</a>
-        <a href="#natura">Natura</a>
-        <a href="#standart">Standart</a>
-      </div>
-    </li>
-    <!-- Sifonlar dropdown -->
-    <li>
-      <button class="nav-btn">Sifonlar <span class="nav-chevron">▾</span></button>
-      <div class="nav-dropdown">
-        <a href="#siphons">Tüm Sifonlar</a>
-      </div>
-    </li>
-    <li><a href="#technology">Teknoloji</a></li>
-    <li><a href="#contact">İletişim</a></li>
-  </ul>
-
-  <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-    Teklif Al
-  </button>
-
-  <!-- Burger -->
-  <button class="nav-burger" id="navBurger" aria-label="Menü" aria-expanded="false">
-    <span></span><span></span><span></span>
-  </button>
-</nav>
-
-<!-- Mobile Nav Drawer -->
-<nav class="mobile-nav" id="mobileNav">
-  <details>
-    <summary>Duş Kanalları</summary>
-    <a href="#premium">Premium</a>
-    <a href="#smartline">Smartline</a>
-    <a href="#acroline">Acroline</a>
-    <a href="#naturaline">Naturaline</a>
-    <a href="#compactline">Compactline</a>
-    <a href="#slim">Slim</a>
-    <a href="#infinity">Infinity</a>
-    <a href="#basic">Basic</a>
-  </details>
-  <details>
-    <summary>Yer Süzgeçleri</summary>
-    <a href="#smart">Smart</a>
-    <a href="#modula">Modula</a>
-    <a href="#natura">Natura</a>
-    <a href="#standart">Standart</a>
-  </details>
-  <details>
-    <summary>Sifonlar</summary>
-    <a href="#siphons">Tüm Sifonlar</a>
-  </details>
-  <a href="#technology">Teknoloji</a>
-  <a href="#contact">İletişim</a>
-</nav>
-
-
-<div class="page">
-
-<!-- ══════════════════════════════════════════════════════
-     SCENE 01 — HERO SLIDER
-     2 slide: PREMIUM + SMARTLINE öne çıkarılıyor
-══════════════════════════════════════════════════════ -->
-<section id="hero">
-<div class="hero-slider">
-
-  <!-- ── SLIDE 1: PREMIUM ── -->
-  <div class="slide active">
-    <div class="slide-left">
-      <p class="slide-tag">Öne Çıkan Seri — Duş Kanalı</p>
-      <h1 class="slide-title">
-        PH<br><strong>Premium</strong>
-      </h1>
-      <div class="slide-rule"></div>
-      <p class="slide-desc">
-        Mimari mükemmeliyetin zirvesi. 304-grade paslanmaz çelik, patentli
-        contasız su yalıtım sistemi ve sonsuz yüzey seçenekleriyle tasarlanan
-        flagship drenaj kanalı.
-      </p>
-      <div class="slide-ctas">
-        <button class="btn-gold" onclick="document.getElementById('premium').scrollIntoView({behavior:'smooth'})">
-          Ürünü İncele
-        </button>
-        <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          Teklif Al →
-        </button>
-      </div>
-    </div>
-    <div class="slide-right">
-      <div class="slide-bg-pattern"></div>
-      <div class="slide-img">
-        <!--
-          ▼ HERO SLIDE 1 GÖRSELI
-          <img src="images/slide-premium.jpg" alt="Premium Duş Kanalı"
-               style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0">
-          opacity:0 → opacity:1 yapın
-        -->
-        <!-- SVG Placeholder -->
-        <svg class="slide-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="sl1a" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stop-color="#e4eaf0"/>
-              <stop offset="40%"  stop-color="#9aa4b0"/>
-              <stop offset="75%"  stop-color="#c8d2da"/>
-              <stop offset="100%" stop-color="#60686e"/>
-            </linearGradient>
-            <linearGradient id="sl1b" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"   stop-color="#707880"/>
-              <stop offset="45%"  stop-color="#d8e2ec"/>
-              <stop offset="100%" stop-color="#707880"/>
-            </linearGradient>
-            <filter id="sl1s"><feDropShadow dx="0" dy="8" stdDeviation="18" flood-color="rgba(0,0,0,0.13)"/></filter>
-          </defs>
-          <!-- Shadow -->
-          <ellipse cx="250" cy="300" rx="160" ry="12" fill="rgba(0,0,0,0.07)"/>
-          <g filter="url(#sl1s)">
-            <!-- Top flange -->
-            <rect x="40" y="110" width="420" height="14" rx="4" fill="url(#sl1a)"/>
-            <rect x="38" y="123" width="424" height="3"  rx="1.5" fill="#9a7a3a" opacity=".65"/>
-            <!-- Body -->
-            <rect x="44" y="126" width="412" height="58" rx="5" fill="url(#sl1a)"/>
-            <!-- Cavity -->
-            <rect x="54" y="131" width="392" height="48" rx="3" fill="#d8e0e8"/>
-            <!-- Grate -->
-            <rect x="56" y="133" width="388" height="44" rx="2.5" fill="url(#sl1b)" opacity=".88"/>
-            <!-- Slots -->
-            <g fill="#b8c4d0" opacity=".75">
-              <rect x="64"  y="136" width="4" height="38" rx="2"/>
-              <rect x="76"  y="136" width="4" height="38" rx="2"/>
-              <rect x="88"  y="136" width="4" height="38" rx="2"/>
-              <rect x="100" y="136" width="4" height="38" rx="2"/>
-              <rect x="112" y="136" width="4" height="38" rx="2"/>
-              <rect x="124" y="136" width="4" height="38" rx="2"/>
-              <rect x="136" y="136" width="4" height="38" rx="2"/>
-              <rect x="148" y="136" width="4" height="38" rx="2"/>
-              <rect x="160" y="136" width="4" height="38" rx="2"/>
-              <rect x="172" y="136" width="4" height="38" rx="2"/>
-              <rect x="184" y="136" width="4" height="38" rx="2"/>
-              <rect x="196" y="136" width="4" height="38" rx="2"/>
-              <rect x="208" y="136" width="4" height="38" rx="2"/>
-              <rect x="220" y="136" width="4" height="38" rx="2"/>
-              <rect x="232" y="136" width="4" height="38" rx="2"/>
-              <rect x="244" y="136" width="4" height="38" rx="2"/>
-              <rect x="256" y="136" width="4" height="38" rx="2"/>
-              <rect x="268" y="136" width="4" height="38" rx="2"/>
-              <rect x="280" y="136" width="4" height="38" rx="2"/>
-              <rect x="292" y="136" width="4" height="38" rx="2"/>
-              <rect x="304" y="136" width="4" height="38" rx="2"/>
-              <rect x="316" y="136" width="4" height="38" rx="2"/>
-              <rect x="328" y="136" width="4" height="38" rx="2"/>
-              <rect x="340" y="136" width="4" height="38" rx="2"/>
-              <rect x="352" y="136" width="4" height="38" rx="2"/>
-              <rect x="364" y="136" width="4" height="38" rx="2"/>
-              <rect x="376" y="136" width="4" height="38" rx="2"/>
-              <rect x="388" y="136" width="4" height="38" rx="2"/>
-              <rect x="400" y="136" width="4" height="38" rx="2"/>
-              <rect x="412" y="136" width="4" height="38" rx="2"/>
-              <rect x="424" y="136" width="4" height="38" rx="2"/>
-            </g>
-            <!-- Bottom seal -->
-            <rect x="38" y="183" width="424" height="3"  rx="1.5" fill="#9a7a3a" opacity=".48"/>
-            <rect x="40" y="185" width="420" height="12" rx="4" fill="#8a9099" opacity=".7"/>
-            <!-- Legs -->
-            <rect x="44"  y="196" width="22" height="80" rx="3" fill="#8a9099" opacity=".75"/>
-            <rect x="434" y="196" width="22" height="80" rx="3" fill="#8a9099" opacity=".75"/>
-          </g>
-          <!-- Label -->
-          <text x="250" y="285" font-family="Montserrat,sans-serif" font-size="11"
-                fill="#9a7a3a" text-anchor="middle" font-weight="700" letter-spacing=".25em">PREMIUM SERIES</text>
-        </svg>
-      </div>
-    </div>
-  </div><!-- /slide 1 -->
-
-  <!-- ── SLIDE 2: SMARTLINE ── -->
-  <div class="slide">
-    <div class="slide-left">
-      <p class="slide-tag">Öne Çıkan Seri — Duş Kanalı</p>
-      <h1 class="slide-title">
-        PH<br><strong>Smartline</strong>
-      </h1>
-      <div class="slide-rule"></div>
-      <p class="slide-desc">
-        Akıllı tasarım, akıllı kurulum. Ayarlanabilir uzunluk, entegre koku
-        kilidli sifon ve hızlı montaj sistemiyle modern banyonun vazgeçilmezi.
-        Mimari esnekliğin yeni tanımı.
-      </p>
-      <div class="slide-ctas">
-        <button class="btn-gold" onclick="document.getElementById('smartline').scrollIntoView({behavior:'smooth'})">
-          Ürünü İncele
-        </button>
-        <button class="btn-outline" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-          Teklif Al →
-        </button>
-      </div>
-    </div>
-    <div class="slide-right">
-      <div class="slide-bg-pattern" style="background:linear-gradient(135deg,#ede9e3,#e0dbd3)"></div>
-      <div class="slide-img">
-        <!--
-          ▼ HERO SLIDE 2 GÖRSELI
-          <img src="images/slide-smartline.jpg" alt="Smartline Duş Kanalı"
-               style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;opacity:0">
-        -->
-        <!-- SVG Placeholder — Smartline (daha slim profil) -->
-        <svg class="slide-svg" viewBox="0 0 500 320" xmlns="http://www.w3.org/2000/svg">
-          <defs>
-            <linearGradient id="sl2a" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%"   stop-color="#eaeff4"/>
-              <stop offset="40%"  stop-color="#a0abb5"/>
-              <stop offset="75%"  stop-color="#ced8e0"/>
-              <stop offset="100%" stop-color="#68707a"/>
-            </linearGradient>
-            <linearGradient id="sl2b" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%"   stop-color="#788088"/>
-              <stop offset="45%"  stop-color="#dce6f0"/>
-              <stop offset="100%" stop-color="#788088"/>
-            </linearGradient>
-            <filter id="sl2s"><feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="rgba(0,0,0,0.12)"/></filter>
-          </defs>
-          <ellipse cx="250" cy="300" rx="155" ry="10" fill="rgba(0,0,0,0.06)"/>
-          <g filter="url(#sl2s)">
-            <rect x="40" y="118" width="420" height="11" rx="3.5" fill="url(#sl2a)"/>
-            <rect x="38" y="128" width="424" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".6"/>
-            <rect x="44" y="130" width="412" height="44" rx="4" fill="url(#sl2a)"/>
-            <rect x="54" y="135" width="392" height="34" rx="2.5" fill="#dae2ec"/>
-            <rect x="56" y="137" width="388" height="30" rx="2" fill="url(#sl2b)" opacity=".85"/>
-            <!-- Smartline grate: wider slots -->
-            <g fill="#bac6d2" opacity=".72">
-              <rect x="64"  y="140" width="6" height="24" rx="3"/>
-              <rect x="80"  y="140" width="6" height="24" rx="3"/>
-              <rect x="96"  y="140" width="6" height="24" rx="3"/>
-              <rect x="112" y="140" width="6" height="24" rx="3"/>
-              <rect x="128" y="140" width="6" height="24" rx="3"/>
-              <rect x="144" y="140" width="6" height="24" rx="3"/>
-              <rect x="160" y="140" width="6" height="24" rx="3"/>
-              <rect x="176" y="140" width="6" height="24" rx="3"/>
-              <rect x="192" y="140" width="6" height="24" rx="3"/>
-              <rect x="208" y="140" width="6" height="24" rx="3"/>
-              <rect x="224" y="140" width="6" height="24" rx="3"/>
-              <rect x="240" y="140" width="6" height="24" rx="3"/>
-              <rect x="256" y="140" width="6" height="24" rx="3"/>
-              <rect x="272" y="140" width="6" height="24" rx="3"/>
-              <rect x="288" y="140" width="6" height="24" rx="3"/>
-              <rect x="304" y="140" width="6" height="24" rx="3"/>
-              <rect x="320" y="140" width="6" height="24" rx="3"/>
-              <rect x="336" y="140" width="6" height="24" rx="3"/>
-              <rect x="352" y="140" width="6" height="24" rx="3"/>
-              <rect x="368" y="140" width="6" height="24" rx="3"/>
-              <rect x="384" y="140" width="6" height="24" rx="3"/>
-              <rect x="400" y="140" width="6" height="24" rx="3"/>
-              <rect x="416" y="140" width="6" height="24" rx="3"/>
-            </g>
-            <rect x="38" y="173" width="424" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".45"/>
-            <rect x="40" y="175" width="420" height="10"  rx="3.5" fill="#8a9099" opacity=".65"/>
-            <rect x="44"  y="185" width="20" height="72" rx="3" fill="#8a9099" opacity=".7"/>
-            <rect x="436" y="185" width="20" height="72" rx="3" fill="#8a9099" opacity=".7"/>
-          </g>
-          <text x="250" y="278" font-family="Montserrat,sans-serif" font-size="11"
-                fill="#9a7a3a" text-anchor="middle" font-weight="700" letter-spacing=".25em">SMARTLINE SERIES</text>
-        </svg>
-      </div>
-    </div>
-  </div><!-- /slide 2 -->
-
-  <!-- Slider Controls -->
-  <div class="slider-controls">
-    <button class="slider-arrow" id="sliderPrev" aria-label="Önceki">&#8592;</button>
-    <div class="slider-dot active"></div>
-    <div class="slider-dot"></div>
-    <button class="slider-arrow" id="sliderNext" aria-label="Sonraki">&#8594;</button>
-    <span class="slider-counter" id="sliderCounter">01 / 02</span>
-  </div>
-
-  <div class="slide-progress" id="slideProgress"></div>
-</div>
-</section>
-
-
-<!-- ── Stat Strip ── -->
-<div class="intro-strip">
-  <div class="container">
-    <div class="intro-stat">
-      <div class="intro-stat-num">1.8<span style="font-size:1.4rem">L/s</span></div>
-      <div class="intro-stat-label">Debi Kapasitesi</div>
-    </div>
-    <div class="intro-stat">
-      <div class="intro-stat-num">100<span style="font-size:1.4rem">%</span></div>
-      <div class="intro-stat-label">Su Sızdırmazlık</div>
-    </div>
-    <div class="intro-stat">
-      <div class="intro-stat-num">304</div>
-      <div class="intro-stat-label">Çelik Kalitesi</div>
-    </div>
-  </div>
-</div>
-
-
-<!-- ══════════════════════════════════════════════════════
-     SCENE 02 — DUŞ KANALLARI
-══════════════════════════════════════════════════════ -->
-<section id="channels" class="shower-section" style="padding-top:6rem">
-
-  <!-- Sticky category bar -->
-  <div class="sticky-cat">
-    <div class="sticky-cat-inner">
-      <button class="sticky-tab active" data-target="#premium">Premium</button>
-      <button class="sticky-tab" data-target="#smartline">Smartline</button>
-      <button class="sticky-tab" data-target="#acroline">Acroline</button>
-      <button class="sticky-tab" data-target="#naturaline">Naturaline</button>
-      <button class="sticky-tab" data-target="#compactline">Compactline</button>
-      <button class="sticky-tab" data-target="#slim">Slim</button>
-      <button class="sticky-tab" data-target="#infinity">Infinity</button>
-      <button class="sticky-tab" data-target="#basic">Basic</button>
+      <div class="splash-line"></div>
+      <p class="splash-tagline">Mimari Drenaj Sistemleri</p>
     </div>
   </div>
 
-  <div class="container" style="padding-top:4rem">
-    <div class="section-header reveal">
-      <div>
-        <p class="eyebrow">Duş Kanalları</p>
-        <h2 class="page-title">8 Farklı Seri,<br><em>Sonsuz Mimari</em></h2>
-      </div>
-      <p class="section-header-right">
-        Her mimari vizyon için özel olarak tasarlanmış premium
-        paslanmaz çelik duş kanalı serileri.
-      </p>
-    </div>
-  </div>
+  <!-- =============================================
+       NAVIGATION
+       Sıralama: Anasayfa - Ürünler - Kurumsal - Teknoloji - Destek - Referanslar - İletişim
+       Ürünler / Kurumsal / Teknoloji / Destek mouse ile açılan alt menülere sahiptir.
+       Her sayfa kendi içeriğine sahiptir (anasayfaya yığılmamıştır).
+  ============================================= -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+      <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+           onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='block';" />
+      <span class="nav-logo-fallback">PH DİZAYN</span>
+    </a>
 
-  <!-- ────────────── PREMIUM ────────────── -->
-  <div id="premium" class="channel-block" style="padding-bottom:5rem">
-    <div class="container">
-      <div class="rule reveal"></div>
-      <p class="eyebrow reveal d1">Seri — 01</p>
+    <ul class="nav-links">
 
-      <!-- Featured hero card -->
-      <div class="featured-hero reveal d2">
-        <div class="featured-hero-img">
-          <!--
-            ▼ PREMIUM HERO GÖRSELI
-            <img src="images/premium-hero.jpg" alt="Premium" style="width:100%;height:100%;object-fit:cover;opacity:0">
-          -->
-          <svg viewBox="0 0 480 300" style="width:85%;max-width:420px;animation:float 7s ease-in-out infinite" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <linearGradient id="ph1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e4eaf0"/><stop offset="42%" stop-color="#9aa4b0"/><stop offset="72%" stop-color="#c8d2da"/><stop offset="100%" stop-color="#606870"/></linearGradient>
-              <linearGradient id="ph2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#707880"/><stop offset="45%" stop-color="#d8e2ec"/><stop offset="100%" stop-color="#707880"/></linearGradient>
-            </defs>
-            <ellipse cx="240" cy="284" rx="150" ry="10" fill="rgba(0,0,0,0.07)"/>
-            <rect x="30" y="100" width="420" height="13" rx="3.5" fill="url(#ph1)"/>
-            <rect x="28" y="112" width="424" height="3" rx="1.5" fill="#9a7a3a" opacity=".65"/>
-            <rect x="34" y="115" width="412" height="56" rx="4" fill="url(#ph1)"/>
-            <rect x="44" y="120" width="392" height="46" rx="3" fill="#dae2ec"/>
-            <rect x="46" y="122" width="388" height="42" rx="2.5" fill="url(#ph2)" opacity=".88"/>
-            <g fill="#b8c4d0" opacity=".75">
-              <rect x="54"  y="125" width="4" height="36" rx="2"/><rect x="66"  y="125" width="4" height="36" rx="2"/>
-              <rect x="78"  y="125" width="4" height="36" rx="2"/><rect x="90"  y="125" width="4" height="36" rx="2"/>
-              <rect x="102" y="125" width="4" height="36" rx="2"/><rect x="114" y="125" width="4" height="36" rx="2"/>
-              <rect x="126" y="125" width="4" height="36" rx="2"/><rect x="138" y="125" width="4" height="36" rx="2"/>
-              <rect x="150" y="125" width="4" height="36" rx="2"/><rect x="162" y="125" width="4" height="36" rx="2"/>
-              <rect x="174" y="125" width="4" height="36" rx="2"/><rect x="186" y="125" width="4" height="36" rx="2"/>
-              <rect x="198" y="125" width="4" height="36" rx="2"/><rect x="210" y="125" width="4" height="36" rx="2"/>
-              <rect x="222" y="125" width="4" height="36" rx="2"/><rect x="234" y="125" width="4" height="36" rx="2"/>
-              <rect x="246" y="125" width="4" height="36" rx="2"/><rect x="258" y="125" width="4" height="36" rx="2"/>
-              <rect x="270" y="125" width="4" height="36" rx="2"/><rect x="282" y="125" width="4" height="36" rx="2"/>
-              <rect x="294" y="125" width="4" height="36" rx="2"/><rect x="306" y="125" width="4" height="36" rx="2"/>
-              <rect x="318" y="125" width="4" height="36" rx="2"/><rect x="330" y="125" width="4" height="36" rx="2"/>
-              <rect x="342" y="125" width="4" height="36" rx="2"/><rect x="354" y="125" width="4" height="36" rx="2"/>
-              <rect x="366" y="125" width="4" height="36" rx="2"/><rect x="378" y="125" width="4" height="36" rx="2"/>
-              <rect x="390" y="125" width="4" height="36" rx="2"/><rect x="402" y="125" width="4" height="36" rx="2"/>
-              <rect x="414" y="125" width="4" height="36" rx="2"/>
-            </g>
-            <rect x="28" y="170" width="424" height="3" rx="1.5" fill="#9a7a3a" opacity=".48"/>
-            <rect x="30" y="172" width="420" height="11" rx="3.5" fill="#8a9099" opacity=".7"/>
-            <rect x="34"  y="182" width="20" height="76" rx="3" fill="#8a9099" opacity=".72"/>
-            <rect x="426" y="182" width="20" height="76" rx="3" fill="#8a9099" opacity=".72"/>
-          </svg>
-        </div>
-        <div class="featured-hero-body">
-          <span class="featured-badge">Flagship</span>
-          <h3 class="featured-title">Premium<br>Duş Kanalı</h3>
-          <p class="featured-desc">
-            Mimari mükemmeliyetin zirvesi. 304-grade paslanmaz çelik gövde,
-            patentli contasız su yalıtım sistemi ve birden fazla ızgara tasarımı
-            seçeneğiyle her banyoya özel çözüm sunar.
-          </p>
-          <div class="featured-specs">
-            <div class="feat-spec"><div class="feat-spec-dot"></div>304-grade paslanmaz çelik</div>
-            <div class="feat-spec"><div class="feat-spec-dot"></div>Patentli contasız su yalıtımı</div>
-            <div class="feat-spec"><div class="feat-spec-dot"></div>İkincil drenaj sistemi</div>
-            <div class="feat-spec"><div class="feat-spec-dot"></div>±8mm seviyeleme ayakları</div>
-            <div class="feat-spec"><div class="feat-spec-dot"></div>70cm / 80cm / 90cm / 100cm / 120cm</div>
-          </div>
-          <div class="finish-dots" style="margin-bottom:1.5rem">
-            <div class="fdot steel" data-finish="steel" title="Paslanmaz Çelik"></div>
-            <div class="fdot black" data-finish="black" title="Mat Siyah"></div>
-            <div class="fdot gold"  data-finish="gold"  title="Altın"></div>
-          </div>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap">
-            <button class="btn-gold">Detaylar</button>
-            <button class="btn-outline">Teknik Çizim</button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <li><a href="index.html" class="active">Anasayfa</a></li>
 
-  <!-- ────────────── SMARTLINE ────────────── -->
-  <div id="smartline" class="channel-block" style="background:var(--bg-section);padding:5rem 0">
-    <div class="container">
-      <p class="eyebrow reveal">Seri — 02</p>
-      <div class="section-header reveal d1">
-        <div>
-          <div class="rule"></div>
-          <h3 class="page-title">Smartline</h3>
+      <!-- ÜRÜNLER — dropdown -->
+      <li class="has-dropdown">
+        <a href="urunler.html">Ürünler</a>
+        <div class="dropdown">
+          <a href="urunler.html#duskanallari">Duş Kanalları</a>
+          <a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a>
+          <a href="urunler.html#sifonlar">Sifonlar</a>
+          <a href="urunler.html#balkonteras">Balkon &amp; Teras Drenajı</a>
+          <a href="urunler.html#teknikprofiller">Teknik Profiller</a>
+          <a href="urunler.html#dekoratifprofiller">Dekoratif Profiller</a>
+          <a href="urunler.html#mozaikler">Mozaikler</a>
         </div>
-        <p class="section-header-right">Akıllı tasarım, akıllı kurulum.<br>Mimari esnekliğin yeni tanımı.</p>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/smartline-1.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 160" style="width:160px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="sm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eaeff4"/><stop offset="50%" stop-color="#9aa4b0"/><stop offset="100%" stop-color="#ced8e0"/></linearGradient><linearGradient id="sm2" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#787e88"/><stop offset="50%" stop-color="#dce6f0"/><stop offset="100%" stop-color="#787e88"/></linearGradient></defs>
-              <rect x="18" y="66" width="164" height="26" rx="3.5" fill="url(#sm1)"/>
-              <rect x="20" y="68" width="160" height="22" rx="3" fill="#dae2ec"/>
-              <rect x="21" y="69" width="158" height="20" rx="2.5" fill="url(#sm2)" opacity=".86"/>
-              <g fill="#bac6d2" opacity=".72"><rect x="28" y="72" width="5" height="14" rx="2.5"/><rect x="40" y="72" width="5" height="14" rx="2.5"/><rect x="52" y="72" width="5" height="14" rx="2.5"/><rect x="64" y="72" width="5" height="14" rx="2.5"/><rect x="76" y="72" width="5" height="14" rx="2.5"/><rect x="88" y="72" width="5" height="14" rx="2.5"/><rect x="100" y="72" width="5" height="14" rx="2.5"/><rect x="112" y="72" width="5" height="14" rx="2.5"/><rect x="124" y="72" width="5" height="14" rx="2.5"/><rect x="136" y="72" width="5" height="14" rx="2.5"/><rect x="148" y="72" width="5" height="14" rx="2.5"/><rect x="160" y="72" width="5" height="14" rx="2.5"/></g>
-              <rect x="16" y="61" width="168" height="7" rx="2" fill="url(#sm1)"/>
-              <rect x="16" y="61" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".6"/>
-              <rect x="16" y="91" width="168" height="6" rx="2" fill="#8a9099" opacity=".65"/>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-cat">Smartline</p>
-            <p class="prod-name">Smartline 70</p>
-            <p class="prod-desc">Entegre koku kilidli sifon, hızlı montaj sistemi. 70cm.</p>
-            <div class="prod-footer">
-              <div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div>
-              <span class="prod-link">İncele →</span>
-            </div>
+      </li>
+
+      <!-- KURUMSAL — dropdown -->
+      <li class="has-dropdown">
+        <a href="kurumsal.html">Kurumsal</a>
+        <div class="dropdown">
+          <a href="kurumsal.html#hakkimizda">Hakkımızda</a>
+          <a href="kurumsal.html#politikalar">Şirket Politikaları</a>
+          <a href="kurumsal.html#basin">Basın Odası</a>
+          <a href="kurumsal.html#fuarlar">Fuarlar</a>
+          <a href="kurumsal.html#sertifikalar">Belge ve Sertifikalar</a>
+        </div>
+      </li>
+
+      <!-- TEKNOLOJİ — dropdown -->
+      <li class="has-dropdown">
+        <a href="teknoloji.html">Teknoloji</a>
+        <div class="dropdown">
+          <a href="teknoloji.html#contasiz">Contasız Sistem ile Sızdırmazlık Garantisi</a>
+          <a href="teknoloji.html#ikincil">İkincil Su Drenajı</a>
+          <a href="teknoloji.html#invisible">Invisible Sistem</a>
+          <a href="teknoloji.html#cerceve">Kesilebilir Çerçeve</a>
+          <a href="teknoloji.html#diger">Diğer Teknolojiler</a>
+        </div>
+      </li>
+
+      <!-- DESTEK — dropdown -->
+      <li class="has-dropdown">
+        <a href="destek.html">Destek</a>
+        <div class="dropdown">
+          <a href="destek.html#katalog">Online Katalog</a>
+          <a href="destek.html#videolar">Montaj Videoları</a>
+          <a href="destek.html#cizimler">Teknik Çizimler</a>
+          <a href="destek.html#kilavuz">Montaj &amp; Kullanım Kılavuzu</a>
+        </div>
+      </li>
+
+      <li><a href="referanslar.html">Referanslar</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+
+    </ul>
+
+    <button class="nav-burger" id="navBurger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- =============================================
+       HERO BANNER SLIDER
+       Arka plan görselleri için:
+         - assets/images/slider-contasiz.jpg
+         - assets/images/slider-ikincil.jpg
+         - assets/images/slider-invisible.jpg
+       Görseller tam ekran kaplayan, koyu overlay'li fotoğraflar olmalı.
+  ============================================= -->
+  <section id="slider">
+    <div class="slider-track">
+
+      <!-- SLIDE 1: Contasız Sistem -->
+      <div class="slide active" data-index="0">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/slider-contasiz.jpg" -->
+        <div class="slide-bg" style="background-image: url('assets/images/slider-contasiz.jpg');">
+          <div class="slide-placeholder">
+            <span>assets/images/slider-contasiz.jpg</span>
           </div>
         </div>
-        <div class="prod-card reveal d2">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/smartline-2.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 160" style="width:160px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="sm3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eaeff4"/><stop offset="50%" stop-color="#9aa4b0"/><stop offset="100%" stop-color="#ced8e0"/></linearGradient></defs>
-              <rect x="18" y="66" width="164" height="26" rx="3.5" fill="url(#sm3)"/>
-              <rect x="20" y="68" width="160" height="22" rx="3" fill="#dae2ec"/>
-              <rect x="16" y="61" width="168" height="7" rx="2" fill="url(#sm3)"/>
-              <rect x="16" y="61" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".58"/>
-              <rect x="16" y="91" width="168" height="6" rx="2" fill="#8a9099" opacity=".62"/>
-              <g fill="#bac6d2" opacity=".7"><rect x="28" y="71" width="5" height="14" rx="2.5"/><rect x="42" y="71" width="5" height="14" rx="2.5"/><rect x="56" y="71" width="5" height="14" rx="2.5"/><rect x="70" y="71" width="5" height="14" rx="2.5"/><rect x="84" y="71" width="5" height="14" rx="2.5"/><rect x="98" y="71" width="5" height="14" rx="2.5"/><rect x="112" y="71" width="5" height="14" rx="2.5"/><rect x="126" y="71" width="5" height="14" rx="2.5"/><rect x="140" y="71" width="5" height="14" rx="2.5"/><rect x="154" y="71" width="5" height="14" rx="2.5"/><rect x="168" y="71" width="5" height="14" rx="2.5"/></g>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-cat">Smartline</p>
-            <p class="prod-name">Smartline 90</p>
-            <p class="prod-desc">Kesilebilir çerçeve, her uzunluğa uyum. 90cm.</p>
-            <div class="prod-footer">
-              <div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div>
-              <span class="prod-link">İncele →</span>
-            </div>
-          </div>
-        </div>
-        <div class="prod-card reveal d3">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/smartline-3.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 160" style="width:160px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="sm4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eaeff4"/><stop offset="50%" stop-color="#9aa4b0"/><stop offset="100%" stop-color="#ced8e0"/></linearGradient></defs>
-              <rect x="18" y="66" width="164" height="26" rx="3.5" fill="url(#sm4)"/>
-              <rect x="20" y="68" width="160" height="22" rx="3" fill="#dae2ec"/>
-              <rect x="16" y="61" width="168" height="7" rx="2" fill="url(#sm4)"/>
-              <rect x="16" y="61" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".55"/>
-              <rect x="16" y="91" width="168" height="6" rx="2" fill="#8a9099" opacity=".6"/>
-              <g fill="#bac6d2" opacity=".68"><rect x="30" y="71" width="5" height="14" rx="2.5"/><rect x="46" y="71" width="5" height="14" rx="2.5"/><rect x="62" y="71" width="5" height="14" rx="2.5"/><rect x="78" y="71" width="5" height="14" rx="2.5"/><rect x="94" y="71" width="5" height="14" rx="2.5"/><rect x="110" y="71" width="5" height="14" rx="2.5"/><rect x="126" y="71" width="5" height="14" rx="2.5"/><rect x="142" y="71" width="5" height="14" rx="2.5"/><rect x="158" y="71" width="5" height="14" rx="2.5"/></g>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-cat">Smartline</p>
-            <p class="prod-name">Smartline 120</p>
-            <p class="prod-desc">Geniş açık plan banyolar için uzun kanal. 120cm.</p>
-            <div class="prod-footer">
-              <div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div>
-              <span class="prod-link">İncele →</span>
-            </div>
-          </div>
-        </div>
-        <div class="prod-card reveal d4">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/smartline-4.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 160" style="width:160px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="sm5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eaeff4"/><stop offset="50%" stop-color="#9aa4b0"/><stop offset="100%" stop-color="#ced8e0"/></linearGradient></defs>
-              <rect x="18" y="66" width="164" height="26" rx="3.5" fill="url(#sm5)"/>
-              <rect x="20" y="68" width="160" height="22" rx="3" fill="#dae2ec"/>
-              <rect x="16" y="61" width="168" height="7" rx="2" fill="url(#sm5)"/>
-              <rect x="16" y="61" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".5"/>
-              <rect x="16" y="91" width="168" height="6" rx="2" fill="#8a9099" opacity=".58"/>
-              <g fill="#bac6d2" opacity=".65"><rect x="30" y="71" width="6" height="14" rx="3"/><rect x="48" y="71" width="6" height="14" rx="3"/><rect x="66" y="71" width="6" height="14" rx="3"/><rect x="84" y="71" width="6" height="14" rx="3"/><rect x="102" y="71" width="6" height="14" rx="3"/><rect x="120" y="71" width="6" height="14" rx="3"/><rect x="138" y="71" width="6" height="14" rx="3"/><rect x="156" y="71" width="6" height="14" rx="3"/></g>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-cat">Smartline</p>
-            <p class="prod-name">Smartline Slim</p>
-            <p class="prod-desc">Sığ konstrüksiyon için slim profil Smartline varyantı.</p>
-            <div class="prod-footer">
-              <div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div>
-              <span class="prod-link">İncele →</span>
-            </div>
-          </div>
-        </div>
-      </div><!-- /smartline grid -->
-    </div>
-  </div>
-
-  <!-- ────────────── ACROLINE ────────────── -->
-  <div id="acroline" class="channel-block" style="padding:5rem 0">
-    <div class="container">
-      <p class="eyebrow reveal">Seri — 03</p>
-      <div class="rule reveal d1"></div>
-      <div class="section-header reveal d2">
-        <h3 class="page-title">Acroline</h3>
-        <p class="section-header-right">Akrilik yüzey entegrasyonu. Kusursuz geçiş, saf estetik.</p>
-      </div>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/acroline-1.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 160" style="width:160px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="ac1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ecf0f4"/><stop offset="50%" stop-color="#9ca8b4"/><stop offset="100%" stop-color="#ccd4dc"/></linearGradient></defs>
-              <rect x="18" y="62" width="164" height="34" rx="4" fill="url(#ac1)"/>
-              <rect x="20" y="64" width="160" height="30" rx="3.5" fill="#dce4ec"/>
-              <rect x="16" y="56" width="168" height="8" rx="2.5" fill="url(#ac1)"/>
-              <rect x="16" y="56" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".6"/>
-              <rect x="16" y="95" width="168" height="7" rx="2" fill="#8a9099" opacity=".65"/>
-              <g fill="#b8c6d4" opacity=".7"><rect x="26" y="67" width="3" height="22" rx="1.5"/><rect x="34" y="67" width="3" height="22" rx="1.5"/><rect x="42" y="67" width="3" height="22" rx="1.5"/><rect x="50" y="67" width="3" height="22" rx="1.5"/><rect x="58" y="67" width="3" height="22" rx="1.5"/><rect x="66" y="67" width="3" height="22" rx="1.5"/><rect x="74" y="67" width="3" height="22" rx="1.5"/><rect x="82" y="67" width="3" height="22" rx="1.5"/><rect x="90" y="67" width="3" height="22" rx="1.5"/><rect x="98" y="67" width="3" height="22" rx="1.5"/><rect x="106" y="67" width="3" height="22" rx="1.5"/><rect x="114" y="67" width="3" height="22" rx="1.5"/><rect x="122" y="67" width="3" height="22" rx="1.5"/><rect x="130" y="67" width="3" height="22" rx="1.5"/><rect x="138" y="67" width="3" height="22" rx="1.5"/><rect x="146" y="67" width="3" height="22" rx="1.5"/><rect x="154" y="67" width="3" height="22" rx="1.5"/><rect x="162" y="67" width="3" height="22" rx="1.5"/><rect x="170" y="67" width="3" height="22" rx="1.5"/></g>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-cat">Acroline</p>
-            <p class="prod-name">Acroline Standard</p>
-            <p class="prod-desc">Akrilik duş tekneleriyle uyumlu özel profil tasarımı.</p>
-            <div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div>
-          </div>
-        </div>
-        <div class="prod-card reveal d2">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/acroline-2.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 160" style="width:160px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="ac2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#ecf0f4"/><stop offset="50%" stop-color="#9ca8b4"/><stop offset="100%" stop-color="#ccd4dc"/></linearGradient></defs>
-              <rect x="18" y="62" width="164" height="34" rx="4" fill="url(#ac2)"/>
-              <rect x="20" y="64" width="160" height="30" rx="3.5" fill="#dce4ec"/>
-              <rect x="16" y="56" width="168" height="8" rx="2.5" fill="url(#ac2)"/>
-              <rect x="16" y="56" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".55"/>
-              <rect x="16" y="95" width="168" height="7" rx="2" fill="#8a9099" opacity=".6"/>
-              <g fill="#b8c6d4" opacity=".68"><rect x="28" y="67" width="4" height="22" rx="2"/><rect x="40" y="67" width="4" height="22" rx="2"/><rect x="52" y="67" width="4" height="22" rx="2"/><rect x="64" y="67" width="4" height="22" rx="2"/><rect x="76" y="67" width="4" height="22" rx="2"/><rect x="88" y="67" width="4" height="22" rx="2"/><rect x="100" y="67" width="4" height="22" rx="2"/><rect x="112" y="67" width="4" height="22" rx="2"/><rect x="124" y="67" width="4" height="22" rx="2"/><rect x="136" y="67" width="4" height="22" rx="2"/><rect x="148" y="67" width="4" height="22" rx="2"/><rect x="160" y="67" width="4" height="22" rx="2"/></g>
-            </svg>
-          </div>
-          <div class="prod-body">
-            <p class="prod-cat">Acroline</p>
-            <p class="prod-name">Acroline Premium</p>
-            <p class="prod-desc">Entegre contasız sistem, derin kanal profili.</p>
-            <div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div>
-          </div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-eyebrow">Sistem 01</span>
+          <h1 class="slide-title">
+            <span>Contasız</span>
+            <em>Sistem</em>
+          </h1>
+          <p class="slide-desc">Kesintisiz yüzey bütünlüğü. Sızıntı riskini sıfıra indiren mühendislik çözümü.</p>
+          <a href="teknoloji.html#contasiz" class="slide-cta">Keşfet</a>
         </div>
       </div>
-    </div>
-  </div>
 
-  <!-- ─── NATURALINE, COMPACTLINE, SLIM, INFINITY, BASIC ─── -->
-  <!-- Her biri aynı pattern, sadece renk/id/isim değişiyor -->
-
-  <div id="naturaline" class="channel-block" style="background:var(--bg-section);padding:5rem 0">
-    <div class="container">
-      <p class="eyebrow reveal">Seri — 04</p>
-      <div class="rule reveal d1"></div>
-      <div class="section-header reveal d2">
-        <h3 class="page-title">Naturaline</h3>
-        <p class="section-header-right">Doğal taş ve ahşap karo entegrasyonu. Tile-inlay teknolojisi.</p>
+      <!-- SLIDE 2: İkincil Su Drenajı -->
+      <div class="slide" data-index="1">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/slider-ikincil.jpg" -->
+        <div class="slide-bg" style="background-image: url('assets/images/slider-ikincil.jpg');">
+          <div class="slide-placeholder">
+            <span>assets/images/slider-ikincil.jpg</span>
+          </div>
+        </div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-eyebrow">Sistem 02</span>
+          <h1 class="slide-title">
+            <span>İkincil Su</span>
+            <em>Drenajı</em>
+          </h1>
+          <p class="slide-desc">Güvenlik katmanı. İkincil su birikimini yapıdan uzaklaştıran çift koruma sistemi.</p>
+          <a href="teknoloji.html#ikincil" class="slide-cta">Keşfet</a>
+        </div>
       </div>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="nl1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eef0ee"/><stop offset="50%" stop-color="#9aa49a"/><stop offset="100%" stop-color="#ccd4cc"/></linearGradient></defs><rect x="18" y="65" width="164" height="28" rx="4" fill="url(#nl1)"/><rect x="20" y="67" width="160" height="24" rx="3" fill="#d8e0d8"/><rect x="16" y="59" width="168" height="8" rx="2.5" fill="url(#nl1)"/><rect x="16" y="59" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".55"/><rect x="16" y="92" width="168" height="6" rx="2" fill="#8a9099" opacity=".6"/><g fill="#b8c8b8" opacity=".7"><rect x="26" y="69" width="3" height="18" rx="1.5"/><rect x="34" y="69" width="3" height="18" rx="1.5"/><rect x="42" y="69" width="3" height="18" rx="1.5"/><rect x="50" y="69" width="3" height="18" rx="1.5"/><rect x="58" y="69" width="3" height="18" rx="1.5"/><rect x="66" y="69" width="3" height="18" rx="1.5"/><rect x="74" y="69" width="3" height="18" rx="1.5"/><rect x="82" y="69" width="3" height="18" rx="1.5"/><rect x="90" y="69" width="3" height="18" rx="1.5"/><rect x="98" y="69" width="3" height="18" rx="1.5"/><rect x="106" y="69" width="3" height="18" rx="1.5"/><rect x="114" y="69" width="3" height="18" rx="1.5"/><rect x="122" y="69" width="3" height="18" rx="1.5"/><rect x="130" y="69" width="3" height="18" rx="1.5"/><rect x="138" y="69" width="3" height="18" rx="1.5"/><rect x="146" y="69" width="3" height="18" rx="1.5"/><rect x="154" y="69" width="3" height="18" rx="1.5"/><rect x="162" y="69" width="3" height="18" rx="1.5"/><rect x="170" y="69" width="3" height="18" rx="1.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Naturaline</p><p class="prod-name">Naturaline Tile</p><p class="prod-desc">Tile-inlay kapağı ile zemine mükemmel entegrasyon.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="nl2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eef0ee"/><stop offset="50%" stop-color="#9aa49a"/><stop offset="100%" stop-color="#ccd4cc"/></linearGradient></defs><rect x="18" y="65" width="164" height="28" rx="4" fill="url(#nl2)"/><rect x="20" y="67" width="160" height="24" rx="3" fill="#d8e0d8"/><rect x="16" y="59" width="168" height="8" rx="2.5" fill="url(#nl2)"/><rect x="16" y="59" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".5"/><rect x="16" y="92" width="168" height="6" rx="2" fill="#8a9099" opacity=".58"/><g fill="#b8c8b8" opacity=".65"><rect x="28" y="70" width="5" height="16" rx="2.5"/><rect x="42" y="70" width="5" height="16" rx="2.5"/><rect x="56" y="70" width="5" height="16" rx="2.5"/><rect x="70" y="70" width="5" height="16" rx="2.5"/><rect x="84" y="70" width="5" height="16" rx="2.5"/><rect x="98" y="70" width="5" height="16" rx="2.5"/><rect x="112" y="70" width="5" height="16" rx="2.5"/><rect x="126" y="70" width="5" height="16" rx="2.5"/><rect x="140" y="70" width="5" height="16" rx="2.5"/><rect x="154" y="70" width="5" height="16" rx="2.5"/><rect x="168" y="70" width="5" height="16" rx="2.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Naturaline</p><p class="prod-name">Naturaline Stone</p><p class="prod-desc">Doğal taş yüzeyli kapak seçeneği, özel kesim.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d3"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="nl3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eef0ee"/><stop offset="50%" stop-color="#9aa49a"/><stop offset="100%" stop-color="#ccd4cc"/></linearGradient></defs><rect x="18" y="68" width="164" height="22" rx="3.5" fill="url(#nl3)"/><rect x="20" y="70" width="160" height="18" rx="3" fill="#d8e0d8"/><rect x="16" y="62" width="168" height="8" rx="2.5" fill="url(#nl3)"/><rect x="16" y="62" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".45"/><rect x="16" y="89" width="168" height="6" rx="2" fill="#8a9099" opacity=".55"/><g fill="#b8c8b8" opacity=".62"><rect x="28" y="72" width="4" height="12" rx="2"/><rect x="40" y="72" width="4" height="12" rx="2"/><rect x="52" y="72" width="4" height="12" rx="2"/><rect x="64" y="72" width="4" height="12" rx="2"/><rect x="76" y="72" width="4" height="12" rx="2"/><rect x="88" y="72" width="4" height="12" rx="2"/><rect x="100" y="72" width="4" height="12" rx="2"/><rect x="112" y="72" width="4" height="12" rx="2"/><rect x="124" y="72" width="4" height="12" rx="2"/><rect x="136" y="72" width="4" height="12" rx="2"/><rect x="148" y="72" width="4" height="12" rx="2"/><rect x="160" y="72" width="4" height="12" rx="2"/></g></svg></div><div class="prod-body"><p class="prod-cat">Naturaline</p><p class="prod-name">Naturaline Wood</p><p class="prod-desc">Ahşap görünümlü kapak, ıslak alan uyumlu.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
+
+      <!-- SLIDE 3: Invisible Sistem -->
+      <div class="slide" data-index="2">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/slider-invisible.jpg" -->
+        <div class="slide-bg" style="background-image: url('assets/images/slider-invisible.jpg');">
+          <div class="slide-placeholder">
+            <span>assets/images/slider-invisible.jpg</span>
+          </div>
+        </div>
+        <div class="slide-overlay"></div>
+        <div class="slide-content">
+          <span class="slide-eyebrow">Sistem 03</span>
+          <h1 class="slide-title">
+            <span>Invisible</span>
+            <em>Sistem</em>
+          </h1>
+          <p class="slide-desc">Görünmez altyapı. Estetik bütünlüğü bozmadan kusursuz drenaj performansı.</p>
+          <a href="teknoloji.html#invisible" class="slide-cta">Keşfet</a>
+        </div>
       </div>
-    </div>
-  </div>
 
-  <div id="compactline" class="channel-block" style="padding:5rem 0">
-    <div class="container">
-      <p class="eyebrow reveal">Seri — 05</p><div class="rule reveal d1"></div>
-      <div class="section-header reveal d2"><h3 class="page-title">Compactline</h3><p class="section-header-right">Kompakt yapı, maksimum performans. Dar alanlar için ideal.</p></div>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="cl1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8eef4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d2de"/></linearGradient></defs><rect x="28" y="62" width="144" height="34" rx="4.5" fill="url(#cl1)"/><rect x="30" y="64" width="140" height="30" rx="4" fill="#dce4f0"/><rect x="26" y="56" width="148" height="8" rx="3" fill="url(#cl1)"/><rect x="26" y="56" width="148" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".6"/><rect x="26" y="95" width="148" height="6" rx="2" fill="#8a9099" opacity=".65"/><g fill="#b4c2d2" opacity=".7"><rect x="36" y="67" width="3" height="22" rx="1.5"/><rect x="44" y="67" width="3" height="22" rx="1.5"/><rect x="52" y="67" width="3" height="22" rx="1.5"/><rect x="60" y="67" width="3" height="22" rx="1.5"/><rect x="68" y="67" width="3" height="22" rx="1.5"/><rect x="76" y="67" width="3" height="22" rx="1.5"/><rect x="84" y="67" width="3" height="22" rx="1.5"/><rect x="92" y="67" width="3" height="22" rx="1.5"/><rect x="100" y="67" width="3" height="22" rx="1.5"/><rect x="108" y="67" width="3" height="22" rx="1.5"/><rect x="116" y="67" width="3" height="22" rx="1.5"/><rect x="124" y="67" width="3" height="22" rx="1.5"/><rect x="132" y="67" width="3" height="22" rx="1.5"/><rect x="140" y="67" width="3" height="22" rx="1.5"/><rect x="148" y="67" width="3" height="22" rx="1.5"/><rect x="156" y="67" width="3" height="22" rx="1.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Compactline</p><p class="prod-name">Compactline 60</p><p class="prod-desc">60cm kompakt kanal, dar duş alanları için tasarım.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="cl2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8eef4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d2de"/></linearGradient></defs><rect x="28" y="64" width="144" height="30" rx="4.5" fill="url(#cl2)"/><rect x="30" y="66" width="140" height="26" rx="4" fill="#dce4f0"/><rect x="26" y="58" width="148" height="8" rx="3" fill="url(#cl2)"/><rect x="26" y="58" width="148" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".55"/><rect x="26" y="93" width="148" height="6" rx="2" fill="#8a9099" opacity=".6"/><g fill="#b4c2d2" opacity=".65"><rect x="36" y="69" width="4" height="18" rx="2"/><rect x="48" y="69" width="4" height="18" rx="2"/><rect x="60" y="69" width="4" height="18" rx="2"/><rect x="72" y="69" width="4" height="18" rx="2"/><rect x="84" y="69" width="4" height="18" rx="2"/><rect x="96" y="69" width="4" height="18" rx="2"/><rect x="108" y="69" width="4" height="18" rx="2"/><rect x="120" y="69" width="4" height="18" rx="2"/><rect x="132" y="69" width="4" height="18" rx="2"/><rect x="144" y="69" width="4" height="18" rx="2"/><rect x="156" y="69" width="4" height="18" rx="2"/></g></svg></div><div class="prod-body"><p class="prod-cat">Compactline</p><p class="prod-name">Compactline 80</p><p class="prod-desc">İkili tahliye portlu kompakt model. 80cm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="slim" class="channel-block" style="background:var(--bg-section);padding:5rem 0">
-    <div class="container">
-      <p class="eyebrow reveal">Seri — 06</p><div class="rule reveal d1"></div>
-      <div class="section-header reveal d2"><h3 class="page-title">Slim</h3><p class="section-header-right">Ultra ince profil. Sığ döşeme konstrüksiyonları için.</p></div>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:155px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="slm1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b0"/><stop offset="100%" stop-color="#c8d0da"/></linearGradient></defs><rect x="16" y="72" width="168" height="16" rx="2.5" fill="url(#slm1)"/><rect x="18" y="73.5" width="164" height="13" rx="2" fill="#dce4ec"/><rect x="14" y="66" width="172" height="8" rx="2.5" fill="url(#slm1)"/><rect x="14" y="66" width="172" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".6"/><rect x="14" y="87" width="172" height="5" rx="1.5" fill="#8a9099" opacity=".6"/><g fill="#b8c4d0" opacity=".68"><rect x="24" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="32" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="40" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="48" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="56" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="64" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="72" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="80" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="88" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="96" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="104" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="112" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="120" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="128" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="136" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="144" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="152" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="160" y="75.5" width="2.5" height="9" rx="1.25"/><rect x="168" y="75.5" width="2.5" height="9" rx="1.25"/></g></svg></div><div class="prod-body"><p class="prod-cat">Slim</p><p class="prod-name">Slim 70</p><p class="prod-desc">25mm yükseklik, sığ konstrüksiyon uyumlu. 70cm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:155px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="slm2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b0"/><stop offset="100%" stop-color="#c8d0da"/></linearGradient></defs><rect x="16" y="72" width="168" height="16" rx="2.5" fill="url(#slm2)"/><rect x="18" y="73.5" width="164" height="13" rx="2" fill="#dce4ec"/><rect x="14" y="66" width="172" height="8" rx="2.5" fill="url(#slm2)"/><rect x="14" y="66" width="172" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".55"/><rect x="14" y="87" width="172" height="5" rx="1.5" fill="#8a9099" opacity=".55"/><g fill="#b8c4d0" opacity=".62"><rect x="24" y="75.5" width="3" height="9" rx="1.5"/><rect x="34" y="75.5" width="3" height="9" rx="1.5"/><rect x="44" y="75.5" width="3" height="9" rx="1.5"/><rect x="54" y="75.5" width="3" height="9" rx="1.5"/><rect x="64" y="75.5" width="3" height="9" rx="1.5"/><rect x="74" y="75.5" width="3" height="9" rx="1.5"/><rect x="84" y="75.5" width="3" height="9" rx="1.5"/><rect x="94" y="75.5" width="3" height="9" rx="1.5"/><rect x="104" y="75.5" width="3" height="9" rx="1.5"/><rect x="114" y="75.5" width="3" height="9" rx="1.5"/><rect x="124" y="75.5" width="3" height="9" rx="1.5"/><rect x="134" y="75.5" width="3" height="9" rx="1.5"/><rect x="144" y="75.5" width="3" height="9" rx="1.5"/><rect x="154" y="75.5" width="3" height="9" rx="1.5"/><rect x="164" y="75.5" width="3" height="9" rx="1.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Slim</p><p class="prod-name">Slim 90</p><p class="prod-desc">Kesilebilir çerçeve, ayarlanabilir uzunluk. 90cm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d3"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:155px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="slm3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b0"/><stop offset="100%" stop-color="#c8d0da"/></linearGradient></defs><rect x="16" y="72" width="168" height="14" rx="2" fill="url(#slm3)"/><rect x="18" y="73.5" width="164" height="11" rx="1.5" fill="#dce4ec"/><rect x="14" y="67" width="172" height="7" rx="2.5" fill="url(#slm3)"/><rect x="14" y="67" width="172" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".5"/><rect x="14" y="85" width="172" height="5" rx="1.5" fill="#8a9099" opacity=".5"/><g fill="#b8c4d0" opacity=".58"><rect x="24" y="75.5" width="3" height="7" rx="1.5"/><rect x="34" y="75.5" width="3" height="7" rx="1.5"/><rect x="44" y="75.5" width="3" height="7" rx="1.5"/><rect x="54" y="75.5" width="3" height="7" rx="1.5"/><rect x="64" y="75.5" width="3" height="7" rx="1.5"/><rect x="74" y="75.5" width="3" height="7" rx="1.5"/><rect x="84" y="75.5" width="3" height="7" rx="1.5"/><rect x="94" y="75.5" width="3" height="7" rx="1.5"/><rect x="104" y="75.5" width="3" height="7" rx="1.5"/><rect x="114" y="75.5" width="3" height="7" rx="1.5"/><rect x="124" y="75.5" width="3" height="7" rx="1.5"/><rect x="134" y="75.5" width="3" height="7" rx="1.5"/><rect x="144" y="75.5" width="3" height="7" rx="1.5"/><rect x="154" y="75.5" width="3" height="7" rx="1.5"/><rect x="164" y="75.5" width="3" height="7" rx="1.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Slim</p><p class="prod-name">Slim 120</p><p class="prod-desc">Uzun slim profil, yüksek kapasiteli tahliye. 120cm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="infinity" class="channel-block" style="padding:5rem 0">
-    <div class="container">
-      <p class="eyebrow reveal">Seri — 07</p><div class="rule reveal d1"></div>
-      <div class="section-header reveal d2"><h3 class="page-title">Infinity</h3><p class="section-header-right">Görünmez kanal sistemi. Sonsuz zemin, sıfır kesinti.</p></div>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap" style="background:var(--gold-pale)"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="if1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0ece6"/><stop offset="100%" stop-color="#e4ddd5"/></linearGradient></defs><rect x="18" y="70" width="164" height="20" rx="2" fill="url(#if1)"/><rect x="18" y="70" width="164" height="20" rx="2" fill="none" stroke="#d8d0c4" stroke-width="1.2"/><g stroke="#ccc4b8" stroke-width=".9" opacity=".85"><line x1="28" y1="72" x2="28" y2="88"/><line x1="38" y1="72" x2="38" y2="88"/><line x1="48" y1="72" x2="48" y2="88"/><line x1="58" y1="72" x2="58" y2="88"/><line x1="68" y1="72" x2="68" y2="88"/><line x1="78" y1="72" x2="78" y2="88"/><line x1="88" y1="72" x2="88" y2="88"/><line x1="98" y1="72" x2="98" y2="88"/><line x1="108" y1="72" x2="108" y2="88"/><line x1="118" y1="72" x2="118" y2="88"/><line x1="128" y1="72" x2="128" y2="88"/><line x1="138" y1="72" x2="138" y2="88"/><line x1="148" y1="72" x2="148" y2="88"/><line x1="158" y1="72" x2="158" y2="88"/><line x1="168" y1="72" x2="168" y2="88"/></g><text x="100" y="114" font-family="Montserrat,sans-serif" font-size="8" fill="#9a7a3a" text-anchor="middle" font-weight="600" letter-spacing=".2em">INVISIBLE</text></svg></div><div class="prod-body"><p class="prod-cat">Infinity</p><p class="prod-name">Infinity Invisible</p><p class="prod-desc">Tile-inlay kapak, zemine tamamen entegre görünmez sistem.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="if2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b0"/><stop offset="100%" stop-color="#c8d0da"/></linearGradient></defs><rect x="18" y="66" width="164" height="28" rx="3.5" fill="url(#if2)"/><rect x="20" y="68" width="160" height="24" rx="3" fill="#dce4ec"/><rect x="16" y="60" width="168" height="8" rx="2.5" fill="url(#if2)"/><rect x="16" y="60" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".55"/><rect x="16" y="93" width="168" height="6" rx="2" fill="#8a9099" opacity=".6"/><g fill="#b8c4d0" opacity=".68"><rect x="26" y="70" width="3" height="18" rx="1.5"/><rect x="34" y="70" width="3" height="18" rx="1.5"/><rect x="42" y="70" width="3" height="18" rx="1.5"/><rect x="50" y="70" width="3" height="18" rx="1.5"/><rect x="58" y="70" width="3" height="18" rx="1.5"/><rect x="66" y="70" width="3" height="18" rx="1.5"/><rect x="74" y="70" width="3" height="18" rx="1.5"/><rect x="82" y="70" width="3" height="18" rx="1.5"/><rect x="90" y="70" width="3" height="18" rx="1.5"/><rect x="98" y="70" width="3" height="18" rx="1.5"/><rect x="106" y="70" width="3" height="18" rx="1.5"/><rect x="114" y="70" width="3" height="18" rx="1.5"/><rect x="122" y="70" width="3" height="18" rx="1.5"/><rect x="130" y="70" width="3" height="18" rx="1.5"/><rect x="138" y="70" width="3" height="18" rx="1.5"/><rect x="146" y="70" width="3" height="18" rx="1.5"/><rect x="154" y="70" width="3" height="18" rx="1.5"/><rect x="162" y="70" width="3" height="18" rx="1.5"/><rect x="170" y="70" width="3" height="18" rx="1.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Infinity</p><p class="prod-name">Infinity Linear</p><p class="prod-desc">Duvar kenarı yerleşim, sonsuz hat etkisi.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div></div>
-      </div>
-    </div>
-  </div>
-
-  <div id="basic" class="channel-block" style="background:var(--bg-section);padding:5rem 0">
-    <div class="container">
-      <p class="eyebrow reveal">Seri — 08</p><div class="rule reveal d1"></div>
-      <div class="section-header reveal d2"><h3 class="page-title">Basic</h3><p class="section-header-right">Kaliteden ödün vermeden ekonomik çözüm.</p></div>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="bs1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a2ae"/><stop offset="100%" stop-color="#c8ced8"/></linearGradient></defs><rect x="18" y="68" width="164" height="24" rx="3.5" fill="url(#bs1)"/><rect x="20" y="70" width="160" height="20" rx="3" fill="#dce2ec"/><rect x="16" y="62" width="168" height="8" rx="2.5" fill="url(#bs1)"/><rect x="16" y="62" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".5"/><rect x="16" y="91" width="168" height="6" rx="2" fill="#8a9099" opacity=".55"/><g fill="#b4c0ce" opacity=".65"><rect x="26" y="72" width="3" height="14" rx="1.5"/><rect x="34" y="72" width="3" height="14" rx="1.5"/><rect x="42" y="72" width="3" height="14" rx="1.5"/><rect x="50" y="72" width="3" height="14" rx="1.5"/><rect x="58" y="72" width="3" height="14" rx="1.5"/><rect x="66" y="72" width="3" height="14" rx="1.5"/><rect x="74" y="72" width="3" height="14" rx="1.5"/><rect x="82" y="72" width="3" height="14" rx="1.5"/><rect x="90" y="72" width="3" height="14" rx="1.5"/><rect x="98" y="72" width="3" height="14" rx="1.5"/><rect x="106" y="72" width="3" height="14" rx="1.5"/><rect x="114" y="72" width="3" height="14" rx="1.5"/><rect x="122" y="72" width="3" height="14" rx="1.5"/><rect x="130" y="72" width="3" height="14" rx="1.5"/><rect x="138" y="72" width="3" height="14" rx="1.5"/><rect x="146" y="72" width="3" height="14" rx="1.5"/><rect x="154" y="72" width="3" height="14" rx="1.5"/><rect x="162" y="72" width="3" height="14" rx="1.5"/><rect x="170" y="72" width="3" height="14" rx="1.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Basic</p><p class="prod-name">Basic 70</p><p class="prod-desc">Standart kurulum, güvenilir performans. 70cm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="bs2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a2ae"/><stop offset="100%" stop-color="#c8ced8"/></linearGradient></defs><rect x="18" y="68" width="164" height="24" rx="3.5" fill="url(#bs2)"/><rect x="20" y="70" width="160" height="20" rx="3" fill="#dce2ec"/><rect x="16" y="62" width="168" height="8" rx="2.5" fill="url(#bs2)"/><rect x="16" y="62" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".45"/><rect x="16" y="91" width="168" height="6" rx="2" fill="#8a9099" opacity=".5"/><g fill="#b4c0ce" opacity=".6"><rect x="26" y="72" width="4" height="14" rx="2"/><rect x="38" y="72" width="4" height="14" rx="2"/><rect x="50" y="72" width="4" height="14" rx="2"/><rect x="62" y="72" width="4" height="14" rx="2"/><rect x="74" y="72" width="4" height="14" rx="2"/><rect x="86" y="72" width="4" height="14" rx="2"/><rect x="98" y="72" width="4" height="14" rx="2"/><rect x="110" y="72" width="4" height="14" rx="2"/><rect x="122" y="72" width="4" height="14" rx="2"/><rect x="134" y="72" width="4" height="14" rx="2"/><rect x="146" y="72" width="4" height="14" rx="2"/><rect x="158" y="72" width="4" height="14" rx="2"/><rect x="170" y="72" width="4" height="14" rx="2"/></g></svg></div><div class="prod-body"><p class="prod-cat">Basic</p><p class="prod-name">Basic 90</p><p class="prod-desc">Uygun fiyat, EN 1253 sertifikalı. 90cm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d3"><div class="prod-img-wrap"><svg viewBox="0 0 200 160" style="width:150px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="bs3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a2ae"/><stop offset="100%" stop-color="#c8ced8"/></linearGradient></defs><rect x="18" y="68" width="164" height="24" rx="3.5" fill="url(#bs3)"/><rect x="20" y="70" width="160" height="20" rx="3" fill="#dce2ec"/><rect x="16" y="62" width="168" height="8" rx="2.5" fill="url(#bs3)"/><rect x="16" y="62" width="168" height="2.5" rx="1.25" fill="#9a7a3a" opacity=".4"/><rect x="16" y="91" width="168" height="6" rx="2" fill="#8a9099" opacity=".48"/><g fill="#b4c0ce" opacity=".55"><rect x="26" y="72" width="5" height="14" rx="2.5"/><rect x="40" y="72" width="5" height="14" rx="2.5"/><rect x="54" y="72" width="5" height="14" rx="2.5"/><rect x="68" y="72" width="5" height="14" rx="2.5"/><rect x="82" y="72" width="5" height="14" rx="2.5"/><rect x="96" y="72" width="5" height="14" rx="2.5"/><rect x="110" y="72" width="5" height="14" rx="2.5"/><rect x="124" y="72" width="5" height="14" rx="2.5"/><rect x="138" y="72" width="5" height="14" rx="2.5"/><rect x="152" y="72" width="5" height="14" rx="2.5"/><rect x="166" y="72" width="5" height="14" rx="2.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Basic</p><p class="prod-name">Basic 120</p><p class="prod-desc">Büyük hacimler için uzun basic kanal. 120cm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-      </div>
-    </div>
-  </div>
-
-</section><!-- /channels -->
-
-
-<!-- ══════════════════════════════════════════════════════
-     SCENE 03 — YER SÜZGEÇLERİ
-══════════════════════════════════════════════════════ -->
-<section id="floor-drains" class="floor-drain-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div>
-        <p class="eyebrow">Yer Süzgeçleri</p>
-        <div class="rule"></div>
-        <h2 class="page-title">Nokta Drenaj<br><em>Çözümleri</em></h2>
-      </div>
-      <p class="section-header-right">Banyo merkezleri ve ıslak hacimler için dört farklı yer süzgeci serisi.</p>
     </div>
 
-    <!-- ── SMART ── -->
-    <div id="smart" style="margin-bottom:4rem">
-      <p class="eyebrow reveal" style="margin-bottom:.5rem">Seri — 01</p>
-      <h3 style="font-size:1.5rem;font-weight:500;color:var(--text);margin-bottom:2rem" class="reveal d1">Smart</h3>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/smart-sq.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="sw1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d0dc"/></linearGradient></defs>
-              <rect x="50" y="40" width="100" height="100" rx="5" fill="url(#sw1)"/>
-              <rect x="52" y="42" width="96" height="96" rx="4" fill="#dce4f0"/>
-              <rect x="58" y="48" width="84" height="84" rx="3" fill="none" stroke="#c0cad8" stroke-width="1.2" opacity=".55"/>
-              <rect x="66" y="56" width="68" height="68" rx="2.5" fill="none" stroke="#c0cad8" stroke-width=".8" opacity=".42"/>
-              <circle cx="100" cy="90" r="16" fill="#d8e0ec"/>
-              <circle cx="100" cy="90" r="12" fill="none" stroke="#a8b4c4" stroke-width="1.5" opacity=".7"/>
-              <circle cx="100" cy="90" r="7"  fill="none" stroke="#9aa4b2" stroke-width="1"   opacity=".55"/>
-              <g stroke="#b8c4d4" stroke-width=".9" opacity=".5"><line x1="100" y1="53" x2="100" y2="60"/><line x1="100" y1="120" x2="100" y2="127"/><line x1="63" y1="90" x2="70" y2="90"/><line x1="130" y1="90" x2="137" y2="90"/></g>
-              <rect x="48" y="38" width="104" height="4" rx="2" fill="#9a7a3a" opacity=".55"/>
-            </svg>
-          </div>
-          <div class="prod-body"><p class="prod-cat">Smart</p><p class="prod-name">Smart Kare</p><p class="prod-desc">Kare form, çoklu tahliye portlu akıllı süzgeç sistemi.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div>
-        </div>
-        <div class="prod-card reveal d2">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/smart-rd.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg">
-              <defs><linearGradient id="sw2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d0dc"/></linearGradient></defs>
-              <circle cx="100" cy="90" r="52" fill="url(#sw2)"/>
-              <circle cx="100" cy="90" r="50" fill="#dce4f0"/>
-              <circle cx="100" cy="90" r="44" fill="none" stroke="#c0cad8" stroke-width="1.2" opacity=".55"/>
-              <circle cx="100" cy="90" r="36" fill="none" stroke="#c0cad8" stroke-width=".8" opacity=".42"/>
-              <circle cx="100" cy="90" r="16" fill="#d0d8e8"/>
-              <circle cx="100" cy="90" r="11" fill="none" stroke="#a0acbc" stroke-width="1.5" opacity=".7"/>
-              <g stroke="#b0bcc8" stroke-width=".9" opacity=".5"><line x1="100" y1="56" x2="100" y2="64"/><line x1="100" y1="116" x2="100" y2="124"/><line x1="64" y1="90" x2="72" y2="90"/><line x1="128" y1="90" x2="136" y2="90"/></g>
-              <circle cx="100" cy="38" r="2" fill="#9a7a3a" opacity=".55"/>
-            </svg>
-          </div>
-          <div class="prod-body"><p class="prod-cat">Smart</p><p class="prod-name">Smart Yuvarlak</p><p class="prod-desc">Yuvarlak form, koku kilidli sifon entegreli.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div><div class="fdot gold" data-finish="gold"></div></div><span class="prod-link">İncele →</span></div></div>
-        </div>
-        <div class="prod-card reveal d3">
-          <div class="prod-img-wrap">
-            <!-- ▼ <img src="images/smart-tile.jpg" class="prod-photo" style="opacity:0"> -->
-            <svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg">
-              <defs><linearGradient id="sw3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0ece6"/><stop offset="100%" stop-color="#e4ddd5"/></linearGradient></defs>
-              <rect x="50" y="40" width="100" height="100" rx="5" fill="url(#sw3)"/>
-              <rect x="50" y="40" width="100" height="100" rx="5" fill="none" stroke="#d8d0c4" stroke-width="1.2"/>
-              <g stroke="#ccc4b8" stroke-width=".85" opacity=".82"><line x1="60" y1="42" x2="60" y2="138"/><line x1="70" y1="42" x2="70" y2="138"/><line x1="80" y1="42" x2="80" y2="138"/><line x1="90" y1="42" x2="90" y2="138"/><line x1="100" y1="42" x2="100" y2="138"/><line x1="110" y1="42" x2="110" y2="138"/><line x1="120" y1="42" x2="120" y2="138"/><line x1="130" y1="42" x2="130" y2="138"/><line x1="140" y1="42" x2="140" y2="138"/></g>
-              <text x="100" y="160" font-family="Montserrat,sans-serif" font-size="8" fill="#9a7a3a" text-anchor="middle" font-weight="600" letter-spacing=".15em">TILE INLAY</text>
-            </svg>
-          </div>
-          <div class="prod-body"><p class="prod-cat">Smart</p><p class="prod-name">Smart Tile</p><p class="prod-desc">Tile-inlay kapak uyumlu, görünmez akıllı süzgeç.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div>
-        </div>
+    <!-- Slider Kontrolleri -->
+    <div class="slider-controls">
+      <button class="slider-arrow prev" id="slidePrev" aria-label="Önceki">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="slider-dots">
+        <button class="dot active" data-slide="0" aria-label="Slide 1"></button>
+        <button class="dot" data-slide="1" aria-label="Slide 2"></button>
+        <button class="dot" data-slide="2" aria-label="Slide 3"></button>
       </div>
-    </div><!-- /smart -->
-
-    <!-- ── MODULA ── -->
-    <div id="modula" style="margin-bottom:4rem">
-      <p class="eyebrow reveal" style="margin-bottom:.5rem">Seri — 02</p>
-      <h3 style="font-size:1.5rem;font-weight:500;color:var(--text);margin-bottom:2rem" class="reveal d1">Modula</h3>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="mo1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d0dc"/></linearGradient></defs><rect x="55" y="45" width="90" height="90" rx="8" fill="url(#mo1)"/><rect x="57" y="47" width="86" height="86" rx="7" fill="#dce4f0"/><rect x="63" y="53" width="74" height="74" rx="5" fill="none" stroke="#c0cad8" stroke-width="1" opacity=".5"/><circle cx="100" cy="90" r="14" fill="#d0d8ea"/><circle cx="100" cy="90" r="10" fill="none" stroke="#a8b4c4" stroke-width="1.5" opacity=".65"/><g stroke="#b4c0d0" stroke-width=".85" opacity=".5"><line x1="100" y1="57" x2="100" y2="63"/><line x1="100" y1="117" x2="100" y2="123"/><line x1="67" y1="90" x2="73" y2="90"/><line x1="127" y1="90" x2="133" y2="90"/></g><rect x="53" y="43" width="94" height="4" rx="2" fill="#9a7a3a" opacity=".5"/></svg></div><div class="prod-body"><p class="prod-cat">Modula</p><p class="prod-name">Modula Kare</p><p class="prod-desc">Modüler yapı, farklı kapak tasarımları ile uyumlu.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div><div class="fdot gold" data-finish="gold"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="mo2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d0dc"/></linearGradient></defs><rect x="55" y="45" width="90" height="90" rx="3" fill="url(#mo2)"/><rect x="57" y="47" width="86" height="86" rx="2.5" fill="#dce4f0"/><g fill="#b8c4d2" opacity=".7"><rect x="63" y="53" width="4" height="74" rx="2"/><rect x="73" y="53" width="4" height="74" rx="2"/><rect x="83" y="53" width="4" height="74" rx="2"/><rect x="93" y="53" width="4" height="74" rx="2"/><rect x="103" y="53" width="4" height="74" rx="2"/><rect x="113" y="53" width="4" height="74" rx="2"/><rect x="123" y="53" width="4" height="74" rx="2"/><rect x="133" y="53" width="4" height="74" rx="2"/></g><rect x="53" y="43" width="94" height="4" rx="2" fill="#9a7a3a" opacity=".45"/></svg></div><div class="prod-body"><p class="prod-cat">Modula</p><p class="prod-name">Modula Grid</p><p class="prod-desc">Grid ızgara tasarım, yüksek debi kapasiteli.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d3"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="mo3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d0dc"/></linearGradient></defs><circle cx="100" cy="90" r="46" fill="url(#mo3)"/><circle cx="100" cy="90" r="44" fill="#dce4f0"/><circle cx="100" cy="90" r="38" fill="none" stroke="#c0cad8" stroke-width="1" opacity=".5"/><circle cx="100" cy="90" r="14" fill="#d0d8ea"/><circle cx="100" cy="90" r="10" fill="none" stroke="#a8b4c4" stroke-width="1.2" opacity=".6"/></svg></div><div class="prod-body"><p class="prod-cat">Modula</p><p class="prod-name">Modula Round</p><p class="prod-desc">Yuvarlak modüler süzgeç, paslanmaz çelik kapak.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div><div class="fdot black" data-finish="black"></div><div class="fdot gold" data-finish="gold"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d4"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="mo4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf4"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c8d0dc"/></linearGradient></defs><rect x="55" y="45" width="90" height="90" rx="12" fill="url(#mo4)"/><rect x="57" y="47" width="86" height="86" rx="11" fill="#dce4f0"/><g stroke="#b4c0d0" stroke-width="1" opacity=".55"><line x1="70" y1="54" x2="70" y2="130"/><line x1="82" y1="54" x2="82" y2="130"/><line x1="94" y1="54" x2="94" y2="130"/><line x1="106" y1="54" x2="106" y2="130"/><line x1="118" y1="54" x2="118" y2="130"/><line x1="130" y1="54" x2="130" y2="130"/></g></svg></div><div class="prod-body"><p class="prod-cat">Modula</p><p class="prod-name">Modula Slim</p><p class="prod-desc">Slim yuvarlak köşe modüler tasarım, minimal görünüm.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-      </div>
-    </div><!-- /modula -->
-
-    <!-- ── NATURA ── -->
-    <div id="natura" style="margin-bottom:4rem">
-      <p class="eyebrow reveal" style="margin-bottom:.5rem">Seri — 03</p>
-      <h3 style="font-size:1.5rem;font-weight:500;color:var(--text);margin-bottom:2rem" class="reveal d1">Natura</h3>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg"><defs><linearGradient id="na1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#f0ece6"/><stop offset="100%" stop-color="#e4ddd5"/></linearGradient></defs><rect x="50" y="40" width="100" height="100" rx="5" fill="url(#na1)"/><rect x="50" y="40" width="100" height="100" rx="5" fill="none" stroke="#d8d0c4" stroke-width="1.2"/><g stroke="#ccc4b8" stroke-width=".85" opacity=".8"><line x1="60" y1="42" x2="60" y2="138"/><line x1="72" y1="42" x2="72" y2="138"/><line x1="84" y1="42" x2="84" y2="138"/><line x1="96" y1="42" x2="96" y2="138"/><line x1="108" y1="42" x2="108" y2="138"/><line x1="120" y1="42" x2="120" y2="138"/><line x1="132" y1="42" x2="132" y2="138"/><line x1="144" y1="42" x2="144" y2="138"/></g></svg></div><div class="prod-body"><p class="prod-cat">Natura</p><p class="prod-name">Natura Stone</p><p class="prod-desc">Doğal taş kapak entegreli, zemin uyumlu süzgeç.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="na2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#eef0ee"/><stop offset="50%" stop-color="#9aa49a"/><stop offset="100%" stop-color="#ccd4cc"/></linearGradient></defs><rect x="50" y="40" width="100" height="100" rx="5" fill="url(#na2)"/><rect x="52" y="42" width="96" height="96" rx="4.5" fill="#d8e0d8"/><g fill="#b4c4b4" opacity=".68"><rect x="60" y="50" width="4" height="72" rx="2"/><rect x="70" y="50" width="4" height="72" rx="2"/><rect x="80" y="50" width="4" height="72" rx="2"/><rect x="90" y="50" width="4" height="72" rx="2"/><rect x="100" y="50" width="4" height="72" rx="2"/><rect x="110" y="50" width="4" height="72" rx="2"/><rect x="120" y="50" width="4" height="72" rx="2"/><rect x="130" y="50" width="4" height="72" rx="2"/></g><rect x="48" y="38" width="104" height="4" rx="2" fill="#9a7a3a" opacity=".5"/></svg></div><div class="prod-body"><p class="prod-cat">Natura</p><p class="prod-name">Natura Wood</p><p class="prod-desc">Ahşap yüzey kapak, ıslak alan sertifikalı.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-      </div>
-    </div><!-- /natura -->
-
-    <!-- ── STANDART ── -->
-    <div id="standart">
-      <p class="eyebrow reveal" style="margin-bottom:.5rem">Seri — 04</p>
-      <h3 style="font-size:1.5rem;font-weight:500;color:var(--text);margin-bottom:2rem" class="reveal d1">Standart</h3>
-      <div class="prod-grid">
-        <div class="prod-card reveal d1"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="st1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a2ae"/><stop offset="100%" stop-color="#c8ced8"/></linearGradient></defs><rect x="55" y="45" width="90" height="90" rx="4" fill="url(#st1)"/><rect x="57" y="47" width="86" height="86" rx="3.5" fill="#dce2ec"/><rect x="63" y="53" width="74" height="74" rx="2" fill="none" stroke="#bcc6d2" stroke-width="1" opacity=".5"/><circle cx="100" cy="90" r="12" fill="#d0d8e8"/><circle cx="100" cy="90" r="8" fill="none" stroke="#a4b0c0" stroke-width="1.2" opacity=".65"/></svg></div><div class="prod-body"><p class="prod-cat">Standart</p><p class="prod-name">Standart 10x10</p><p class="prod-desc">10×10cm standart yer süzgeci, 304 paslanmaz çelik.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d2"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="st2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a2ae"/><stop offset="100%" stop-color="#c8ced8"/></linearGradient></defs><rect x="45" y="35" width="110" height="110" rx="5" fill="url(#st2)"/><rect x="47" y="37" width="106" height="106" rx="4.5" fill="#dce2ec"/><rect x="53" y="43" width="94" height="94" rx="3" fill="none" stroke="#bcc6d2" stroke-width="1.2" opacity=".5"/><circle cx="100" cy="90" r="14" fill="#d0d8e8"/><circle cx="100" cy="90" r="10" fill="none" stroke="#a4b0c0" stroke-width="1.5" opacity=".65"/></svg></div><div class="prod-body"><p class="prod-cat">Standart</p><p class="prod-name">Standart 15x15</p><p class="prod-desc">15×15cm büyük kapasiteli standart yer süzgeci.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d3"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="st3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a2ae"/><stop offset="100%" stop-color="#c8ced8"/></linearGradient></defs><circle cx="100" cy="90" r="50" fill="url(#st3)"/><circle cx="100" cy="90" r="48" fill="#dce2ec"/><circle cx="100" cy="90" r="42" fill="none" stroke="#bcc6d2" stroke-width="1.2" opacity=".5"/><circle cx="100" cy="90" r="12" fill="#d0d8e8"/><circle cx="100" cy="90" r="8" fill="none" stroke="#a4b0c0" stroke-width="1.2" opacity=".6"/></svg></div><div class="prod-body"><p class="prod-cat">Standart</p><p class="prod-name">Standart Yuvarlak</p><p class="prod-desc">Yuvarlak 10cm çaplı, ekonomik paslanmaz süzgeç.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-        <div class="prod-card reveal d4"><div class="prod-img-wrap"><svg viewBox="0 0 200 180" style="width:130px" xmlns="http://www.w3.org/2000/svg" class="prod-svg"><defs><linearGradient id="st4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a2ae"/><stop offset="100%" stop-color="#c8ced8"/></linearGradient></defs><rect x="55" y="55" width="90" height="70" rx="5" fill="url(#st4)"/><rect x="57" y="57" width="86" height="66" rx="4.5" fill="#dce2ec"/><g fill="#b4c0ce" opacity=".65"><rect x="64" y="62" width="3" height="52" rx="1.5"/><rect x="72" y="62" width="3" height="52" rx="1.5"/><rect x="80" y="62" width="3" height="52" rx="1.5"/><rect x="88" y="62" width="3" height="52" rx="1.5"/><rect x="96" y="62" width="3" height="52" rx="1.5"/><rect x="104" y="62" width="3" height="52" rx="1.5"/><rect x="112" y="62" width="3" height="52" rx="1.5"/><rect x="120" y="62" width="3" height="52" rx="1.5"/><rect x="128" y="62" width="3" height="52" rx="1.5"/><rect x="136" y="62" width="3" height="52" rx="1.5"/></g></svg></div><div class="prod-body"><p class="prod-cat">Standart</p><p class="prod-name">Standart Dikdörtgen</p><p class="prod-desc">15×10cm dikdörtgen form, çoklu gövde uyumlu.</p><div class="prod-footer"><div class="finish-dots"><div class="fdot steel" data-finish="steel"></div></div><span class="prod-link">İncele →</span></div></div></div>
-      </div>
-    </div><!-- /standart -->
-
-  </div>
-</section><!-- /floor-drains -->
-
-
-<!-- ══════════════════════════════════════════════════════
-     SCENE 04 — SİFONLAR
-     13 ürün: S01 S02 S03 S04 S05 S11 S153 S15 S40 S44 S29 S77 S65
-══════════════════════════════════════════════════════ -->
-<section id="siphons" class="siphon-section">
-  <div class="container">
-    <div class="section-header reveal">
-      <div>
-        <p class="eyebrow">Sifonlar</p>
-        <div class="rule"></div>
-        <h2 class="page-title">13 Model,<br><em>Tam Çözüm</em></h2>
-      </div>
-      <p class="section-header-right">Her kurulum senaryosu için 304-grade paslanmaz çelik sifon ailesi.</p>
+      <button class="slider-arrow next" id="slideNext" aria-label="Sonraki">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
     </div>
 
-    <div class="siphon-grid">
-
-      <!-- S01 -->
-      <div class="siphon-card reveal d1">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s01.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <circle cx="80" cy="80" r="50" fill="url(#sp1)"/>
-            <circle cx="80" cy="80" r="48" fill="#dce4f0"/>
-            <circle cx="80" cy="80" r="40" fill="none" stroke="#b8c4d4" stroke-width="1" opacity=".55"/>
-            <circle cx="80" cy="80" r="28" fill="#d0d8ea"/>
-            <circle cx="80" cy="80" r="20" fill="none" stroke="#a4b0c4" stroke-width="1.5" opacity=".65"/>
-            <circle cx="80" cy="80" r="10" fill="none" stroke="#9aa4b4" stroke-width="1" opacity=".5"/>
-            <rect cx="78" cy="28" width="4" height="2" rx="1" fill="#9a7a3a" opacity=".5"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S01</p>
-          <p class="siphon-label">Standart yuvarlak sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S02 -->
-      <div class="siphon-card reveal d2">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s02.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="30" y="30" width="100" height="100" rx="5" fill="url(#sp2)"/>
-            <rect x="32" y="32" width="96" height="96" rx="4.5" fill="#dce4f0"/>
-            <rect x="40" y="40" width="80" height="80" rx="3" fill="none" stroke="#b8c4d4" stroke-width="1" opacity=".5"/>
-            <circle cx="80" cy="80" r="16" fill="#d0d8ea"/>
-            <circle cx="80" cy="80" r="10" fill="none" stroke="#a4b0c4" stroke-width="1.5" opacity=".65"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S02</p>
-          <p class="siphon-label">Kare gövdeli sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S03 -->
-      <div class="siphon-card reveal d3">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s03.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="30" y="40" width="100" height="80" rx="5" fill="url(#sp3)"/>
-            <rect x="32" y="42" width="96" height="76" rx="4.5" fill="#dce4f0"/>
-            <g fill="#b8c4d2" opacity=".68"><rect x="40" y="50" width="4" height="56" rx="2"/><rect x="52" y="50" width="4" height="56" rx="2"/><rect x="64" y="50" width="4" height="56" rx="2"/><rect x="76" y="50" width="4" height="56" rx="2"/><rect x="88" y="50" width="4" height="56" rx="2"/><rect x="100" y="50" width="4" height="56" rx="2"/><rect x="112" y="50" width="4" height="56" rx="2"/><rect x="124" y="50" width="4" height="56" rx="2"/></g>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S03</p>
-          <p class="siphon-label">Dikdörtgen ızgara sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S04 -->
-      <div class="siphon-card reveal d4">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s04.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp4" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <circle cx="80" cy="80" r="50" fill="url(#sp4)"/>
-            <circle cx="80" cy="80" r="48" fill="#dce4f0"/>
-            <circle cx="80" cy="80" r="36" fill="none" stroke="#b8c4d4" stroke-width="2" opacity=".45"/>
-            <circle cx="80" cy="80" r="22" fill="#d0d8ea"/>
-            <circle cx="80" cy="80" r="14" fill="none" stroke="#a4b0c4" stroke-width="1.8" opacity=".6"/>
-            <g stroke="#b0bcc8" stroke-width=".9" opacity=".5"><line x1="80" y1="44" x2="80" y2="52"/><line x1="80" y1="108" x2="80" y2="116"/><line x1="44" y1="80" x2="52" y2="80"/><line x1="108" y1="80" x2="116" y2="80"/></g>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S04</p>
-          <p class="siphon-label">Derin gövde yuvarlak sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S05 -->
-      <div class="siphon-card reveal d5">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s05.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp5" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="30" y="30" width="100" height="100" rx="12" fill="url(#sp5)"/>
-            <rect x="32" y="32" width="96" height="96" rx="11" fill="#dce4f0"/>
-            <rect x="40" y="40" width="80" height="80" rx="8" fill="none" stroke="#b8c4d4" stroke-width="1" opacity=".5"/>
-            <circle cx="80" cy="80" r="18" fill="#d0d8ea"/>
-            <circle cx="80" cy="80" r="12" fill="none" stroke="#a4b0c4" stroke-width="1.5" opacity=".6"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S05</p>
-          <p class="siphon-label">Yuvarlak köşe kare sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S11 -->
-      <div class="siphon-card reveal d1">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s11.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp6" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="30" y="50" width="100" height="60" rx="4" fill="url(#sp6)"/>
-            <rect x="32" y="52" width="96" height="56" rx="3.5" fill="#dce4f0"/>
-            <g stroke="#b4c0d0" stroke-width="1" opacity=".6"><line x1="42" y1="56" x2="42" y2="104"/><line x1="54" y1="56" x2="54" y2="104"/><line x1="66" y1="56" x2="66" y2="104"/><line x1="78" y1="56" x2="78" y2="104"/><line x1="90" y1="56" x2="90" y2="104"/><line x1="102" y1="56" x2="102" y2="104"/><line x1="114" y1="56" x2="114" y2="104"/></g>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S11</p>
-          <p class="siphon-label">Slim dikdörtgen sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S153 -->
-      <div class="siphon-card reveal d2">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s153.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp7" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <circle cx="80" cy="80" r="48" fill="url(#sp7)"/>
-            <circle cx="80" cy="80" r="46" fill="#dce4f0"/>
-            <circle cx="80" cy="80" r="38" fill="#d0d8ea"/>
-            <circle cx="80" cy="80" r="28" fill="none" stroke="#a4b0c4" stroke-width="2" opacity=".6"/>
-            <circle cx="80" cy="80" r="16" fill="#c8d4e8"/>
-            <circle cx="80" cy="80" r="8" fill="none" stroke="#9aa4b4" stroke-width="1.5" opacity=".55"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S153</p>
-          <p class="siphon-label">Çift çember derinlikli sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S15 -->
-      <div class="siphon-card reveal d3">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s15.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp8" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="30" y="30" width="100" height="100" rx="5" fill="url(#sp8)"/>
-            <rect x="32" y="32" width="96" height="96" rx="4.5" fill="#dce4f0"/>
-            <g fill="#b8c4d2" opacity=".65"><rect x="40" y="40" width="4" height="80" rx="2"/><rect x="52" y="40" width="4" height="80" rx="2"/><rect x="64" y="40" width="4" height="80" rx="2"/><rect x="76" y="40" width="4" height="80" rx="2"/><rect x="88" y="40" width="4" height="80" rx="2"/><rect x="100" y="40" width="4" height="80" rx="2"/><rect x="112" y="40" width="4" height="80" rx="2"/></g>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S15</p>
-          <p class="siphon-label">Geniş kare ızgara sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S40 -->
-      <div class="siphon-card reveal d4">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s40.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp9" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <circle cx="80" cy="80" r="50" fill="url(#sp9)"/>
-            <circle cx="80" cy="80" r="48" fill="#dce4f0"/>
-            <g fill="#b4c0d0" opacity=".65"><rect x="62" y="38" width="4" height="84" rx="2"/><rect x="74" y="38" width="4" height="84" rx="2"/><rect x="86" y="38" width="4" height="84" rx="2"/><rect x="98" y="38" width="4" height="84" rx="2"/></g>
-            <circle cx="80" cy="80" r="12" fill="#d0d8ea"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S40</p>
-          <p class="siphon-label">Yuvarlak slot ızgara sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S44 -->
-      <div class="siphon-card reveal d5">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s44.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp10" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="28" y="28" width="104" height="104" rx="6" fill="url(#sp10)"/>
-            <rect x="30" y="30" width="100" height="100" rx="5.5" fill="#dce4f0"/>
-            <g stroke="#b4c0d0" stroke-width="1" opacity=".6"><line x1="38" y1="38" x2="38" y2="122"/><line x1="52" y1="38" x2="52" y2="122"/><line x1="66" y1="38" x2="66" y2="122"/><line x1="80" y1="38" x2="80" y2="122"/><line x1="94" y1="38" x2="94" y2="122"/><line x1="108" y1="38" x2="108" y2="122"/><line x1="122" y1="38" x2="122" y2="122"/></g>
-            <g stroke="#b4c0d0" stroke-width="1" opacity=".6"><line x1="30" y1="50" x2="130" y2="50"/><line x1="30" y1="66" x2="130" y2="66"/><line x1="30" y1="82" x2="130" y2="82"/><line x1="30" y1="98" x2="130" y2="98"/><line x1="30" y1="114" x2="130" y2="114"/></g>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S44</p>
-          <p class="siphon-label">Çift yönlü grid sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S29 -->
-      <div class="siphon-card reveal d1">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s29.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp11" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="30" y="35" width="100" height="90" rx="5" fill="url(#sp11)"/>
-            <rect x="32" y="37" width="96" height="86" rx="4.5" fill="#dce4f0"/>
-            <circle cx="80" cy="80" r="22" fill="#d0d8ea"/>
-            <circle cx="80" cy="80" r="16" fill="none" stroke="#a4b0c4" stroke-width="1.8" opacity=".65"/>
-            <circle cx="80" cy="80" r="8"  fill="none" stroke="#9aa4b4" stroke-width="1.2" opacity=".5"/>
-            <rect x="28" y="33" width="104" height="4" rx="2" fill="#9a7a3a" opacity=".5"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S29</p>
-          <p class="siphon-label">Dikdörtgen gövde yuvarlak kapak</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S77 -->
-      <div class="siphon-card reveal d2">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s77.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp12" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <circle cx="80" cy="80" r="50" fill="url(#sp12)"/>
-            <circle cx="80" cy="80" r="48" fill="#dce4f0"/>
-            <circle cx="80" cy="80" r="42" fill="#d4dce8"/>
-            <circle cx="80" cy="80" r="34" fill="#ccd4e4"/>
-            <circle cx="80" cy="80" r="24" fill="#c4cce0"/>
-            <circle cx="80" cy="80" r="14" fill="#bcc4dc"/>
-            <circle cx="80" cy="80" r="6"  fill="#b4bcd8"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S77</p>
-          <p class="siphon-label">Çok kademeli halka sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-      <!-- S65 -->
-      <div class="siphon-card reveal d3">
-        <div class="siphon-img-wrap">
-          <!-- ▼ <img src="images/siphon-s65.jpg" class="siphon-photo" style="opacity:0"> -->
-          <svg viewBox="0 0 160 160" style="width:90px" xmlns="http://www.w3.org/2000/svg">
-            <defs><linearGradient id="sp13" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#e8edf2"/><stop offset="50%" stop-color="#98a4b2"/><stop offset="100%" stop-color="#c4ccd8"/></linearGradient></defs>
-            <rect x="28" y="28" width="104" height="104" rx="52" fill="url(#sp13)"/>
-            <rect x="30" y="30" width="100" height="100" rx="50" fill="#dce4f0"/>
-            <g fill="#b4c0d0" opacity=".68">
-              <rect x="57" y="36" width="4" height="88" rx="2"/>
-              <rect x="69" y="34" width="4" height="92" rx="2"/>
-              <rect x="81" y="34" width="4" height="92" rx="2"/>
-              <rect x="93" y="36" width="4" height="88" rx="2"/>
-            </g>
-            <circle cx="80" cy="80" r="14" fill="#d0d8ea"/>
-          </svg>
-        </div>
-        <div class="siphon-body">
-          <p class="siphon-code">S65</p>
-          <p class="siphon-label">Yuvarlak slim slot sifon</p>
-          <span class="siphon-link">İncele →</span>
-        </div>
-      </div>
-
-    </div><!-- /siphon-grid -->
-  </div>
-</section><!-- /siphons -->
-
-
-<!-- ══════════════════════════════════════════════════════
-     SCENE 05 — TEKNOLOJİ
-══════════════════════════════════════════════════════ -->
-<section id="technology" class="tech-strip">
-  <div class="container">
-    <div class="section-header reveal" style="margin-bottom:3.5rem">
-      <div>
-        <p class="eyebrow">Teknoloji</p>
-        <div class="rule"></div>
-        <h2 class="page-title">Mühendislik<br><em>Farkı</em></h2>
-      </div>
-    </div>
-    <div class="tech-grid-3">
-      <div class="tech-cell reveal d1">
-        <span class="tc-icon">◈</span>
-        <p class="tc-title">Contasız Sistem</p>
-        <p class="tc-text">Kauçuk conta veya keçe yok. Paslanmaz flanş doğrudan membranla entegre olarak binanın ömrü boyunca süren kalıcı, güvenilir bir bağlantı oluşturur.</p>
-        <div class="tc-stat">100<span style="font-size:1.4rem">%</span></div>
-        <div class="tc-stat-label">Su Sızdırmazlık</div>
-      </div>
-      <div class="tech-cell reveal d2">
-        <span class="tc-icon">⟁</span>
-        <p class="tc-title">İkincil Drenaj</p>
-        <p class="tc-text">Çift drenaj mimarisi hem yüzey suyunu hem membran yoğuşmasını toplar. Birincil sistem dolsa bile ikincil kanal suyu sessizce tahliye eder.</p>
-        <div class="tc-stat">2<span style="font-size:1.4rem">×</span></div>
-        <div class="tc-stat-label">Kapasite</div>
-      </div>
-      <div class="tech-cell reveal d3">
-        <span class="tc-icon">⬡</span>
-        <p class="tc-title">Akış Mühendisliği</p>
-        <p class="tc-text">Hidrodinamik iç geometri suyu laminar akışa yönlendirerek drenajı hızlandırır. 1.8L/sn debi kapasitesiyle tüm Avrupa normlarını aşar.</p>
-        <div class="tc-stat">1.8<span style="font-size:1.4rem">L/s</span></div>
-        <div class="tc-stat-label">Debi</div>
-      </div>
+    <!-- Aşağı scroll yönlendirici -->
+    <div class="scroll-hint" id="scrollHint">
+      <span>Öne Çıkanlar</span>
+      <div class="scroll-hint-line"></div>
     </div>
 
-    <!-- Waterflow animation -->
-    <div class="waterflow reveal d4">
-      <svg viewBox="0 0 1200 60" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="wfg" x1="0" y1="0" x2="1" y2="0">
-            <stop offset="0%"   stop-color="transparent"/>
-            <stop offset="15%"  stop-color="#4a90d9" stop-opacity=".4"/>
-            <stop offset="85%"  stop-color="#4a90d9" stop-opacity=".4"/>
-            <stop offset="100%" stop-color="transparent"/>
-          </linearGradient>
-        </defs>
-        <path d="M0,30 Q300,12 600,30 Q900,48 1200,30" fill="none" stroke="url(#wfg)" stroke-width="2.5" stroke-dasharray="600" stroke-dashoffset="600">
-          <animate attributeName="stroke-dashoffset" from="600" to="-600" dur="3s" repeatCount="indefinite"/>
-        </path>
-        <path d="M0,38 Q300,52 600,38 Q900,24 1200,38" fill="none" stroke="url(#wfg)" stroke-width="2" stroke-dasharray="520" stroke-dashoffset="520">
-          <animate attributeName="stroke-dashoffset" from="520" to="-520" dur="2.6s" begin=".4s" repeatCount="indefinite"/>
-        </path>
-        <rect x="0" y="48" width="1200" height="12" rx="3" fill="#e8e4dd"/>
-        <g stroke="#d8d2c8" stroke-width="1" opacity=".65">
-          <line x1="60"   y1="50" x2="60"   y2="58"/><line x1="120"  y1="50" x2="120"  y2="58"/>
-          <line x1="180"  y1="50" x2="180"  y2="58"/><line x1="240"  y1="50" x2="240"  y2="58"/>
-          <line x1="300"  y1="50" x2="300"  y2="58"/><line x1="360"  y1="50" x2="360"  y2="58"/>
-          <line x1="420"  y1="50" x2="420"  y2="58"/><line x1="480"  y1="50" x2="480"  y2="58"/>
-          <line x1="540"  y1="50" x2="540"  y2="58"/><line x1="600"  y1="50" x2="600"  y2="58"/>
-          <line x1="660"  y1="50" x2="660"  y2="58"/><line x1="720"  y1="50" x2="720"  y2="58"/>
-          <line x1="780"  y1="50" x2="780"  y2="58"/><line x1="840"  y1="50" x2="840"  y2="58"/>
-          <line x1="900"  y1="50" x2="900"  y2="58"/><line x1="960"  y1="50" x2="960"  y2="58"/>
-          <line x1="1020" y1="50" x2="1020" y2="58"/><line x1="1080" y1="50" x2="1080" y2="58"/>
-          <line x1="1140" y1="50" x2="1140" y2="58"/>
-        </g>
-      </svg>
+  </section>
+
+  <!-- =============================================
+       EDİTORYAL AKIŞ — "PH DİZAYN DÜNYASINDAN"
+       Kart/ürün mantığından kaçınan, mimari dergi diline
+       yakın sade bir liste. Her satır: index no. + başlık +
+       kısa açıklama + ince ayraç çizgisi. Tek bir "öne çıkan"
+       satır (Ürünler) geniş görsel ile vurgulanır.
+  ============================================= -->
+  <section id="editorial">
+    <div class="editorial-header reveal">
+      <span class="section-eyebrow">Öne Çıkanlar</span>
+      <h2 class="section-title">PH Dizayn<br /><em>Dünyasından</em></h2>
     </div>
-  </div>
-</section>
 
+    <!-- ÖNE ÇIKAN SATIR — geniş görsel + büyük başlık -->
+    <a href="urunler.html" class="editorial-feature reveal">
+      <div class="editorial-feature-media">
+        <!-- GÖRSEL DEĞİŞTİRME: src="assets/images/feed-urunler.jpg" -->
+        <img src="assets/images/feed-urunler.jpg" alt="Ürün Gamı"
+             onerror="this.parentElement.classList.add('img-placeholder')" />
+        <div class="editorial-media-placeholder"><span>assets/images/<br/>feed-urunler.jpg</span></div>
+      </div>
+      <div class="editorial-feature-text">
+        <span class="editorial-index">01 — Ürün Gamı</span>
+        <h3 class="editorial-feature-title">Tüm Sistemler,<br />Tek Çatı Altında</h3>
+        <p class="editorial-desc">Duş kanallarından sifonlara, yapının her noktası için tasarlanmış mimari drenaj çözümleri.</p>
+        <span class="editorial-link">İncele</span>
+      </div>
+    </a>
 
-<!-- ══════════════════════════════════════════════════════
-     SCENE 06 — CTA
-══════════════════════════════════════════════════════ -->
-<section id="contact" class="cta-banner">
-  <div class="container">
-    <div class="s8-content">
-      <p class="cta-eyebrow reveal">PH Dizayn — Kur. 2008 — İstanbul</p>
-      <h2 class="cta-title reveal d1">Drenajın<br><strong>Ötesinde Tasarım.</strong></h2>
-      <div class="cta-rule reveal d2"></div>
-      <p class="cta-sub reveal d3">Her mekan, kaybolan bir drenajı hak ediyor. Kalıcı mühendislik. Yükselten estetik.</p>
-      <div class="cta-btns reveal d4">
-        <a href="https://phdizayn.com/iletisim" target="_blank"><button class="btn-white">Proje Teklifi Al</button></a>
-        <a href="https://phdizayn.com/online-katalog" target="_blank"><button class="btn-outline-white">Kataloğu İndir →</button></a>
+    <!-- EDİTORYAL LİSTE — sade satırlar, görselsiz -->
+    <div class="editorial-list">
+
+      <a href="teknoloji.html" class="editorial-row reveal" data-delay="0">
+        <span class="editorial-index">02 — Teknoloji</span>
+        <h3 class="editorial-row-title">Mühendislik Çözümleri</h3>
+        <p class="editorial-desc">Contasız sistem, ikincil su drenajı ve Invisible teknolojisiyle güvenli yapılar.</p>
+        <span class="editorial-arrow">→</span>
+      </a>
+
+      <a href="kurumsal.html" class="editorial-row reveal" data-delay="60">
+        <span class="editorial-index">03 — Kurumsal</span>
+        <h3 class="editorial-row-title">PH Dizayn Hikayesi</h3>
+        <p class="editorial-desc">Kalite ve güveni esas alan üretim anlayışımız, sertifikalarımız ve daha fazlası.</p>
+        <span class="editorial-arrow">→</span>
+      </a>
+
+      <a href="destek.html" class="editorial-row reveal" data-delay="0">
+        <span class="editorial-index">04 — Destek</span>
+        <h3 class="editorial-row-title">Kurulum ve Kullanım Desteği</h3>
+        <p class="editorial-desc">Online katalog, montaj videoları ve teknik çizimlerle doğru uygulama.</p>
+        <span class="editorial-arrow">→</span>
+      </a>
+
+      <a href="referanslar.html" class="editorial-row reveal" data-delay="60">
+        <span class="editorial-index">05 — Referanslar</span>
+        <h3 class="editorial-row-title">Tamamlanan Projeler</h3>
+        <p class="editorial-desc">Türkiye'nin dört bir yanında uygulanan PH Dizayn sistemlerinden örnekler.</p>
+        <span class="editorial-arrow">→</span>
+      </a>
+
+      <a href="iletisim.html" class="editorial-row reveal" data-delay="0">
+        <span class="editorial-index">06 — İletişim</span>
+        <h3 class="editorial-row-title">Bize Ulaşın</h3>
+        <p class="editorial-desc">Projeniz için doğru drenaj çözümünü birlikte belirleyelim.</p>
+        <span class="editorial-arrow">→</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       REFERANS / İSTATİSTİK BANDI
+  ============================================= -->
+  <section id="stats">
+    <div class="stats-inner reveal">
+      <div class="stat-item">
+        <span class="stat-number">20+</span>
+        <span class="stat-label">Yıllık Deneyim</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">500+</span>
+        <span class="stat-label">Tamamlanan Proje</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">7</span>
+        <span class="stat-label">Ürün Kategorisi</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-number">TR</span>
+        <span class="stat-label">Türkiye Geneli Dağıtım</span>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-
-<!-- ══════════════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════════════ -->
-<footer>
-  <div class="container">
+  <!-- =============================================
+       FOOTER
+       Logo dosyası: assets/logo/ph-logo.png
+  ============================================= -->
+  <footer id="site-footer">
     <div class="footer-inner">
-      <div class="footer-logo">PH <span>Dizayn</span></div>
-      <div class="footer-links">
-        <a href="https://phdizayn.com/hakkimizda"     target="_blank">Hakkımızda</a>
-        <a href="https://phdizayn.com/online-katalog" target="_blank">Katalog</a>
-        <a href="https://phdizayn.com/referanslar"    target="_blank">Referanslar</a>
-        <a href="https://phdizayn.com/iletisim"       target="_blank">İletişim</a>
+      <div class="footer-brand">
+        <!-- GÖRSEL DEĞİŞTİRME: assets/logo/ph-logo.png -->
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+             onerror="this.style.display='none'; document.querySelector('.footer-logo-fallback').style.display='block';" />
+        <span class="footer-logo-fallback">PH DİZAYN</span>
+        <p class="footer-tagline">Mimari Drenaj Sistemleri</p>
       </div>
-      <p class="footer-copy">© 2024 PH Dizayn. Tüm Hakları Saklıdır.</p>
+      <div class="footer-links">
+        <h4>Ürünler</h4>
+        <ul>
+          <li><a href="urunler.html#duskanallari">Duş Kanalları</a></li>
+          <li><a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a></li>
+          <li><a href="urunler.html#sifonlar">Sifonlar</a></li>
+          <li><a href="urunler.html#balkonteras">Balkon &amp; Teras</a></li>
+          <li><a href="urunler.html#mozaikler">Mozaikler</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="kurumsal.html#hakkimizda">Hakkımızda</a></li>
+          <li><a href="teknoloji.html">Teknoloji</a></li>
+          <li><a href="destek.html">Destek</a></li>
+          <li><a href="referanslar.html">Referanslar</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>İletişim</h4>
+        <p><a href="https://phdizayn.com" target="_blank" rel="noopener">phdizayn.com</a></p>
+        <p>Türkiye</p>
+      </div>
     </div>
-  </div>
-</footer>
+    <div class="footer-bottom">
+      <span>© 2024 PH Dizayn. Tüm hakları saklıdır.</span>
+    </div>
+  </footer>
 
-</div><!-- /page -->
-
-<script src="main.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>
