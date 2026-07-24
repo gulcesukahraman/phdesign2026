@@ -1,349 +1,258 @@
-/* =============================================
-   PH DİZAYN — SCRIPT.JS
-   Not: Bu dosya tüm sayfalarda (index.html, urunler.html,
-   kurumsal.html, teknoloji.html, destek.html, referanslar.html,
-   iletisim.html) ortak olarak kullanılır.
+/* ============================================================
+   PH DİZAYN — main.js  v2
+   Cursor · Nav · Slider · Reveal · Tilt · Sticky tabs
+   ============================================================ */
 
-   İçerik:
-     1. Splash Screen
-     2. Navbar Scroll Durumu
-     3. Burger Menü (Mobil)
-     4. Hero Slider (Otomatik + Manuel) — sadece index.html'de çalışır
-     5. Scroll Reveal Animasyonu
-     6. Smooth Scroll (sayfa içi #hash geçişleri + navbar offset düzeltmesi)
-     7. Ürün/Görsel Kartı Placeholder Yönetimi
-============================================= */
-
-(function () {
-  'use strict';
+document.addEventListener('DOMContentLoaded', () => {
 
   /* ─────────────────────────────────────────
-     1. SPLASH SCREEN
-     Sayfa yüklendikten 2 saniye sonra kapanır,
-     sonra body scroll açılır.
+     CUSTOM CURSOR
   ───────────────────────────────────────── */
-  const splash = document.getElementById('splash');
+  const cur  = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
 
-  // Body scroll kilitli başlasın
-  document.body.style.overflow = 'hidden';
-
-  window.addEventListener('load', function () {
-    const minSplashTime = 2200; // ms — splash en az bu kadar açık kalır
-    const start = Date.now();
-
-    function hideSplash() {
-      const elapsed = Date.now() - start;
-      const remaining = Math.max(0, minSplashTime - elapsed);
-
-      setTimeout(function () {
-        splash.classList.add('hidden');
-        document.body.style.overflow = '';
-
-        // Splash tamamen kapandıktan sonra DOM'dan kaldır.
-        // Güvence: transitionend tetiklenmezse (örn. tarayıcı quirk'i),
-        // 900ms sonra yine de kaldırılır.
-        let removed = false;
-        function removeSplash() {
-          if (removed) return;
-          removed = true;
-          if (splash && splash.parentNode) splash.remove();
-        }
-        splash.addEventListener('transitionend', removeSplash, { once: true });
-        setTimeout(removeSplash, 900);
-      }, remaining);
-    }
-
-    hideSplash();
-  });
-
-
-  /* ─────────────────────────────────────────
-     2. NAVBAR SCROLL DURUMU
-     Sayfa 60px aşağı scroll edilince navbar
-     arka planı belirir.
-  ───────────────────────────────────────── */
-  const navbar = document.getElementById('navbar');
-
-  function updateNavbar() {
-    if (window.scrollY > 60) {
-      navbar.classList.add('scrolled');
-    } else {
-      navbar.classList.remove('scrolled');
-    }
-  }
-
-  window.addEventListener('scroll', updateNavbar, { passive: true });
-  updateNavbar();
-
-
-  /* ─────────────────────────────────────────
-     3. BURGER MENÜ (MOBİL)
-  ───────────────────────────────────────── */
-  const burger = document.getElementById('navBurger');
-  const navLinks = document.querySelector('.nav-links');
-
-  if (burger && navLinks) {
-    burger.addEventListener('click', function () {
-      burger.classList.toggle('active');
-      navLinks.classList.toggle('open');
-      // Menü açıkken body scroll kilitle
-      document.body.style.overflow =
-        navLinks.classList.contains('open') ? 'hidden' : '';
+  if (cur && ring) {
+    let mx=0, my=0, rx=0, ry=0;
+    document.addEventListener('mousemove', e => {
+      mx = e.clientX; my = e.clientY;
+      cur.style.left = mx+'px'; cur.style.top = my+'px';
     });
-
-    // Menü linkine tıklayınca kapat
-    navLinks.querySelectorAll('a').forEach(function (link) {
-      link.addEventListener('click', function () {
-        burger.classList.remove('active');
-        navLinks.classList.remove('open');
-        document.body.style.overflow = '';
+    (function tick(){
+      rx += (mx-rx)*0.11; ry += (my-ry)*0.11;
+      ring.style.left = rx+'px'; ring.style.top = ry+'px';
+      requestAnimationFrame(tick);
+    })();
+    document.querySelectorAll('a,button,.prod-card,.siphon-card,.tech-cell,.proj-cell,.slider-arrow')
+      .forEach(el => {
+        el.addEventListener('mouseenter', () => { cur.classList.add('big'); ring.classList.add('big'); });
+        el.addEventListener('mouseleave', () => { cur.classList.remove('big'); ring.classList.remove('big'); });
       });
-    });
   }
-
 
   /* ─────────────────────────────────────────
-     4. HERO SLIDER
-     - Otomatik: 5 saniyede bir ilerler
-     - Manuel: ok butonları ve dot'larla
-     - Her slide geçişinde animasyon sıfırlanır
+     PROGRESS BAR
   ───────────────────────────────────────── */
-  const slides = document.querySelectorAll('.slide');
-  const dots   = document.querySelectorAll('.dot');
-  let currentSlide = 0;
-  let sliderTimer  = null;
-  const SLIDE_INTERVAL = 5000; // ms
-
-  function goToSlide(index) {
-    if (slides.length === 0) return;
-
-    // Sınır kontrolü
-    index = ((index % slides.length) + slides.length) % slides.length;
-
-    // Mevcut slide'ı devre dışı bırak
-    slides[currentSlide].classList.remove('active');
-    dots[currentSlide].classList.remove('active');
-
-    // Yeni slide'ı etkinleştir
-    currentSlide = index;
-    slides[currentSlide].classList.add('active');
-    dots[currentSlide].classList.add('active');
+  const pbar = document.getElementById('progressBar');
+  if (pbar) {
+    window.addEventListener('scroll', () => {
+      const pct = window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100;
+      pbar.style.width = pct + '%';
+    }, { passive:true });
   }
-
-  function nextSlide() { goToSlide(currentSlide + 1); }
-  function prevSlide() { goToSlide(currentSlide - 1); }
-
-  function startAutoSlide() {
-    stopAutoSlide();
-    sliderTimer = setInterval(nextSlide, SLIDE_INTERVAL);
-  }
-
-  function stopAutoSlide() {
-    if (sliderTimer) {
-      clearInterval(sliderTimer);
-      sliderTimer = null;
-    }
-  }
-
-  // Ok butonları
-  const btnNext = document.getElementById('slideNext');
-  const btnPrev = document.getElementById('slidePrev');
-
-  if (btnNext) {
-    btnNext.addEventListener('click', function () {
-      nextSlide();
-      startAutoSlide(); // Tıklamadan sonra sayacı sıfırla
-    });
-  }
-
-  if (btnPrev) {
-    btnPrev.addEventListener('click', function () {
-      prevSlide();
-      startAutoSlide();
-    });
-  }
-
-  // Dot butonları
-  dots.forEach(function (dot, i) {
-    dot.addEventListener('click', function () {
-      goToSlide(i);
-      startAutoSlide();
-    });
-  });
-
-  // Klavye navigasyonu (erişilebilirlik)
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'ArrowRight') { nextSlide(); startAutoSlide(); }
-    if (e.key === 'ArrowLeft')  { prevSlide(); startAutoSlide(); }
-  });
-
-  // Touch/swipe desteği
-  let touchStartX = 0;
-  const sliderEl = document.getElementById('slider');
-
-  if (sliderEl) {
-    sliderEl.addEventListener('touchstart', function (e) {
-      touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-
-    sliderEl.addEventListener('touchend', function (e) {
-      const diff = touchStartX - e.changedTouches[0].screenX;
-      if (Math.abs(diff) > 50) {
-        if (diff > 0) nextSlide();
-        else prevSlide();
-        startAutoSlide();
-      }
-    }, { passive: true });
-
-    // Slider üzerine gelince otomatik durdur
-    sliderEl.addEventListener('mouseenter', stopAutoSlide);
-    sliderEl.addEventListener('mouseleave', startAutoSlide);
-  }
-
-  // Otoplay başlat (splash bittikten sonra) — sadece slider varsa
-  if (slides.length > 0) {
-    setTimeout(startAutoSlide, 2500);
-  }
-
 
   /* ─────────────────────────────────────────
-     5. SCROLL REVEAL ANİMASYONU
-     .reveal class'ına sahip elementler
-     viewport'a girince .visible class alır.
+     NAV SCROLL STATE
   ───────────────────────────────────────── */
-  const revealElements = document.querySelectorAll('.reveal');
-
-  const revealObserver = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        const el    = entry.target;
-        const delay = parseInt(el.getAttribute('data-delay') || '0', 10);
-
-        setTimeout(function () {
-          el.classList.add('visible');
-        }, delay);
-
-        // Bir kez göster, tekrar izleme
-        revealObserver.unobserve(el);
-      }
-    });
-  }, {
-    threshold:  0.12,
-    rootMargin: '0px 0px -60px 0px'
-  });
-
-  revealElements.forEach(function (el) {
-    revealObserver.observe(el);
-  });
-
-
-  /* ─────────────────────────────────────────
-     6. SMOOTH SCROLL — ANASAYFA #editorial GEÇİŞİ
-     Slider'daki scroll-hint tıklanınca
-     "Öne Çıkanlar" (editorial akış) bölümüne scroll edilir.
-     Not: Bu öğe sadece index.html'de bulunur, diğer
-     sayfalarda otomatik olarak hiçbir şey yapmaz.
-  ───────────────────────────────────────── */
-  const scrollHint = document.getElementById('scrollHint');
-  const editorialSection = document.getElementById('editorial');
-
-  if (scrollHint && editorialSection) {
-    scrollHint.addEventListener('click', function () {
-      editorialSection.scrollIntoView({ behavior: 'smooth' });
-    });
-    scrollHint.style.cursor = 'pointer';
+  const nav = document.getElementById('mainNav');
+  if (nav) {
+    const onScroll = () => nav.classList.toggle('scrolled', window.scrollY > 50);
+    window.addEventListener('scroll', onScroll, { passive:true });
+    onScroll();
   }
 
-  // ─────────────────────────────────────────
-  // Sayfa İÇİ hash linkleri için smooth scroll + navbar offset düzeltmesi
-  // (Örn: urunler.html sayfasındayken "#sifonlar" linkine tıklamak)
-  // Sayfalar ARASI linkler (örn. "urunler.html#sifonlar") tarayıcının
-  // doğal navigasyonuna bırakılır; sayfa yüklendikten sonra aşağıdaki
-  // "hash offset düzeltmesi" bloğu navbar'ın altına doğru konumlandırır.
-  // ─────────────────────────────────────────
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
+  /* ─────────────────────────────────────────
+     MOBILE NAV BURGER
+  ───────────────────────────────────────── */
+  const burger   = document.getElementById('navBurger');
+  const mobileNav = document.getElementById('mobileNav');
+  if (burger && mobileNav) {
+    burger.addEventListener('click', () => {
+      const open = mobileNav.classList.toggle('open');
+      burger.setAttribute('aria-expanded', open);
+    });
+    // close on link click
+    mobileNav.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => mobileNav.classList.remove('open'));
+    });
+  }
 
-      const target = document.querySelector(targetId);
+  /* ─────────────────────────────────────────
+     SMOOTH ANCHOR LINKS
+  ───────────────────────────────────────── */
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
       if (target) {
         e.preventDefault();
-        const offset = parseInt(
-          getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '72'
-        );
-        const top = target.getBoundingClientRect().top + window.scrollY - offset;
-        window.scrollTo({ top, behavior: 'smooth' });
-        history.replaceState(null, '', targetId);
+        const navH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+        const top  = target.getBoundingClientRect().top + window.scrollY - navH - 4;
+        window.scrollTo({ top, behavior:'smooth' });
       }
     });
   });
 
-  // Sayfa başka bir sayfadan #hash ile açıldıysa (örn. dropdown'dan
-  // "kurumsal.html#fuarlar" tıklanmışsa), tarayıcının ilk scroll'unu
-  // navbar yüksekliğine göre düzeltiyoruz.
-  if (window.location.hash) {
-    window.addEventListener('load', function () {
-      setTimeout(function () {
-        const target = document.querySelector(window.location.hash);
-        if (target) {
-          const offset = parseInt(
-            getComputedStyle(document.documentElement).getPropertyValue('--nav-h') || '72'
-          );
-          const top = target.getBoundingClientRect().top + window.scrollY - offset;
-          window.scrollTo({ top, behavior: 'auto' });
+  /* ─────────────────────────────────────────
+     HERO SLIDER
+  ───────────────────────────────────────── */
+  const slides   = document.querySelectorAll('.slide');
+  const dots     = document.querySelectorAll('.slider-dot');
+  const counter  = document.getElementById('sliderCounter');
+  const progressEl = document.getElementById('slideProgress');
+  let current    = 0;
+  let autoTimer  = null;
+  const INTERVAL = 5000;
+
+  function goTo(idx) {
+    slides[current].classList.remove('active');
+    dots[current]?.classList.remove('active');
+    current = (idx + slides.length) % slides.length;
+    slides[current].classList.add('active');
+    dots[current]?.classList.add('active');
+    if (counter) counter.textContent = String(current+1).padStart(2,'0') + ' / ' + String(slides.length).padStart(2,'0');
+    // restart progress bar animation
+    if (progressEl) {
+      progressEl.style.animation = 'none';
+      progressEl.offsetHeight; // reflow
+      progressEl.style.animation = '';
+    }
+  }
+
+  function startAuto() {
+    clearInterval(autoTimer);
+    autoTimer = setInterval(() => goTo(current+1), INTERVAL);
+  }
+
+  if (slides.length) {
+    goTo(0);
+    startAuto();
+
+    document.getElementById('sliderPrev')?.addEventListener('click', () => { goTo(current-1); startAuto(); });
+    document.getElementById('sliderNext')?.addEventListener('click', () => { goTo(current+1); startAuto(); });
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => { goTo(i); startAuto(); });
+    });
+
+    // Swipe
+    let tx=0;
+    const hero = document.querySelector('.hero-slider');
+    if (hero) {
+      hero.addEventListener('touchstart', e => { tx = e.touches[0].clientX; }, {passive:true});
+      hero.addEventListener('touchend',   e => {
+        const dx = e.changedTouches[0].clientX - tx;
+        if (Math.abs(dx) > 40) { goTo(dx < 0 ? current+1 : current-1); startAuto(); }
+      }, {passive:true});
+    }
+  }
+
+  /* ─────────────────────────────────────────
+     SCROLL REVEAL
+  ───────────────────────────────────────── */
+  const revealObs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in'); });
+  }, { threshold:0.1, rootMargin:'0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal,.reveal-l,.reveal-r')
+    .forEach(el => revealObs.observe(el));
+
+  /* ─────────────────────────────────────────
+     SCENE NAV DOTS (right side)
+  ───────────────────────────────────────── */
+  const sceneDots  = document.querySelectorAll('.snav-dot');
+  const sectionIds = ['hero','channels','floor-drains','siphons','technology','contact'];
+
+  sceneDots.forEach(d => {
+    d.addEventListener('click', () => {
+      const el = document.getElementById(d.dataset.target);
+      if (el) el.scrollIntoView({ behavior:'smooth' });
+    });
+  });
+
+  if (sceneDots.length) {
+    const sectionObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const idx = sectionIds.indexOf(e.target.id);
+          sceneDots.forEach((d,i) => d.classList.toggle('active', i === idx));
         }
-      }, 50);
+      });
+    }, { threshold:0.3 });
+
+    sectionIds.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) sectionObs.observe(el);
     });
   }
 
-
   /* ─────────────────────────────────────────
-     7. GÖRSEL PLACEHOLDER YÖNETİMİ
-     (ürün kartları + editoryal öne çıkan görsel)
-     Görsel yüklenemezse placeholder görünür.
-     Görsel yüklenince placeholder gizlenir.
+     STICKY CATEGORY TABS
+     Scroll to section when tab clicked
   ───────────────────────────────────────── */
-  document.querySelectorAll('.card-image img, .editorial-feature-media img').forEach(function (img) {
-    // Görsel yüklenince placeholder'ı gizle
-    img.addEventListener('load', function () {
-      this.parentElement.classList.remove('img-placeholder');
+  const stickyTabs = document.querySelectorAll('.sticky-tab');
+  stickyTabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      stickyTabs.forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      const target = document.querySelector(tab.dataset.target);
+      if (target) {
+        const navH   = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-h')) || 72;
+        const stickyH = document.querySelector('.sticky-cat')?.offsetHeight || 44;
+        const top = target.getBoundingClientRect().top + window.scrollY - navH - stickyH - 8;
+        window.scrollTo({ top, behavior:'smooth' });
+      }
     });
-
-    // Görsel yüklenemezse placeholder'ı göster
-    img.addEventListener('error', function () {
-      this.parentElement.classList.add('img-placeholder');
-    });
-
-    // Sayfa yüklendiğinde zaten hata durumunda olanları yakala
-    if (img.complete && img.naturalWidth === 0) {
-      img.parentElement.classList.add('img-placeholder');
-    }
   });
 
+  // Highlight tab on scroll
+  if (stickyTabs.length) {
+    const channelSections = document.querySelectorAll('.channel-block');
+    const tabObs = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const id = e.target.id;
+          stickyTabs.forEach(t => t.classList.toggle('active', t.dataset.target === '#'+id));
+        }
+      });
+    }, { threshold:0.35, rootMargin:'-80px 0px -50% 0px' });
+    channelSections.forEach(s => tabObs.observe(s));
+  }
 
   /* ─────────────────────────────────────────
-     YARDIMCI: Parallax hissi (isteğe bağlı)
-     Slider arka planlarına hafif parallax.
-     Performans için requestAnimationFrame kullanır.
+     PRODUCT CARD 3D TILT
   ───────────────────────────────────────── */
-  let ticking = false;
+  document.querySelectorAll('.prod-card, .siphon-card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width  - 0.5;
+      const y = (e.clientY - r.top)  / r.height - 0.5;
+      card.style.transform = `perspective(900px) rotateY(${x*5}deg) rotateX(${-y*3.5}deg) scale(1.012)`;
+      card.style.transition = 'box-shadow .4s, transform .05s';
+    });
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = '';
+      card.style.transition = 'box-shadow .4s, transform .55s cubic-bezier(0.16,1,0.3,1)';
+    });
+  });
 
-  window.addEventListener('scroll', function () {
-    if (!ticking) {
-      requestAnimationFrame(function () {
-        const scrollY = window.scrollY;
-
-        // Slider bölümü görünürse parallax uygula
-        document.querySelectorAll('.slide-bg').forEach(function (bg) {
-          // Çok hızlı kayma için düşük katsayı (0.15)
-          bg.style.transform = 'scale(1.05) translateY(' + (scrollY * 0.08) + 'px)';
-        });
-
-        ticking = false;
+  /* ─────────────────────────────────────────
+     FINISH DOT SWITCHER
+  ───────────────────────────────────────── */
+  document.querySelectorAll('.prod-card, .featured-hero').forEach(card => {
+    const dots = card.querySelectorAll('.fdot');
+    const svg  = card.querySelector('.prod-svg');
+    dots.forEach(dot => {
+      dot.addEventListener('click', () => {
+        dots.forEach(d => { d.style.outline=''; d.style.outlineOffset=''; });
+        dot.style.outline      = '2px solid var(--gold)';
+        dot.style.outlineOffset = '2px';
+        if (!svg) return;
+        if      (dot.classList.contains('steel')) svg.style.filter = 'none';
+        else if (dot.classList.contains('black')) svg.style.filter = 'grayscale(1) brightness(.28)';
+        else if (dot.classList.contains('gold'))  svg.style.filter = 'sepia(1) saturate(2.2) hue-rotate(-8deg) brightness(.88)';
       });
-      ticking = true;
-    }
-  }, { passive: true });
+    });
+  });
 
-})();
+  /* ─────────────────────────────────────────
+     HERO PARALLAX (subtle)
+  ───────────────────────────────────────── */
+  const heroBg = document.querySelector('.hero-slider');
+  if (heroBg) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY < window.innerHeight) {
+        heroBg.style.transform = `translateY(${window.scrollY * 0.12}px)`;
+      }
+    }, { passive:true });
+  }
+
+});
