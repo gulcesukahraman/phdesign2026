@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Duş Kanalları — PH Dizayn</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- SPLASH -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn Logo" class="splash-logo-img"
+             onerror="this.style.display='none'; document.querySelector('.splash-logo-fallback').style.display='flex';" />
+        <div class="splash-logo-fallback">
+          <span class="splash-ph">PH</span>
+          <span class="splash-dizayn">DİZAYN</span>
+        </div>
+      </div>
+      <div class="splash-line"></div>
+      <p class="splash-tagline">Mimari Drenaj Sistemleri</p>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+           onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='block';" />
+      <span class="nav-logo-fallback">PH DİZAYN</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Anasayfa</a></li>
+      <li class="has-dropdown">
+        <a href="urunler.html" class="active">Ürünler</a>
+        <div class="dropdown">
+          <a href="dus-kanallari.html" class="active">Duş Kanalları</a>
+          <a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a>
+          <a href="urunler.html#sifonlar">Sifonlar</a>
+          <a href="urunler.html#balkonteras">Balkon &amp; Teras Drenajı</a>
+          <a href="urunler.html#teknikprofiller">Teknik Profiller</a>
+          <a href="urunler.html#dekoratifprofiller">Dekoratif Profiller</a>
+          <a href="urunler.html#mozaikler">Mozaikler</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="kurumsal.html">Kurumsal</a>
+        <div class="dropdown">
+          <a href="kurumsal.html#hakkimizda">Hakkımızda</a>
+          <a href="kurumsal.html#politikalar">Şirket Politikaları</a>
+          <a href="kurumsal.html#basin">Basın Odası</a>
+          <a href="kurumsal.html#fuarlar">Fuarlar</a>
+          <a href="kurumsal.html#sertifikalar">Belge ve Sertifikalar</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="teknoloji.html">Teknoloji</a>
+        <div class="dropdown">
+          <a href="teknoloji.html#contasiz">Contasız Sistem ile Sızdırmazlık Garantisi</a>
+          <a href="teknoloji.html#ikincil">İkincil Su Drenajı</a>
+          <a href="teknoloji.html#invisible">Invisible Sistem</a>
+          <a href="teknoloji.html#cerceve">Kesilebilir Çerçeve</a>
+          <a href="teknoloji.html#diger">Diğer Teknolojiler</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="destek.html">Destek</a>
+        <div class="dropdown">
+          <a href="destek.html#katalog">Online Katalog</a>
+          <a href="destek.html#videolar">Montaj Videoları</a>
+          <a href="destek.html#cizimler">Teknik Çizimler</a>
+          <a href="destek.html#kilavuz">Montaj &amp; Kullanım Kılavuzu</a>
+        </div>
+      </li>
+      <li><a href="referanslar.html">Referanslar</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- =============================================
+       HERO SERİ SLIDER — PREMIUM & SMARTLINE
+       Her 4 saniyede otomatik geçiş.
+       Görseller:
+         assets/images/dk-premium-hero.jpg
+         assets/images/dk-smartline-hero.jpg
+  ============================================= -->
+  <section id="dk-slider">
+    <div class="dk-slider-track">
+
+      <!-- SLIDE 1: PREMIUM -->
+      <div class="dk-slide active" data-index="0">
+        <!-- GÖRSEL DEĞİŞTİRME: assets/images/dk-premium-hero.jpg
+             Önerilen oran: 16:7 yatay, yüksek çözünürlük, ürün yerleşimli -->
+        <div class="dk-slide-bg" style="background-image: url('assets/images/dk-premium-hero.jpg');">
+          <div class="dk-slide-placeholder">
+            <span>assets/images/dk-premium-hero.jpg</span>
+          </div>
+        </div>
+        <div class="dk-slide-overlay"></div>
+        <div class="dk-slide-content">
+          <span class="dk-slide-badge">Öne Çıkan Seri</span>
+          <h2 class="dk-slide-series">Premium</h2>
+          <p class="dk-slide-tagline">En seçkin malzemeler, kesintisiz yüzey bütünlüğü.<br />Mimari projelere özel lineer drenaj.</p>
+          <a href="#premium" class="dk-slide-cta">Seriyi İncele</a>
+        </div>
+        <!-- Slide numarası -->
+        <span class="dk-slide-num">01 / 02</span>
+      </div>
+
+      <!-- SLIDE 2: SMARTLINE -->
+      <div class="dk-slide" data-index="1">
+        <!-- GÖRSEL DEĞİŞTİRME: assets/images/dk-smartline-hero.jpg -->
+        <div class="dk-slide-bg" style="background-image: url('assets/images/dk-smartline-hero.jpg');">
+          <div class="dk-slide-placeholder">
+            <span>assets/images/dk-smartline-hero.jpg</span>
+          </div>
+        </div>
+        <div class="dk-slide-overlay"></div>
+        <div class="dk-slide-content">
+          <span class="dk-slide-badge">Öne Çıkan Seri</span>
+          <h2 class="dk-slide-series">Smartline</h2>
+          <p class="dk-slide-tagline">Akıllı tasarım, esnek uygulama.<br />Her projeye uyum sağlayan drenaj sistemi.</p>
+          <a href="#smartline" class="dk-slide-cta">Seriyi İncele</a>
+        </div>
+        <span class="dk-slide-num">02 / 02</span>
+      </div>
+
+    </div>
+
+    <!-- Slider Kontrolleri -->
+    <div class="dk-controls">
+      <button class="dk-arrow dk-prev" id="dkPrev" aria-label="Önceki">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <div class="dk-dots">
+        <button class="dk-dot active" data-slide="0" aria-label="PREMIUM"></button>
+        <button class="dk-dot" data-slide="1" aria-label="SMARTLINE"></button>
+      </div>
+      <button class="dk-arrow dk-next" id="dkNext" aria-label="Sonraki">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+  </section>
+
+  <!-- =============================================
+       SERİ LİSTESİ — EDİTORYAL INDEX
+       8 seri, PREMIUM ve SMARTLINE en üstte (öne çıkan).
+       Tasarım: ana sayfa editorial listesiyle aynı minimal dil.
+  ============================================= -->
+  <section id="dk-series">
+
+    <div class="dk-series-header reveal">
+      <span class="section-eyebrow">Duş Kanalları</span>
+      <h1 class="page-title">Seriler</h1>
+      <p class="section-desc">Her mimari projeye uygun, sekiz farklı lineer drenaj serisi.</p>
+    </div>
+
+    <div class="dk-list">
+
+      <!-- 01 PREMIUM — vurgulu (öne çıkan slider'a karşılık gelir) -->
+      <a href="#premium" class="dk-row dk-row--featured reveal" data-delay="0" id="premium">
+        <div class="dk-row-left">
+          <span class="dk-row-num">01</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Premium</h2>
+            <p class="dk-row-desc">Paslanmaz çelik ve yüksek kalite malzemeleri ile tasarlanmış, mimari projelerin zirvesine hitap eden seri. Yüzey kaplama seçenekleri ve özelleştirilebilir uzunluklar.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/dk-premium-thumb.jpg -->
+          <div class="dk-row-img">
+            <img src="assets/images/dk-premium-thumb.jpg" alt="Premium Seri"
+                 onerror="this.parentElement.classList.add('img-placeholder')" />
+            <div class="dk-img-placeholder"><span>dk-premium-thumb.jpg</span></div>
+          </div>
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 02 SMARTLINE — vurgulu -->
+      <a href="#smartline" class="dk-row dk-row--featured reveal" data-delay="60" id="smartline">
+        <div class="dk-row-left">
+          <span class="dk-row-num">02</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Smartline</h2>
+            <p class="dk-row-desc">Esnek montaj çözümleri ve akıllı tasarımıyla öne çıkan seri. Contasız sistem teknolojisiyle sızıntı riskini sıfıra indiren yapısı ile öne çıkar.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/dk-smartline-thumb.jpg -->
+          <div class="dk-row-img">
+            <img src="assets/images/dk-smartline-thumb.jpg" alt="Smartline Seri"
+                 onerror="this.parentElement.classList.add('img-placeholder')" />
+            <div class="dk-img-placeholder"><span>dk-smartline-thumb.jpg</span></div>
+          </div>
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- AYRAÇ: Diğer seriler başlığı -->
+      <div class="dk-divider-label reveal" data-delay="0">
+        <span>Diğer Seriler</span>
+      </div>
+
+      <!-- 03 ACROLINE -->
+      <a href="#acroline" class="dk-row reveal" data-delay="0" id="acroline">
+        <div class="dk-row-left">
+          <span class="dk-row-num">03</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Acroline</h2>
+            <p class="dk-row-desc">Akrilik yüzey uyumlu tasarım. Banyo estetiklerine sorunsuz entegrasyon.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 04 NATURALINE -->
+      <a href="#naturaline" class="dk-row reveal" data-delay="40" id="naturaline">
+        <div class="dk-row-left">
+          <span class="dk-row-num">04</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Naturaline</h2>
+            <p class="dk-row-desc">Doğal taş ve kaplama uyumlu çerçeve profili. Kaplama içine gömülü görünüm.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 05 COMPACTLINE -->
+      <a href="#compactline" class="dk-row reveal" data-delay="80" id="compactline">
+        <div class="dk-row-left">
+          <span class="dk-row-num">05</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Compactline</h2>
+            <p class="dk-row-desc">Dar ve kompakt banyo alanları için optimize edilmiş, dar kanal profilli seri.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 06 SLIM -->
+      <a href="#slim" class="dk-row reveal" data-delay="120" id="slim">
+        <div class="dk-row-left">
+          <span class="dk-row-num">06</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Slim</h2>
+            <p class="dk-row-desc">Minimum derinlik, maksimum performans. İnce zemin yapılarına özel profil.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 07 INFINITY -->
+      <a href="#infinity" class="dk-row reveal" data-delay="160" id="infinity">
+        <div class="dk-row-left">
+          <span class="dk-row-num">07</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Infinity</h2>
+            <p class="dk-row-desc">Görünmez drenaj konsepti. Kaplama yüzeyi ile tam flush, sıfır çerçeve estetiği.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+      <!-- 08 BASIC -->
+      <a href="#basic" class="dk-row reveal" data-delay="200" id="basic">
+        <div class="dk-row-left">
+          <span class="dk-row-num">08</span>
+          <div class="dk-row-text">
+            <h2 class="dk-row-title">Basic</h2>
+            <p class="dk-row-desc">Fonksiyonelliği ön plana alan, uygun maliyetli standart drenaj çözümü.</p>
+          </div>
+        </div>
+        <div class="dk-row-right">
+          <span class="dk-row-arrow">→</span>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+             onerror="this.style.display='none'; document.querySelector('.footer-logo-fallback').style.display='block';" />
+        <span class="footer-logo-fallback">PH DİZAYN</span>
+        <p class="footer-tagline">Mimari Drenaj Sistemleri</p>
+      </div>
+      <div class="footer-links">
+        <h4>Ürünler</h4>
+        <ul>
+          <li><a href="dus-kanallari.html">Duş Kanalları</a></li>
+          <li><a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a></li>
+          <li><a href="urunler.html#sifonlar">Sifonlar</a></li>
+          <li><a href="urunler.html#balkonteras">Balkon &amp; Teras</a></li>
+          <li><a href="urunler.html#mozaikler">Mozaikler</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Kurumsal</h4>
+        <ul>
+          <li><a href="kurumsal.html#hakkimizda">Hakkımızda</a></li>
+          <li><a href="teknoloji.html">Teknoloji</a></li>
+          <li><a href="destek.html">Destek</a></li>
+          <li><a href="referanslar.html">Referanslar</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>İletişim</h4>
+        <p><a href="https://phdizayn.com" target="_blank" rel="noopener">phdizayn.com</a></p>
+        <p>Türkiye</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 PH Dizayn. Tüm hakları saklıdır.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="dus-kanallari.js"></script>
+</body>
+</html>
