@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Seri — Duş Kanalları — PH Dizayn</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- SPLASH -->
+  <div id="splash">
+    <div class="splash-inner">
+      <div class="splash-logo">
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn Logo" class="splash-logo-img"
+             onerror="this.style.display='none'; document.querySelector('.splash-logo-fallback').style.display='flex';" />
+        <div class="splash-logo-fallback">
+          <span class="splash-ph">PH</span>
+          <span class="splash-dizayn">DİZAYN</span>
+        </div>
+      </div>
+      <div class="splash-line"></div>
+      <p class="splash-tagline">Mimari Drenaj Sistemleri</p>
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+           onerror="this.style.display='none'; document.querySelector('.nav-logo-fallback').style.display='block';" />
+      <span class="nav-logo-fallback">PH DİZAYN</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Anasayfa</a></li>
+      <li class="has-dropdown">
+        <a href="urunler.html" class="active">Ürünler</a>
+        <div class="dropdown">
+          <a href="dus-kanallari.html" class="active">Duş Kanalları</a>
+          <a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a>
+          <a href="urunler.html#sifonlar">Sifonlar</a>
+          <a href="urunler.html#balkonteras">Balkon &amp; Teras Drenajı</a>
+          <a href="urunler.html#teknikprofiller">Teknik Profiller</a>
+          <a href="urunler.html#dekoratifprofiller">Dekoratif Profiller</a>
+          <a href="urunler.html#mozaikler">Mozaikler</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="kurumsal.html">Kurumsal</a>
+        <div class="dropdown">
+          <a href="kurumsal.html#hakkimizda">Hakkımızda</a>
+          <a href="kurumsal.html#politikalar">Şirket Politikaları</a>
+          <a href="kurumsal.html#basin">Basın Odası</a>
+          <a href="kurumsal.html#fuarlar">Fuarlar</a>
+          <a href="kurumsal.html#sertifikalar">Belge ve Sertifikalar</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="teknoloji.html">Teknoloji</a>
+        <div class="dropdown">
+          <a href="teknoloji.html#contasiz">Contasız Sistem ile Sızdırmazlık Garantisi</a>
+          <a href="teknoloji.html#ikincil">İkincil Su Drenajı</a>
+          <a href="teknoloji.html#invisible">Invisible Sistem</a>
+          <a href="teknoloji.html#cerceve">Kesilebilir Çerçeve</a>
+          <a href="teknoloji.html#diger">Diğer Teknolojiler</a>
+        </div>
+      </li>
+      <li class="has-dropdown">
+        <a href="destek.html">Destek</a>
+        <div class="dropdown">
+          <a href="destek.html#katalog">Online Katalog</a>
+          <a href="destek.html#videolar">Montaj Videoları</a>
+          <a href="destek.html#cizimler">Teknik Çizimler</a>
+          <a href="destek.html#kilavuz">Montaj &amp; Kullanım Kılavuzu</a>
+        </div>
+      </li>
+      <li><a href="referanslar.html">Referanslar</a></li>
+      <li><a href="iletisim.html">İletişim</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Menü">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- =============================================
+       1. ANTET — PREMIUM HERO GÖRSELİ
+       GÖRSEL DEĞİŞTİRME: assets/images/premium-hero.jpg
+       Önerilen: yatay, yüksek çözünürlük, duş kanalı detay fotoğrafı
+       En iyi boyut: 2560×900px, koyu tonlu veya kontrast sağlayan
+  ============================================= -->
+  <section id="premium-hero">
+    <div class="premium-hero-bg"
+         style="background-image: url('assets/images/premium-hero.jpg');">
+      <div class="premium-hero-placeholder">
+        <span>assets/images/premium-hero.jpg</span>
+      </div>
+    </div>
+    <div class="premium-hero-overlay"></div>
+    <div class="premium-hero-content reveal">
+      <!-- Breadcrumb -->
+      <nav class="premium-breadcrumb" aria-label="Breadcrumb">
+        <a href="urunler.html">Ürünler</a>
+        <span>/</span>
+        <a href="dus-kanallari.html">Duş Kanalları</a>
+        <span>/</span>
+        <span>Premium</span>
+      </nav>
+      <h1 class="premium-hero-title">Premium</h1>
+      <p class="premium-hero-sub">En seçkin malzemeler, kesintisiz yüzey bütünlüğü.<br>Mimari projelere özel lineer drenaj serisi.</p>
+    </div>
+  </section>
+
+  <!-- =============================================
+       2. KAPAK GALERİSİ — 10 ADET YATAY DİKDÖRTGEN
+       Her kart: yatay dikdörtgen görsel
+       Hover: kapak adı yavaşça belirir (overlay reveal efekti)
+
+       GÖRSEL DEĞİŞTİRME REHBERI:
+         assets/images/kapak-linear.jpg
+         assets/images/kapak-seramik.jpg
+         assets/images/kapak-mermer.jpg
+         assets/images/kapak-elegant.jpg
+         assets/images/kapak-qdrain.jpg
+         assets/images/kapak-trendy.jpg
+         assets/images/kapak-greek.jpg
+         assets/images/kapak-circle.jpg
+         assets/images/kapak-square.jpg
+         assets/images/kapak-geoxe.jpg
+       Önerilen boyut: 1200×400px (3:1 yatay oran)
+  ============================================= -->
+  <section id="kapaklar">
+    <div class="kapaklar-header reveal">
+      <span class="section-eyebrow">Kapak Seçenekleri</span>
+      <h2 class="kapaklar-title">10 Farklı Kapak Tasarımı</h2>
+      <p class="kapaklar-desc">Her mimari dile uygun yüzey seçeneği. Görselin üzerine gelin.</p>
+    </div>
+
+    <div class="kapak-list">
+
+      <!-- 01 LINEAR -->
+      <div class="kapak-item reveal" data-delay="0">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-linear.jpg -->
+          <img src="assets/images/kapak-linear.jpg" alt="Linear Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-linear.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Linear</span>
+          </div>
+        </div>
+        <span class="kapak-label">Linear</span>
+      </div>
+
+      <!-- 02 SERAMİK -->
+      <div class="kapak-item reveal" data-delay="40">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-seramik.jpg -->
+          <img src="assets/images/kapak-seramik.jpg" alt="Seramik Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-seramik.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Seramik</span>
+          </div>
+        </div>
+        <span class="kapak-label">Seramik</span>
+      </div>
+
+      <!-- 03 MERMER -->
+      <div class="kapak-item reveal" data-delay="80">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-mermer.jpg -->
+          <img src="assets/images/kapak-mermer.jpg" alt="Mermer Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-mermer.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Mermer</span>
+          </div>
+        </div>
+        <span class="kapak-label">Mermer</span>
+      </div>
+
+      <!-- 04 ELEGANT -->
+      <div class="kapak-item reveal" data-delay="0">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-elegant.jpg -->
+          <img src="assets/images/kapak-elegant.jpg" alt="Elegant Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-elegant.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Elegant</span>
+          </div>
+        </div>
+        <span class="kapak-label">Elegant</span>
+      </div>
+
+      <!-- 05 QDRAIN -->
+      <div class="kapak-item reveal" data-delay="40">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-qdrain.jpg -->
+          <img src="assets/images/kapak-qdrain.jpg" alt="QDrain Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-qdrain.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">QDrain</span>
+          </div>
+        </div>
+        <span class="kapak-label">QDrain</span>
+      </div>
+
+      <!-- 06 TRENDY -->
+      <div class="kapak-item reveal" data-delay="80">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-trendy.jpg -->
+          <img src="assets/images/kapak-trendy.jpg" alt="Trendy Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-trendy.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Trendy</span>
+          </div>
+        </div>
+        <span class="kapak-label">Trendy</span>
+      </div>
+
+      <!-- 07 GREEK -->
+      <div class="kapak-item reveal" data-delay="0">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-greek.jpg -->
+          <img src="assets/images/kapak-greek.jpg" alt="Greek Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-greek.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Greek</span>
+          </div>
+        </div>
+        <span class="kapak-label">Greek</span>
+      </div>
+
+      <!-- 08 CIRCLE -->
+      <div class="kapak-item reveal" data-delay="40">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-circle.jpg -->
+          <img src="assets/images/kapak-circle.jpg" alt="Circle Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-circle.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Circle</span>
+          </div>
+        </div>
+        <span class="kapak-label">Circle</span>
+      </div>
+
+      <!-- 09 SQUARE -->
+      <div class="kapak-item reveal" data-delay="80">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-square.jpg -->
+          <img src="assets/images/kapak-square.jpg" alt="Square Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-square.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Square</span>
+          </div>
+        </div>
+        <span class="kapak-label">Square</span>
+      </div>
+
+      <!-- 10 GEOXE -->
+      <div class="kapak-item reveal" data-delay="120">
+        <div class="kapak-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/kapak-geoxe.jpg -->
+          <img src="assets/images/kapak-geoxe.jpg" alt="Geoxe Kapak"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="kapak-placeholder"><span>kapak-geoxe.jpg</span></div>
+          <div class="kapak-overlay">
+            <span class="kapak-name">Geoxe</span>
+          </div>
+        </div>
+        <span class="kapak-label">Geoxe</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =============================================
+       3. GÖVDE SEÇENEKLERİ — İKİ BÖLÜM
+       Slot Çıkışlı / Yuvarlak Çıkışlı
+       İkili bölünmüş, tam genişlik karşılaştırma layout'u
+
+       GÖRSEL DEĞİŞTİRME:
+         assets/images/govde-slot.jpg       (Slot çıkışlı gövde teknik/ürün fotoğrafı)
+         assets/images/govde-yuvarlak.jpg   (Yuvarlak çıkışlı gövde teknik/ürün fotoğrafı)
+  ============================================= -->
+  <section id="govde">
+    <div class="govde-header reveal">
+      <span class="section-eyebrow">Ana Gövde</span>
+      <h2 class="govde-title">Çıkış Seçenekleri</h2>
+      <p class="govde-desc">Premium serisi iki farklı boru çıkışı yapısıyla sunulmaktadır.<br>Projenizin tesisatına göre seçim yapın.</p>
+    </div>
+
+    <div class="govde-split">
+
+      <!-- SLOT ÇIKIŞLI -->
+      <div class="govde-panel reveal" data-delay="0">
+        <div class="govde-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/govde-slot.jpg -->
+          <img src="assets/images/govde-slot.jpg" alt="Slot Çıkışlı Gövde"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="govde-img-placeholder"><span>govde-slot.jpg</span></div>
+        </div>
+        <div class="govde-panel-body">
+          <span class="govde-num">01</span>
+          <h3 class="govde-panel-title">Slot Çıkışlı</h3>
+          <p class="govde-panel-desc">
+            Yatay oluklu (slot) çıkış yapısı. Zemin döşeme içine entegre boru bağlantısı için tasarlanmıştır.
+            Düz zeminlerde ve ön duvar uygulamalarında tercih edilir.
+          </p>
+          <ul class="govde-specs">
+            <li><span>Çıkış Tipi</span><span>Slot / Yatay</span></li>
+            <li><span>Kullanım</span><span>Döşeme içi uygulama</span></li>
+            <li><span>Debi</span><span>İsteğe göre</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- YUVARLAK ÇIKIŞLI -->
+      <div class="govde-panel reveal" data-delay="120">
+        <div class="govde-img-wrap">
+          <!-- GÖRSEL DEĞİŞTİRME: assets/images/govde-yuvarlak.jpg -->
+          <img src="assets/images/govde-yuvarlak.jpg" alt="Yuvarlak Çıkışlı Gövde"
+               onerror="this.parentElement.classList.add('img-missing')" />
+          <div class="govde-img-placeholder"><span>govde-yuvarlak.jpg</span></div>
+        </div>
+        <div class="govde-panel-body">
+          <span class="govde-num">02</span>
+          <h3 class="govde-panel-title">Yuvarlak Çıkışlı</h3>
+          <p class="govde-panel-desc">
+            Standart sifonik yuvarlak çıkış yapısı. Mevcut borulama altyapısına doğrudan bağlanır.
+            Yenileme projelerinde ve esnek tesisatlarda tercih edilir.
+          </p>
+          <ul class="govde-specs">
+            <li><span>Çıkış Tipi</span><span>Yuvarlak / Dikey</span></li>
+            <li><span>Kullanım</span><span>Standart sifonik bağlantı</span></li>
+            <li><span>Debi</span><span>İsteğe göre</span></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="site-footer">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="assets/logo/ph-logo.png" alt="PH Dizayn"
+             onerror="this.style.display='none'; document.querySelector('.footer-logo-fallback').style.display='block';" />
+        <span class="footer-logo-fallback">PH DİZAYN</span>
+        <p class="footer-tagline">Mimari Drenaj Sistemleri</p>
+      </div>
+      <div class="footer-links">
+        <h4>Duş Kanalları</h4>
+        <ul>
+          <li><a href="dus-kanallari.html#premium">Premium</a></li>
+          <li><a href="dus-kanallari.html#smartline">Smartline</a></li>
+          <li><a href="dus-kanallari.html#acroline">Acroline</a></li>
+          <li><a href="dus-kanallari.html#naturaline">Naturaline</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Ürünler</h4>
+        <ul>
+          <li><a href="urunler.html#yersuzgecleri">Yer Süzgeçleri</a></li>
+          <li><a href="urunler.html#sifonlar">Sifonlar</a></li>
+          <li><a href="urunler.html#balkonteras">Balkon &amp; Teras</a></li>
+          <li><a href="urunler.html#mozaikler">Mozaikler</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>İletişim</h4>
+        <p><a href="https://phdizayn.com" target="_blank" rel="noopener">phdizayn.com</a></p>
+        <p>Türkiye</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 PH Dizayn. Tüm hakları saklıdır.</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
